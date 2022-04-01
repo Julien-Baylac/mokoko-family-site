@@ -10,56 +10,60 @@
             >Mokoko Family</a
           >
           <li>
-            <a><router-link to="/">Home</router-link></a>
+            <router-link to="/">Home</router-link>
           </li>
           <li>
-            <a><router-link to="/direct">Direct</router-link></a>
+            <router-link to="/activities">Activités</router-link>
+          </li>
+          <li>
+            <router-link to="/recherche-groupe">Classements</router-link>
+          </li>
+          <li>
+            <a href="#">Collections</a>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li class="uk-nav-header">Collectibles</li>
+
+                <li>
+                  <router-link to="/reputations">Réputations</router-link>
+                </li>
+                <li class="uk-nav-header">Marché</li>
+
+                <li><router-link to="/skins">Skins</router-link></li>
+                <li>
+                  <router-link to="/pets">Familiers</router-link>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <router-link to="/profile"><span>Mon profil</span></router-link>
           </li>
         </ul>
       </div>
 
       <div class="uk-navbar-right">
         <ul class="uk-navbar-nav" style="margin-right: 40px">
+          <!-- socials -->
           <li>
-            <a><router-link to="/activities">Activités</router-link></a>
+            <router-link to="/login"
+              ><span uk-icon="icon: discord"></span
+            ></router-link>
           </li>
           <li>
-            <a
-              ><router-link to="/recherche-groupe"
-                >Recherche de groupe</router-link
-              ></a
-            >
+            <router-link to="/login"
+              ><span uk-icon="icon: twitch"></span
+            ></router-link>
           </li>
           <li>
-            <a href="#">Collections</a>
-            <div class="uk-navbar-dropdown">
-              <ul class="uk-nav uk-navbar-dropdown-nav">
-                <li>
-                  <a
-                    ><router-link to="/reputations">Réputations</router-link></a
-                  >
-                </li>
-              </ul>
-            </div>
+            <router-link to="/login"
+              ><span uk-icon="icon: instagram"></span
+            ></router-link>
           </li>
           <li>
-            <a href="#">Le marché</a>
-            <div class="uk-navbar-dropdown">
-              <ul class="uk-nav uk-navbar-dropdown-nav">
-                <li>
-                  <a><router-link to="/skins">Skins</router-link></a>
-                </li>
-                <li>
-                  <a><router-link to="/pets">Familiers</router-link></a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <a><router-link to="/profile">Profil</router-link></a>
-          </li>
-          <li>
-            <a><router-link to="/login">Login</router-link></a>
+            <router-link to="/login"
+              ><span uk-icon="icon: twitter"></span
+            ></router-link>
           </li>
         </ul>
       </div>
