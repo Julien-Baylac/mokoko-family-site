@@ -1,11 +1,33 @@
 <template>
   <div class="uk-container reputations">
     <div
-      style="margin-top: 30px; display: flex; justify-content: space-between"
+      class="uk-margin-medium-top"
+      style="display: flex; justify-content: space-between"
     >
-      <h1>Les réputations</h1>
       <div>
-        <ul class="uk-breadcrumb" style="margin-bottom: 10px">
+        <h3 class="uk-article-title">Réputation</h3>
+        <dl v-if="sortMethod === 'order'" class="uk-description-list">
+          <dt>Classement dans l'ordre des zones</dt>
+          <dd>Affiche les zones dans l'ordre de la quète principale</dd>
+        </dl>
+        <dl v-if="sortMethod === 'collectibles'" class="uk-description-list">
+          <dt>Classement pour prioriser l'acquisition des collectibles</dt>
+          <dd>Isole les pnjs donnent des collectibles</dd>
+        </dl>
+        <dl v-if="sortMethod === 'cards'" class="uk-description-list">
+          <dt>Classement pour prioriser l'acquisition des cartes</dt>
+          <dd>Affiche la couleur des cartes de chaque pnj.</dd>
+        </dl>
+        <dl v-if="sortMethod === 'igneas'" class="uk-description-list">
+          <dt>Classement pour récupérer les symboles d'ignea</dt>
+          <dd>
+            Les premières zones apparaissent sont les plus faciles à compléter.
+          </dd>
+        </dl>
+      </div>
+
+      <div>
+        <ul class="uk-breadcrumb" style="margin-bottom: 10px; margin-top: 35px">
           <li>
             <span style="color: #666">Continents: </span
             ><span :style="'color: ' + percentColor(30)">30%</span>
@@ -35,49 +57,18 @@
         </ul>
       </div>
     </div>
-    <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-      <span>Priorité : </span>
-      <label
-        ><input
-          class="uk-radio"
-          type="radio"
-          name="order"
-          value="order"
-          v-model="sortMethod"
-        />
-        L'ordre des zones</label
-      >
-      <label
-        ><input
-          class="uk-radio"
-          type="radio"
-          name="collectibles"
-          value="collectibles"
-          v-model="sortMethod"
-        />
-        Les collectibles</label
-      >
-      <label
-        ><input
-          class="uk-radio"
-          type="radio"
-          name="cards"
-          value="cards"
-          v-model="sortMethod"
-        />
-        Les cartes</label
-      >
-      <label
-        ><input
-          class="uk-radio"
-          type="radio"
-          name="igneas"
-          value="igneas"
-          v-model="sortMethod"
-        />
-        Les symboles d'igneas</label
-      >
+
+    <div class="uk-margin-medium-top" style="margin-bottom: 40px">
+      <ul class="uk-flex-center" uk-tab>
+        <li class="uk-active" @click="changeSection('order')">
+          <a>L'ordre des zones</a>
+        </li>
+        <li @click="changeSection('collectibles')"><a> Les collectibles</a></li>
+        <li @click="changeSection('cards')"><a>Les cartes</a></li>
+        <li @click="changeSection('igneas')"><a>Les symboles d'igneas</a></li>
+      </ul>
     </div>
+
     <div
       v-for="zone in sortedZones"
       v-bind:key="zone.id"
@@ -1069,6 +1060,9 @@ export default {
     },
   },
   methods: {
+    changeSection(method) {
+      this.sortMethod = method;
+    },
     percentColor(percent) {
       let color = "black";
       if (percent < 20) {

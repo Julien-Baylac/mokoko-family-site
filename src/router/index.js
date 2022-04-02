@@ -5,7 +5,7 @@ import Login from "../views/Login.vue";
 import CreateAccount from "../views/CreateAccount.vue";
 import Direct from "../views/Direct.vue";
 import Reputations from "../views/Reputations.vue";
-import Matching from "../views/Matching.vue";
+import Ranking from "../views/Ranking.vue";
 import Skins from "../views/Skins.vue";
 import Pets from "../views/Pets.vue";
 import Activities from "../views/Activities.vue";
@@ -40,9 +40,9 @@ const routes = [
     component: Reputations,
   },
   {
-    path: "/recherche-groupe",
-    name: "Matching",
-    component: Matching,
+    path: "/ranking",
+    name: "Ranking",
+    component: Ranking,
   },
   {
     path: "/pets",

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav class="uk-navbar-container" uk-navbar>
-      <div class="uk-navbar-left">
+      <div class="nav-overlay uk-navbar-left">
         <ul class="uk-navbar-nav">
           <a
             class="uk-navbar-item uk-logo"
@@ -16,18 +16,18 @@
             <router-link to="/activities">Activités</router-link>
           </li>
           <li>
-            <router-link to="/recherche-groupe">Classements</router-link>
+            <router-link to="/ranking">Classements</router-link>
           </li>
           <li>
             <a href="#">Collections</a>
             <div class="uk-navbar-dropdown">
               <ul class="uk-nav uk-navbar-dropdown-nav">
-                <li class="uk-nav-header">Collectibles</li>
+                <li class="uk-nav-header">Exploration</li>
 
                 <li>
                   <router-link to="/reputations">Réputations</router-link>
                 </li>
-                <li class="uk-nav-header">Marché</li>
+                <li class="uk-nav-header">Collections</li>
 
                 <li><router-link to="/skins">Skins</router-link></li>
                 <li>
@@ -42,7 +42,7 @@
         </ul>
       </div>
 
-      <div class="uk-navbar-right">
+      <div class="nav-overlay uk-navbar-right">
         <ul class="uk-navbar-nav" style="margin-right: 40px">
           <!-- socials -->
           <li>
@@ -92,5 +92,10 @@
       color: #42b983;
     }
   }
+}
+.uk-navbar-dropdown {
+  margin-top: 0 !important;
+  background: #f8f8f8;
+  box-shadow: none;
 }
 </style>
