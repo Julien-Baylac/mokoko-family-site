@@ -4,11 +4,11 @@ import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import CreateAccount from "../views/CreateAccount.vue";
 import Direct from "../views/Direct.vue";
-import Reputations from "../views/Reputations.vue";
 import Ranking from "../views/Ranking.vue";
 import Skins from "../views/Skins.vue";
 import Pets from "../views/Pets.vue";
 import Activities from "../views/Activities.vue";
+import Affinities from "../views/Affinities.vue";
 import Profile from "../views/Profile.vue";
 
 Vue.use(VueRouter);
@@ -35,9 +35,9 @@ const routes = [
     component: Direct,
   },
   {
-    path: "/reputations",
-    name: "Reputations",
-    component: Reputations,
+    path: "/affinities",
+    name: "Affinities",
+    component: Affinities,
   },
   {
     path: "/ranking",

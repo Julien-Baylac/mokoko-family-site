@@ -5,7 +5,7 @@
       style="display: flex; justify-content: space-between"
     >
       <div>
-        <h3 class="uk-article-title">Réputation</h3>
+        <h3 class="uk-article-title">Affinités</h3>
         <dl v-if="sortMethod === 'order'" class="uk-description-list">
           <dt>Classement dans l'ordre des zones</dt>
           <dd>Affiche les zones dans l'ordre de la quète principale</dd>

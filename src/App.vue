@@ -25,7 +25,7 @@
                 <li class="uk-nav-header">Exploration</li>
 
                 <li>
-                  <router-link to="/reputations">Réputations</router-link>
+                  <router-link to="/affinities">Affinités</router-link>
                 </li>
                 <li class="uk-nav-header">Collections</li>
 
