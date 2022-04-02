@@ -1,195 +1,220 @@
 <template>
-  <div class="ranking uk-container">
-    <h3 class="uk-article-title uk-margin-medium-top">Classements</h3>
-    <dl v-if="section === 'ilvl'" class="uk-description-list">
-      <dt>Barème du Top puissance</dt>
-      <dd>Niveau x10 | Expé niveau x15 | Point x3 | Ilvl x2</dd>
-    </dl>
-    <dl v-if="section === 'exploration'" class="uk-description-list">
-      <dt>Barème du Top d'exploration</dt>
-      <dd>
-        Symbole x10 | Coeur x10 | étoile x50 | tableau x10 | mokoko x1.5 | Ignéa
-        x200 | feuille x15 | carte x17
-      </dd>
-    </dl>
-    <dl v-if="section === 'collection'" class="uk-description-list">
-      <dt>Barème du Top de collection</dt>
-      <dd>Niveau x10 | Expé niveau x15 | Point x3 | Ilvl x2</dd>
-    </dl>
-    <dl v-if="section === 'steam'" class="uk-description-list">
-      <dt>Barème du Top Steam</dt>
-      <dd>Heure x3 | Succès x20</dd>
-    </dl>
-    <div class="uk-margin-medium-top" style="margin-bottom: 40px">
-      <ul class="uk-flex-center" uk-tab>
-        <li class="uk-active" @click="changeSection('ilvl')">
-          <a>Top Puissance</a>
-        </li>
-        <li @click="changeSection('exploration')"><a>Top Explorateur</a></li>
-        <li @click="changeSection('collection')"><a>Top Collectionneur</a></li>
-        <li @click="changeSection('steam')"><a>Top Steam</a></li>
-      </ul>
-    </div>
+  <div class="ranking">
+    <div class="uk-container">
+      <h3 class="uk-article-title uk-margin-medium-top">Classements</h3>
+      <div class="uk-flex uk-flex-between">
+        <div style="margin-top: 20px">
+          <dl v-if="section === 'ilvl'" class="uk-description-list">
+            <dt>Barème du Top puissance</dt>
+            <dd>Niveau x10 | Expé niveau x15 | Point x3 | Ilvl x2</dd>
+          </dl>
+          <dl v-if="section === 'exploration'" class="uk-description-list">
+            <dt>Barème du Top d'exploration</dt>
+            <dd>
+              Symbole x10 | Coeur x10 | étoile x50 | tableau x10 | mokoko x1.5 |
+              Ignéa x200 | feuille x15 | carte x17
+            </dd>
+          </dl>
+          <dl v-if="section === 'collection'" class="uk-description-list">
+            <dt>Barème du Top de collection</dt>
+            <dd>Niveau x10 | Expé niveau x15 | Point x3 | Ilvl x2</dd>
+          </dl>
+          <dl v-if="section === 'steam'" class="uk-description-list">
+            <dt>Barème du Top Steam</dt>
+            <dd>Heure x3 | Succès x20</dd>
+          </dl>
+        </div>
+        <div style="margin-top: -20px">
+          <div class="uk-flex uk-flex-right">
+            <span style="font-size: 30px">34st</span>
+          </div>
+          <div class="uk-flex uk-flex-right">
+            <button
+              class="uk-button uk-button-default uk-button-small"
+              style="margin-top: 10px"
+            >
+              Sortir du classement
+            </button>
+          </div>
+        </div>
+      </div>
 
-    <table class="uk-table uk-table-striped uk-table-justify">
-      <thead>
-        <tr>
-          <th v-for="thead in current_thead" v-bind:key="thead">
-            <img
-              v-if="checkIcons(thead)"
-              :src="require(`@/assets/img/exploration/${thead}.webp`)"
-              style="height: 19px; border-radius: 4px"
-            />
-            <span v-else>{{ thead }}</span>
-          </th>
-        </tr>
-      </thead>
-      <tbody v-if="section === 'ilvl'">
-        <tr v-for="(player, index) in sortedPlayers" v-bind:key="player.id">
-          <td
-            class="uk-width-small"
-            style="display: flex; justify-content: center; width: 100px"
-          >
-            <img
-              v-if="index + 1 === 1"
-              :src="require(`@/assets/img/ranks/${index + 1}.png`)"
-              style="height: 25px"
-            />
-            <span
-              v-if="index + 1 === 2"
-              style="font-weight: bold; color: grey"
-              >{{ index + 1 }}</span
+      <div class="uk-margin-medium-top" style="margin-bottom: 40px">
+        <ul class="uk-flex-center" uk-tab>
+          <li class="uk-active" @click="changeSection('ilvl')">
+            <a>Top Puissance</a>
+          </li>
+          <li @click="changeSection('exploration')"><a>Top Explorateur</a></li>
+          <li @click="changeSection('collection')">
+            <a>Top Collectionneur</a>
+          </li>
+          <li @click="changeSection('steam')"><a>Top Steam</a></li>
+        </ul>
+      </div>
+
+      <table class="uk-table uk-table-striped uk-table-justify">
+        <thead>
+          <tr>
+            <th v-for="thead in current_thead" v-bind:key="thead">
+              <img
+                v-if="checkIcons(thead)"
+                :src="require(`@/assets/img/exploration/${thead}.webp`)"
+                style="height: 19px; border-radius: 4px"
+              />
+              <span v-else>{{ thead }}</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody v-if="section === 'ilvl'">
+          <tr v-for="(player, index) in sortedPlayers" v-bind:key="player.id">
+            <td
+              class="uk-width-small"
+              style="display: flex; justify-content: center; width: 100px"
             >
-            <span
-              v-if="index + 1 === 3"
-              style="font-weight: bold; color: orange"
-              >{{ index + 1 }}</span
+              <img
+                v-if="index + 1 === 1"
+                :src="require(`@/assets/img/ranks/${index + 1}.png`)"
+                style="height: 25px"
+              />
+              <span
+                v-if="index + 1 === 2"
+                style="font-weight: bold; color: grey"
+                >{{ index + 1 }}</span
+              >
+              <span
+                v-if="index + 1 === 3"
+                style="font-weight: bold; color: orange"
+                >{{ index + 1 }}</span
+              >
+              <span
+                v-if="index + 1 !== 1 && index + 1 !== 2 && index + 1 !== 3"
+                >{{ index + 1 }}</span
+              >
+            </td>
+            <td>{{ player.name }}</td>
+            <td>{{ player.lvl }}</td>
+            <td>{{ player.expedition_lvl }}</td>
+            <td>{{ player.skill_points }}</td>
+            <td>{{ player.ilvl }}</td>
+            <td>{{ player.score }}</td>
+          </tr>
+        </tbody>
+        <tbody v-if="section === 'exploration'">
+          <tr v-for="(player, index) in sortedPlayers" v-bind:key="player.id">
+            <td
+              class="uk-width-small"
+              style="display: flex; justify-content: center; width: 100px"
             >
-            <span
-              v-if="index + 1 !== 1 && index + 1 !== 2 && index + 1 !== 3"
-              >{{ index + 1 }}</span
+              <img
+                v-if="index + 1 === 1"
+                :src="require(`@/assets/img/ranks/${index + 1}.png`)"
+                style="height: 25px"
+              />
+              <span
+                v-if="index + 1 === 2"
+                style="font-weight: bold; color: grey"
+                >{{ index + 1 }}</span
+              >
+              <span
+                v-if="index + 1 === 3"
+                style="font-weight: bold; color: orange"
+                >{{ index + 1 }}</span
+              >
+              <span
+                v-if="index + 1 !== 1 && index + 1 !== 2 && index + 1 !== 3"
+                >{{ index + 1 }}</span
+              >
+            </td>
+            <td>{{ player.name }}</td>
+            <td>{{ player.island_souls }}</td>
+            <td>{{ player.giant_hearts }}</td>
+            <td>{{ player.omnium_stars }}</td>
+            <td>{{ player.masterpieces }}</td>
+            <td>{{ player.mokoko_seeds }}</td>
+            <td>{{ player.ignea_tokens }}</td>
+            <td>{{ player.world_tree_leaves }}</td>
+            <td>{{ player.sea_bounties }}</td>
+            <td>{{ player.score }}</td>
+          </tr>
+        </tbody>
+        <tbody v-if="section === 'collection'">
+          <tr v-for="(player, index) in sortedPlayers" v-bind:key="player.id">
+            <td
+              class="uk-width-small"
+              style="display: flex; justify-content: center; width: 100px"
             >
-          </td>
-          <td>{{ player.name }}</td>
-          <td>{{ player.lvl }}</td>
-          <td>{{ player.expedition_lvl }}</td>
-          <td>{{ player.skill_points }}</td>
-          <td>{{ player.ilvl }}</td>
-          <td>{{ player.score }}</td>
-        </tr>
-      </tbody>
-      <tbody v-if="section === 'exploration'">
-        <tr v-for="(player, index) in sortedPlayers" v-bind:key="player.id">
-          <td
-            class="uk-width-small"
-            style="display: flex; justify-content: center; width: 100px"
-          >
-            <img
-              v-if="index + 1 === 1"
-              :src="require(`@/assets/img/ranks/${index + 1}.png`)"
-              style="height: 25px"
-            />
-            <span
-              v-if="index + 1 === 2"
-              style="font-weight: bold; color: grey"
-              >{{ index + 1 }}</span
+              <img
+                v-if="index + 1 === 1"
+                :src="require(`@/assets/img/ranks/${index + 1}.png`)"
+                style="height: 25px"
+              />
+              <span
+                v-if="index + 1 === 2"
+                style="font-weight: bold; color: grey"
+                >{{ index + 1 }}</span
+              >
+              <span
+                v-if="index + 1 === 3"
+                style="font-weight: bold; color: orange"
+                >{{ index + 1 }}</span
+              >
+              <span
+                v-if="index + 1 !== 1 && index + 1 !== 2 && index + 1 !== 3"
+                >{{ index + 1 }}</span
+              >
+            </td>
+            <td>{{ player.name }}</td>
+            <td>{{ player.mounts }}</td>
+            <td>{{ player.pets }}</td>
+            <td>{{ player.skins }}</td>
+            <td>{{ player.score }}</td>
+          </tr>
+        </tbody>
+        <tbody v-if="section === 'steam'">
+          <tr v-for="(player, index) in sortedPlayers" v-bind:key="player.id">
+            <td
+              class="uk-width-small"
+              style="display: flex; justify-content: center; width: 100px"
             >
-            <span
-              v-if="index + 1 === 3"
-              style="font-weight: bold; color: orange"
-              >{{ index + 1 }}</span
-            >
-            <span
-              v-if="index + 1 !== 1 && index + 1 !== 2 && index + 1 !== 3"
-              >{{ index + 1 }}</span
-            >
-          </td>
-          <td>{{ player.name }}</td>
-          <td>{{ player.island_souls }}</td>
-          <td>{{ player.giant_hearts }}</td>
-          <td>{{ player.omnium_stars }}</td>
-          <td>{{ player.masterpieces }}</td>
-          <td>{{ player.mokoko_seeds }}</td>
-          <td>{{ player.ignea_tokens }}</td>
-          <td>{{ player.world_tree_leaves }}</td>
-          <td>{{ player.sea_bounties }}</td>
-          <td>{{ player.score }}</td>
-        </tr>
-      </tbody>
-      <tbody v-if="section === 'collection'">
-        <tr v-for="(player, index) in sortedPlayers" v-bind:key="player.id">
-          <td
-            class="uk-width-small"
-            style="display: flex; justify-content: center; width: 100px"
-          >
-            <img
-              v-if="index + 1 === 1"
-              :src="require(`@/assets/img/ranks/${index + 1}.png`)"
-              style="height: 25px"
-            />
-            <span
-              v-if="index + 1 === 2"
-              style="font-weight: bold; color: grey"
-              >{{ index + 1 }}</span
-            >
-            <span
-              v-if="index + 1 === 3"
-              style="font-weight: bold; color: orange"
-              >{{ index + 1 }}</span
-            >
-            <span
-              v-if="index + 1 !== 1 && index + 1 !== 2 && index + 1 !== 3"
-              >{{ index + 1 }}</span
-            >
-          </td>
-          <td>{{ player.name }}</td>
-          <td>{{ player.mounts }}</td>
-          <td>{{ player.pets }}</td>
-          <td>{{ player.skins }}</td>
-          <td>{{ player.score }}</td>
-        </tr>
-      </tbody>
-      <tbody v-if="section === 'steam'">
-        <tr v-for="(player, index) in sortedPlayers" v-bind:key="player.id">
-          <td
-            class="uk-width-small"
-            style="display: flex; justify-content: center; width: 100px"
-          >
-            <img
-              v-if="index + 1 === 1"
-              :src="require(`@/assets/img/ranks/${index + 1}.png`)"
-              style="height: 25px"
-            />
-            <span
-              v-if="index + 1 === 2"
-              style="font-weight: bold; color: grey"
-              >{{ index + 1 }}</span
-            >
-            <span
-              v-if="index + 1 === 3"
-              style="font-weight: bold; color: orange"
-              >{{ index + 1 }}</span
-            >
-            <span
-              v-if="index + 1 !== 1 && index + 1 !== 2 && index + 1 !== 3"
-              >{{ index + 1 }}</span
-            >
-          </td>
-          <td>{{ player.name }}</td>
-          <td>{{ player.steam_name }}</td>
-          <td>{{ player.success }}</td>
-          <td>{{ player.total_hours }}</td>
-          <td>{{ player.score }}</td>
-        </tr>
-      </tbody>
-    </table>
+              <img
+                v-if="index + 1 === 1"
+                :src="require(`@/assets/img/ranks/${index + 1}.png`)"
+                style="height: 25px"
+              />
+              <span
+                v-if="index + 1 === 2"
+                style="font-weight: bold; color: grey"
+                >{{ index + 1 }}</span
+              >
+              <span
+                v-if="index + 1 === 3"
+                style="font-weight: bold; color: orange"
+                >{{ index + 1 }}</span
+              >
+              <span
+                v-if="index + 1 !== 1 && index + 1 !== 2 && index + 1 !== 3"
+                >{{ index + 1 }}</span
+              >
+            </td>
+            <td>{{ player.name }}</td>
+            <td>{{ player.steam_name }}</td>
+            <td>{{ player.success }}</td>
+            <td>{{ player.total_hours }}</td>
+            <td>{{ player.score }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <Footer />
   </div>
 </template>
 
 <script>
+import Footer from "@/components/Footer.vue";
 import lodash from "lodash";
 
 export default {
+  components: { Footer },
   name: "ranking",
   data() {
     return {

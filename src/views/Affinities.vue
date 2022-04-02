@@ -1,111 +1,124 @@
 <template>
-  <div class="uk-container reputations">
-    <div
-      class="uk-margin-medium-top"
-      style="display: flex; justify-content: space-between"
-    >
-      <div>
-        <h3 class="uk-article-title">Affinités</h3>
-        <dl v-if="sortMethod === 'order'" class="uk-description-list">
-          <dt>Classement dans l'ordre des zones</dt>
-          <dd>Affiche les zones dans l'ordre de la quète principale</dd>
-        </dl>
-        <dl v-if="sortMethod === 'collectibles'" class="uk-description-list">
-          <dt>Classement pour prioriser l'acquisition des collectibles</dt>
-          <dd>Isole les pnjs donnent des collectibles</dd>
-        </dl>
-        <dl v-if="sortMethod === 'cards'" class="uk-description-list">
-          <dt>Classement pour prioriser l'acquisition des cartes</dt>
-          <dd>Affiche la couleur des cartes de chaque pnj.</dd>
-        </dl>
-        <dl v-if="sortMethod === 'igneas'" class="uk-description-list">
-          <dt>Classement pour récupérer les symboles d'ignea</dt>
-          <dd>
-            Les premières zones apparaissent sont les plus faciles à compléter.
-          </dd>
-        </dl>
-      </div>
-
-      <div>
-        <ul class="uk-breadcrumb" style="margin-bottom: 10px; margin-top: 35px">
-          <li>
-            <span style="color: #666">Continents: </span
-            ><span :style="'color: ' + percentColor(30)">30%</span>
-          </li>
-          <li>
-            <span style="color: #666">En mer : </span
-            ><span :style="'color: ' + percentColor(40)">40%</span>
-          </li>
-          <li>
-            <span style="color: #666">Trixion : </span>
-            <span :style="'color: ' + percentColor(0)">0%</span>
-          </li>
-        </ul>
-        <ul class="uk-breadcrumb" style="margin-bottom: 10px; margin-top: 10px">
-          <li>
-            <span style="color: #666">Coeurs de Géant: </span>
-            <span :style="'color: ' + percentColor(40)">40%</span>
-          </li>
-          <li>
-            <span style="color: #666">Étoiles d'Omnium: </span>
-            <span :style="'color: ' + percentColor(100)">100%</span>
-          </li>
-          <li>
-            <span style="color: #666">Cartes: </span>
-            <span :style="'color: ' + percentColor(63)">63%</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="uk-margin-medium-top" style="margin-bottom: 40px">
-      <ul class="uk-flex-center" uk-tab>
-        <li class="uk-active" @click="changeSection('order')">
-          <a>L'ordre des zones</a>
-        </li>
-        <li @click="changeSection('collectibles')"><a> Les collectibles</a></li>
-        <li @click="changeSection('cards')"><a>Les cartes</a></li>
-        <li @click="changeSection('igneas')"><a>Les symboles d'igneas</a></li>
-      </ul>
-    </div>
-
-    <div
-      v-for="zone in sortedZones"
-      v-bind:key="zone.id"
-      style="margin-top: 25px"
-    >
-      <div style="display: flex">
-        <h3>{{ zone.name }} - {{ TotalPts(zone.pnjs) }} pts</h3>
-        <h5 style="margin-top: 10px; margin-left: 10px">
-          Reste - {{ TotalPts(zone.pnjs) }} pts
-        </h5>
-      </div>
+  <div class="affinites">
+    <div class="uk-container">
       <div
-        class="uk-child-width-1-3"
-        style="display: flex; padding-left: 40px"
-        uk-grid
+        class="uk-margin-medium-top"
+        style="display: flex; justify-content: space-between"
       >
-        <Card
-          v-for="pnj in zone.pnjs"
-          v-bind:key="pnj.id"
-          :imgUrl="pnj.imgUrl"
-          :name="pnj.name"
-          :location="pnj.location"
-          :pts="pnj.pts"
-          :id="pnj.id"
-          :cards="pnj.cards"
-          :hearts="pnj.hearts"
-          :stars="pnj.stars"
-          :cardColor="cardColoration"
-          style="width: 32%; margin-right: 1%"
-          :AffinityMax="pnj.AffinityMax"
-        ></Card>
+        <div>
+          <h3 class="uk-article-title">Affinités</h3>
+          <dl v-if="sortMethod === 'order'" class="uk-description-list">
+            <dt>Classement dans l'ordre des zones</dt>
+            <dd>Affiche les zones dans l'ordre de la quète principale</dd>
+          </dl>
+          <dl v-if="sortMethod === 'collectibles'" class="uk-description-list">
+            <dt>Classement pour prioriser l'acquisition des collectibles</dt>
+            <dd>Isole les pnjs donnent des collectibles</dd>
+          </dl>
+          <dl v-if="sortMethod === 'cards'" class="uk-description-list">
+            <dt>Classement pour prioriser l'acquisition des cartes</dt>
+            <dd>Affiche la couleur des cartes de chaque pnj.</dd>
+          </dl>
+          <dl v-if="sortMethod === 'igneas'" class="uk-description-list">
+            <dt>Classement pour récupérer les symboles d'ignea</dt>
+            <dd>
+              Les premières zones apparaissent sont les plus faciles à
+              compléter.
+            </dd>
+          </dl>
+        </div>
+
+        <div>
+          <ul
+            class="uk-breadcrumb"
+            style="margin-bottom: 10px; margin-top: 35px"
+          >
+            <li>
+              <span style="color: #666">Continents: </span
+              ><span :style="'color: ' + percentColor(30)">30%</span>
+            </li>
+            <li>
+              <span style="color: #666">En mer : </span
+              ><span :style="'color: ' + percentColor(40)">40%</span>
+            </li>
+            <li>
+              <span style="color: #666">Trixion : </span>
+              <span :style="'color: ' + percentColor(0)">0%</span>
+            </li>
+          </ul>
+          <ul
+            class="uk-breadcrumb"
+            style="margin-bottom: 10px; margin-top: 10px"
+          >
+            <li>
+              <span style="color: #666">Coeurs de Géant: </span>
+              <span :style="'color: ' + percentColor(40)">40%</span>
+            </li>
+            <li>
+              <span style="color: #666">Étoiles d'Omnium: </span>
+              <span :style="'color: ' + percentColor(100)">100%</span>
+            </li>
+            <li>
+              <span style="color: #666">Cartes: </span>
+              <span :style="'color: ' + percentColor(63)">63%</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="uk-margin-medium-top" style="margin-bottom: 40px">
+        <ul class="uk-flex-center" uk-tab>
+          <li class="uk-active" @click="changeSection('order')">
+            <a>L'ordre des zones</a>
+          </li>
+          <li @click="changeSection('collectibles')">
+            <a> Les collectibles</a>
+          </li>
+          <li @click="changeSection('cards')"><a>Les cartes</a></li>
+          <li @click="changeSection('igneas')"><a>Les symboles d'igneas</a></li>
+        </ul>
+      </div>
+
+      <div
+        v-for="zone in sortedZones"
+        v-bind:key="zone.id"
+        style="margin-top: 25px"
+      >
+        <div style="display: flex">
+          <h3>{{ zone.name }} - {{ TotalPts(zone.pnjs) }} pts</h3>
+          <h5 style="margin-top: 10px; margin-left: 10px">
+            Reste - {{ TotalPts(zone.pnjs) }} pts
+          </h5>
+        </div>
+        <div
+          class="uk-child-width-1-3"
+          style="display: flex; padding-left: 40px"
+          uk-grid
+        >
+          <Card
+            v-for="pnj in zone.pnjs"
+            v-bind:key="pnj.id"
+            :imgUrl="pnj.imgUrl"
+            :name="pnj.name"
+            :location="pnj.location"
+            :pts="pnj.pts"
+            :id="pnj.id"
+            :cards="pnj.cards"
+            :hearts="pnj.hearts"
+            :stars="pnj.stars"
+            :cardColor="cardColoration"
+            style="width: 32%; margin-right: 1%"
+            :AffinityMax="pnj.AffinityMax"
+          ></Card>
+        </div>
       </div>
     </div>
+    <Footer />
   </div>
 </template>
 
 <script>
+import Footer from "@/components/Footer.vue";
 import Card from "@/components/reputations/card.vue";
 import lodash from "lodash";
 
@@ -113,6 +126,7 @@ export default {
   name: "reputations",
   components: {
     Card,
+    Footer,
   },
   data() {
     return {

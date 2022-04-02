@@ -22,16 +22,19 @@
       </div>
       <!-- <hr class="uk-divider-icon" /> -->
     </div>
+    <Footer />
   </div>
 </template>
 
 <script>
+import Footer from "@/components/Footer.vue";
 import GuardianCard from "@/components/activities/GuardianCard.vue";
 
 export default {
   props: {},
   components: {
     GuardianCard,
+    Footer,
   },
   data() {
     return {

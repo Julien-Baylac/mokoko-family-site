@@ -1,5 +1,5 @@
 <template>
-  <div class="dungeon">
+  <div class="dungeon" style="width: 100%">
     <div class="dungeon-container" style="margin-bottom: 100px">
       <div class="uk-margin-medium-top" style="margin-bottom: 40px">
         <ul class="uk-flex-center" uk-tab>
@@ -22,16 +22,19 @@
       </div>
       <!-- <hr class="uk-divider-icon" /> -->
     </div>
+    <Footer />
   </div>
 </template>
 
 <script>
 import DungeonCard from "@/components/activities/DungeonCard.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
   props: {},
   components: {
     DungeonCard,
+    Footer,
   },
   data() {
     return {

@@ -188,7 +188,7 @@
 export default {};
 </script>
 
-<style>
+<style lang="scss" scoped>
 .left-part {
   display: flex;
   justify-content: flex-end;
