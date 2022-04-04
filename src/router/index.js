@@ -8,12 +8,14 @@ import Ranking from "../views/Ranking.vue";
 import Skins from "../views/Skins.vue";
 import Pets from "../views/Pets.vue";
 import Activities from "../views/Activities.vue";
-import Affinities from "../views/Affinities.vue";
+import Islands from "../views/exploration/Islands.vue";
+import Affinities from "../views/exploration/Affinities.vue";
 import Profile from "../views/Profile.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
+  //base
   {
     path: "/",
     name: "Home",
@@ -34,16 +36,29 @@ const routes = [
     name: "Direct",
     component: Direct,
   },
+  //activities
   {
-    path: "/affinities",
-    name: "Affinities",
-    component: Affinities,
+    path: "/activities",
+    name: "Activities",
+    component: Activities,
   },
   {
     path: "/ranking",
     name: "Ranking",
     component: Ranking,
   },
+  //exploration
+  {
+    path: "/affinities",
+    name: "Affinities",
+    component: Affinities,
+  },
+  {
+    path: "/islands",
+    name: "Islands",
+    component: Islands,
+  },
+  //collection
   {
     path: "/pets",
     name: "Pets",
@@ -54,11 +69,7 @@ const routes = [
     name: "Skins",
     component: Skins,
   },
-  {
-    path: "/activities",
-    name: "Activities",
-    component: Activities,
-  },
+  //profile
   {
     path: "/profile",
     name: "Profile",

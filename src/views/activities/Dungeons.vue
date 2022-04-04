@@ -1,5 +1,5 @@
 <template>
-  <div class="dungeon" style="width: 100%">
+  <div class="dungeons" style="width: 100%">
     <div class="dungeon-container" style="margin-bottom: 100px">
       <div class="uk-margin-medium-top" style="margin-bottom: 40px">
         <ul class="uk-flex-center" uk-tab>
@@ -178,5 +178,10 @@ export default {
 .dungeon-list {
   padding-left: 5%;
   padding-right: 5%;
+}
+</style>
+<style lang="scss">
+.uk-grid > * {
+  padding-left: 0;
 }
 </style>

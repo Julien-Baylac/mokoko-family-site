@@ -75,7 +75,7 @@
           </button>
         </div>
       </div>
-      <div class="uk-width-1-5">
+      <div class="uk-width-1-5 dungeon-card-right-part">
         <div class="uk-child-width-expand@s" uk-grid>
           <div>
             <div
@@ -176,5 +176,8 @@ export default {
 <style lang="scss" scoped>
 .dungeon-card {
   margin-bottom: 30px;
+}
+.dungeon-card-right-part {
+  margin-left: 50px;
 }
 </style>

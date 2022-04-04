@@ -52,6 +52,8 @@
         </ul>
       </div>
       <Character v-if="section === 'character'" />
+      <Exploration v-if="section === 'exploration'" />
+      <Collection v-if="section === 'collection'" />
     </div>
     <Footer />
   </div>
@@ -59,10 +61,12 @@
 
 <script>
 import Character from "@/views/profile/Character.vue";
+import Exploration from "@/views/profile/Exploration.vue";
+import Collection from "@/views/profile/Collection.vue";
 import Footer from "@/components/Footer.vue";
 
 export default {
-  components: { Character, Footer },
+  components: { Character, Footer, Exploration, Collection },
   name: "ranking",
   data() {
     return {

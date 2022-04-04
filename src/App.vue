@@ -27,6 +27,9 @@
                 <li>
                   <router-link to="/affinities">Affinités</router-link>
                 </li>
+                <li>
+                  <router-link to="/islands">Âmes insulaires</router-link>
+                </li>
                 <li class="uk-nav-header">Collections</li>
 
                 <li><router-link to="/skins">Skins</router-link></li>

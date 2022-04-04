@@ -100,73 +100,63 @@
       <div class="right-part" style="margin-top: 3.5%">
         <ul class="uk-thumbnav uk-thumbnav-vertical" uk-margin>
           <li class="uk-active">
-            <a href="#"
-              ><img
-                :src="require(`@/assets/img/profile/stuff/item1.webp`)"
-                style="background-color: purple; border-radius: 5px"
-                width="50"
-                height="50"
-              />
-              <span style="margin-left: 10px"
-                >+12 <span uk-icon="triangle-left"></span> Tier 1</span
-              ></a
+            <img
+              :src="require(`@/assets/img/profile/stuff/item1.webp`)"
+              style="background-color: purple; border-radius: 5px"
+              width="50"
+              height="50"
+            />
+            <span style="margin-left: 10px"
+              >+12 <span uk-icon="triangle-left"></span> Tier 1</span
             >
           </li>
           <li class="uk-active">
-            <a href="#"
-              ><img
-                :src="require(`@/assets/img/profile/stuff/item1.webp`)"
-                style="background-color: purple; border-radius: 5px"
-                width="50"
-                height="50"
-              />
-              <span style="margin-left: 10px"
-                >+12 <span uk-icon="triangle-left"></span> Tier 1</span
-              ></a
+            <img
+              :src="require(`@/assets/img/profile/stuff/item1.webp`)"
+              style="background-color: purple; border-radius: 5px"
+              width="50"
+              height="50"
+            />
+            <span style="margin-left: 10px"
+              >+12 <span uk-icon="triangle-left"></span> Tier 1</span
             >
           </li>
           <li class="uk-active">
-            <a href="#"
-              ><img
-                :src="require(`@/assets/img/profile/stuff/item1.webp`)"
-                style="background-color: purple; border-radius: 5px"
-                width="50"
-                height="50"
-              />
-              <span style="margin-left: 10px"
-                >+12 <span uk-icon="triangle-left"></span> Tier 1</span
-              ></a
+            <img
+              :src="require(`@/assets/img/profile/stuff/item1.webp`)"
+              style="background-color: purple; border-radius: 5px"
+              width="50"
+              height="50"
+            />
+            <span style="margin-left: 10px"
+              >+12 <span uk-icon="triangle-left"></span> Tier 1</span
             >
           </li>
           <li class="uk-active">
-            <a href="#"
-              ><img
-                :src="require(`@/assets/img/profile/stuff/item1.webp`)"
-                style="background-color: purple; border-radius: 5px"
-                width="50"
-                height="50"
-              />
-              <span style="margin-left: 10px"
-                >+12 <span uk-icon="triangle-left"></span> Tier 1</span
-              ></a
+            <img
+              :src="require(`@/assets/img/profile/stuff/item1.webp`)"
+              style="background-color: purple; border-radius: 5px"
+              width="50"
+              height="50"
+            />
+            <span style="margin-left: 10px"
+              >+12 <span uk-icon="triangle-left"></span> Tier 1</span
             >
           </li>
           <li class="uk-active">
-            <a href="#"
-              ><img
-                :src="require(`@/assets/img/profile/stuff/item1.webp`)"
-                style="background-color: purple; border-radius: 5px"
-                width="50"
-                height="50"
-              />
-              <span style="margin-left: 10px"
-                >+12 <span uk-icon="triangle-left"></span> Tier 1</span
-              ></a
+            <img
+              :src="require(`@/assets/img/profile/stuff/item1.webp`)"
+              style="background-color: purple; border-radius: 5px"
+              width="50"
+              height="50"
+            />
+            <span style="margin-left: 10px"
+              >+12 <span uk-icon="triangle-left"></span> Tier 1</span
             >
           </li>
           <li class="uk-active">
-            <a href="#" class="uk-flex"
-              ><img
+            <div href="#" class="uk-flex">
+              <img
                 :src="require(`@/assets/img/profile/stuff/item1.webp`)"
                 style="background-color: purple; border-radius: 5px"
                 width="50"
@@ -175,8 +165,8 @@
               <span style="margin-left: 10px; max-height: 50px; font-size: 12px"
                 ><span style="font-size: 15px">Tier 1</span><br />+5 Charge
                 lourde <br />+6 Barricade <br />+3 Réduction de défence</span
-              ></a
-            >
+              >
+            </div>
           </li>
         </ul>
       </div>
