@@ -1,7 +1,7 @@
 <template>
   <div class="islands">
     <div class="uk-container">
-      <h3 class="uk-article-title uk-margin-medium-top">Symboles insulaires</h3>
+      <h3 class="uk-article-title uk-margin-medium-top">Trésors des mers</h3>
       <div class="uk-flex uk-flex-between">
         <div style="margin-top: 20px">
           <dl class="uk-description-list">

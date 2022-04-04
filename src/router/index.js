@@ -9,6 +9,13 @@ import Skins from "../views/Skins.vue";
 import Pets from "../views/Pets.vue";
 import Activities from "../views/Activities.vue";
 import Islands from "../views/exploration/Islands.vue";
+import GiantsHearts from "../views/exploration/GiantsHearts.vue";
+import OmniumStars from "../views/exploration/OmniumStars.vue";
+import MasterPieces from "../views/exploration/MasterPieces.vue";
+import MokokoSeeds from "../views/exploration/MokokoSeeds.vue";
+import WorldTreeLeaves from "../views/exploration/WorldTreeLeaves.vue";
+import Igneas from "../views/exploration/Igneas.vue";
+import TreasureMaps from "../views/exploration/TreasureMaps.vue";
 import Affinities from "../views/exploration/Affinities.vue";
 import Profile from "../views/Profile.vue";
 
@@ -57,6 +64,41 @@ const routes = [
     path: "/islands",
     name: "Islands",
     component: Islands,
+  },
+  {
+    path: "/giants-hearts",
+    name: "GiantsHearts",
+    component: GiantsHearts,
+  },
+  {
+    path: "/omnium-stars",
+    name: "OmniumStars",
+    component: OmniumStars,
+  },
+  {
+    path: "/master-pieces",
+    name: "MasterPieces",
+    component: MasterPieces,
+  },
+  {
+    path: "/mokoko-seeds",
+    name: "MokokoSeeds",
+    component: MokokoSeeds,
+  },
+  {
+    path: "/world-tree-leaves",
+    name: "WorldTreeLeaves",
+    component: WorldTreeLeaves,
+  },
+  {
+    path: "/igneas",
+    name: "Igneas",
+    component: Igneas,
+  },
+  {
+    path: "/treasure-maps",
+    name: "TreasureMaps",
+    component: TreasureMaps,
   },
   //collection
   {

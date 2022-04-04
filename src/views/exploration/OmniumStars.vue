@@ -1,7 +1,7 @@
 <template>
   <div class="islands">
     <div class="uk-container">
-      <h3 class="uk-article-title uk-margin-medium-top">Symboles insulaires</h3>
+      <h3 class="uk-article-title uk-margin-medium-top">Étoiles d'Omnium</h3>
       <div class="uk-flex uk-flex-between">
         <div style="margin-top: 20px">
           <dl class="uk-description-list">
@@ -31,119 +31,12 @@
           </div>
         </div>
       </div>
-      <div class="uk-margin-medium-top">
-        <ul class="uk-flex-center" uk-tab>
-          <li
-            v-bind:class="{ 'uk-active': isActive('all') }"
-            @click="changeSection('all')"
-          >
-            <a>Toutes</a>
-          </li>
-          <li
-            v-bind:class="{ 'uk-active': isActive('procyon') }"
-            @click="changeSection('procyon')"
-          >
-            <a>Procyon</a>
-          </li>
-          <li
-            v-bind:class="{ 'uk-active': isActive('gienah') }"
-            @click="changeSection('gienah')"
-          >
-            <a>Gienah</a>
-          </li>
-        </ul>
-      </div>
-      <!-- sector -->
-      <div v-if="section === 'procyon'" style="margin-bottom: 20px">
-        <ul class="uk-flex-center" uk-tab>
-          <li
-            v-bind:class="{ 'uk-active': isActiveSector('all') }"
-            @click="changeSector('all')"
-          >
-            <a>Toutes</a>
-          </li>
-          <li
-            v-bind:class="{ 'uk-active': isActiveSector('sud') }"
-            @click="changeSector('sud')"
-          >
-            <a>Sud</a>
-          </li>
-          <li
-            v-bind:class="{ 'uk-active': isActiveSector('centre') }"
-            @click="changeSector('centre')"
-          >
-            <a>Centre</a>
-          </li>
-          <li
-            v-bind:class="{ 'uk-active': isActiveSector('nord') }"
-            @click="changeSector('nord')"
-          >
-            <a>Nord</a>
-          </li>
-        </ul>
-      </div>
-      <div v-if="section === 'gienah'" style="margin-bottom: 20px">
-        <ul class="uk-flex-center" uk-tab>
-          <li
-            v-bind:class="{ 'uk-active': isActiveSector('all') }"
-            @click="changeSector('all')"
-          >
-            <a>Toutes</a>
-          </li>
-          <li
-            v-bind:class="{ 'uk-active': isActiveSector('sud-ouest') }"
-            @click="changeSector('sud-ouest')"
-          >
-            <a>Sud-ouest</a>
-          </li>
-          <li
-            v-bind:class="{ 'uk-active': isActiveSector('sud-est') }"
-            @click="changeSector('sud-est')"
-          >
-            <a>Sud-est</a>
-          </li>
-          <li
-            v-bind:class="{ 'uk-active': isActiveSector('centre-ouest') }"
-            @click="changeSector('centre-ouest')"
-          >
-            <a>Centre-ouest</a>
-          </li>
-          <li
-            v-bind:class="{ 'uk-active': isActiveSector('centre-est') }"
-            @click="changeSector('centre-est')"
-          >
-            <a>Centre-est</a>
-          </li>
-          <li
-            v-bind:class="{ 'uk-active': isActiveSector('nord-ouest') }"
-            @click="changeSector('nord-ouest')"
-          >
-            <a>Nord-ouest</a>
-          </li>
-          <li
-            v-bind:class="{ 'uk-active': isActiveSector('nord-est') }"
-            @click="changeSector('nord-est')"
-          >
-            <a>Nord-est</a>
-          </li>
-        </ul>
-      </div>
-      <div v-if="section === 'all'" style="margin-bottom: 20px">
-        <ul class="uk-flex-center" uk-tab>
-          <li
-            v-bind:class="{ 'uk-active': isActiveSector('all') }"
-            @click="changeSector('all')"
-          >
-            <a>Toutes</a>
-          </li>
-        </ul>
-      </div>
 
       <div class="uk-margin-medium">
         <div>
           <div style="display: flex; justify-content: space-between">
             <h3 id="table-title" style="margin-bottom: 0">
-              Liste des îles ({{ filteredIslands.length }})
+              Liste des étoiles d'omnium ({{ filteredIslands.length }})
             </h3>
             <div>
               <button
@@ -193,19 +86,22 @@
           >
             <thead>
               <tr>
+                <th>Numéro</th>
                 <th>Nom</th>
                 <th>Obtention</th>
                 <th>Description</th>
-                <th>Zone</th>
                 <th>Validation</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="island in filteredIslands" v-bind:key="island.id">
+              <tr
+                v-for="(island, index) in filteredIslands"
+                v-bind:key="island.id"
+              >
+                <th>{{ index + 1 }}</th>
                 <td>{{ island.name }}</td>
                 <td>{{ island.obtaining }}</td>
                 <td>{{ island.description }}</td>
-                <td>{{ capitalize(island.zone) }} {{ island.sector }}</td>
                 <td>
                   <button
                     class="uk-button uk-button-default uk-button-small"
@@ -243,7 +139,7 @@ export default {
       islands: [
         {
           id: 1,
-          name: "Symbole insulaire du Désespoir",
+          name: "Coeur n1",
           obtaining: "Coffre",
           zone: "gienah",
           sector: "sud",
@@ -295,151 +191,37 @@ export default {
           description: "Sac secret de Setino",
           validated: false,
         },
-        {
-          id: 7,
-          name: "Symbole insulaire du Désespoir",
-          obtaining: "Coffre",
-          zone: "procyon",
-          sector: "sud",
-          description: "Sac secret de Setino",
-          validated: false,
-        },
-        {
-          id: 8,
-          name: "Symbole insulaire du Désespoir",
-          obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "nord",
-          description: "Sac secret de Setino",
-          validated: false,
-        },
-        {
-          id: 9,
-          name: "Symbole insulaire du Désespoir",
-          obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "centre",
-          description: "Sac secret de Setino",
-          validated: false,
-        },
-        {
-          id: 10,
-          name: "Symbole insulaire du Désespoir",
-          obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "sud",
-          description: "Sac secret de Setino",
-          validated: false,
-        },
-        {
-          id: 11,
-          name: "Symbole insulaire du Désespoir",
-          obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "sud-ouest",
-          description: "Sac secret de Setino",
-          validated: true,
-        },
-        {
-          id: 12,
-          name: "Symbole insulaire du Désespoir",
-          obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "sud-est",
-          description: "Sac secret de Setino",
-          validated: false,
-        },
-        {
-          id: 123,
-          name: "Symbole insulaire du Désespoir",
-          obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "centre-est",
-          description: "Sac secret de Setino",
-          validated: true,
-        },
-        {
-          id: 124,
-          name: "Symbole insulaire du Désespoir",
-          obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "centre-ouest",
-          description: "Sac secret de Setino",
-          validated: false,
-        },
-        {
-          id: 125,
-          name: "Symbole insulaire du Désespoir",
-          obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "nord-est",
-          description: "Sac secret de Setino",
-          validated: true,
-        },
-        {
-          id: 128,
-          name: "Symbole insulaire du Désespoir",
-          obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "nord-ouest",
-          description: "Sac secret de Setino",
-          validated: false,
-        },
       ],
       markers: [
         {
           zone: "procyon",
-          sector: "nord",
           left: 35.8,
           top: 25.7,
         },
         {
           zone: "gienah",
-          sector: "nord-ouest",
           left: 52.4,
           top: 29.7,
         },
         {
           zone: "gienah",
-          sector: "nord-est",
           left: 62.6,
           top: 27.3,
         },
         {
           zone: "procyon",
-          sector: "centre",
           left: 40.5,
           top: 55.7,
         },
         {
           zone: "gienah",
-          sector: "centre-ouest",
           left: 54.6,
           top: 57,
         },
         {
           zone: "procyon",
-          sector: "sud",
           left: 37.9,
           top: 82.6,
-        },
-        {
-          zone: "gienah",
-          sector: "sud-est",
-          left: 66.5,
-          top: 69.6,
-        },
-        {
-          zone: "gienah",
-          sector: "sud-ouest",
-          left: 61.3,
-          top: 86.2,
-        },
-        {
-          zone: "gienah",
-          sector: "centre-est",
-          left: 66,
-          top: 51.7,
         },
       ],
     };
@@ -486,20 +268,6 @@ export default {
       if (!value) return "";
       value = value.toString();
       return value.charAt(0).toUpperCase() + value.slice(1);
-    },
-    isActive(section) {
-      if (section === this.section) {
-        return true;
-      } else if (section !== this.section) {
-        return false;
-      }
-    },
-    isActiveSector(sector) {
-      if (sector === this.sector) {
-        return true;
-      } else if (sector !== this.sector) {
-        return false;
-      }
     },
     validate(boolean) {
       this.validated = boolean;

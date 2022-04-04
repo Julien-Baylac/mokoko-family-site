@@ -14,6 +14,24 @@
           </li>
           <li>
             <router-link to="/activities">Activités</router-link>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li class="uk-nav-header">Permanents</li>
+                <li>
+                  <router-link to="/activities">Donjons</router-link>
+                </li>
+                <li>
+                  <router-link to="/activities">Raids</router-link>
+                </li>
+                <li>
+                  <router-link to="/activities">Gardiens</router-link>
+                </li>
+                <li class="uk-nav-header">Temporaires</li>
+                <li>
+                  <router-link to="/activities">Events</router-link>
+                </li>
+              </ul>
+            </div>
           </li>
           <li>
             <router-link to="/ranking">Classements</router-link>
@@ -29,6 +47,35 @@
                 </li>
                 <li>
                   <router-link to="/islands">Âmes insulaires</router-link>
+                </li>
+                <li>
+                  <router-link to="/giants-hearts"
+                    >Coeurs de géants</router-link
+                  >
+                </li>
+                <li>
+                  <router-link to="/omnium-stars">Étoiles d'Omnium</router-link>
+                </li>
+                <li>
+                  <router-link to="/master-pieces">Oeuvres d'art</router-link>
+                </li>
+                <li>
+                  <router-link to="/mokoko-seeds"
+                    >Graines de Mokoko</router-link
+                  >
+                </li>
+                <li>
+                  <router-link to="/igneas">Igneas</router-link>
+                </li>
+                <li>
+                  <router-link to="/world-tree-leaves"
+                    >Feuilles de l'Arbre-Monde</router-link
+                  >
+                </li>
+                <li>
+                  <router-link to="/treasure-maps"
+                    >Trésors des mers</router-link
+                  >
                 </li>
                 <li class="uk-nav-header">Collections</li>
 
