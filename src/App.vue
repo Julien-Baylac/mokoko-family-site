@@ -101,4 +101,7 @@
   background: #f8f8f8;
   box-shadow: none;
 }
+.uk-button {
+  text-transform: none;
+}
 </style>
