@@ -14,7 +14,7 @@
         <div>
           <div class="uk-inline uk-dark" style="padding-left: 40px">
             <img
-              :src="require(`@/assets/img/exploration/islands_map.png`)"
+              :src="require(`@/assets/img/exploration/treasures_map.png`)"
               width="1800"
               height="1200"
               style="border-radius: 10px"

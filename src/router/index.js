@@ -18,6 +18,7 @@ import Igneas from "../views/exploration/Igneas.vue";
 import TreasureMaps from "../views/exploration/TreasureMaps.vue";
 import Affinities from "../views/exploration/Affinities.vue";
 import Profile from "../views/Profile.vue";
+import TimeLine from "../views/TimeLine.vue";
 
 Vue.use(VueRouter);
 
@@ -116,6 +117,12 @@ const routes = [
     path: "/profile",
     name: "Profile",
     component: Profile,
+  },
+  //timeline
+  {
+    path: "/timeline",
+    name: "TimeLine",
+    component: TimeLine,
   },
 ];
 

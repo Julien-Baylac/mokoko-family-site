@@ -171,6 +171,17 @@
         </ul>
       </div>
     </div>
+    <div>
+      <ul class="uk-subnav uk-subnav-pill uk-margin-top" uk-switcher>
+        <li><a href="#">Build</a></li>
+        <li><a href="#">Stone</a></li>
+      </ul>
+
+      <ul class="uk-switcher uk-margin">
+        <li>Hello!</li>
+        <li>Hello again!</li>
+      </ul>
+    </div>
   </div>
 </template>
 

@@ -4,9 +4,11 @@ import router from "./router";
 import store from "./store";
 import VueLodash from "vue-lodash";
 import lodash from "lodash";
+import VueTimeline from "@growthbunker/vuetimeline";
 
 Vue.config.productionTip = false;
 Vue.use(VueLodash, { name: "custom", lodash: lodash });
+Vue.use(VueTimeline);
 
 new Vue({
   router,

@@ -3,20 +3,23 @@
     <div class="uk-container">
       <div style="display: flex; justify-content: space-between">
         <div>
-          <h3 class="uk-article-title uk-margin-medium-top">
-            <span style="margin-right: 20px">Oow</span
-            ><span style="font-size: 20px">Niv. 54</span>
-          </h3>
-          <dl class="uk-description-list">
-            <dt>
-              <span style="">Pistolancier</span> -
-              <span style="font-size: 10px">Chevalier solitaire</span>
-            </dt>
-            <dd>
-              <span>Niv. Expédition</span>
-            </dd>
-          </dl>
+          <div>
+            <h3 class="uk-article-title uk-margin-medium-top">
+              <span style="margin-right: 20px">Oow</span
+              ><span style="font-size: 20px">Niv. 54</span>
+            </h3>
+            <dl class="uk-description-list">
+              <dt>
+                <span style="">Pistolancier</span> -
+                <span style="font-size: 10px">Chevalier solitaire</span>
+              </dt>
+              <dd>
+                <span>Niv. Expédition</span>
+              </dd>
+            </dl>
+          </div>
         </div>
+
         <div class="right-part uk-margin-medium-top" style="display: flex">
           <div style="width: 70px; margin-right: 50px">
             <img
