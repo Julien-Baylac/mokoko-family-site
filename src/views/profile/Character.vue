@@ -176,7 +176,6 @@
       <h2 style="margin-top: 50px">Informations générales</h2>
       <div style="display: flex; justify-content: space-between">
         <div style="width: 49%" class="uk-inline">
-          <a class="uk-form-icon" href="#" uk-icon="icon: heart"></a>
           <input class="uk-input" type="text" placeholder="Nom du personnage" />
         </div>
       </div>
@@ -210,11 +209,9 @@
       <h2 style="margin-top: 50px">Informations de combat</h2>
       <div style="display: flex; justify-content: space-between">
         <div style="width: 49%" class="uk-inline">
-          <a class="uk-form-icon" href="#" uk-icon="icon: heart"></a>
           <input class="uk-input" type="text" placeholder="Niveau" />
         </div>
         <div style="width: 49%" class="uk-inline">
-          <a class="uk-form-icon" href="#" uk-icon="icon: bolt"></a>
           <input
             class="uk-input"
             type="text"
@@ -226,11 +223,9 @@
         style="display: flex; justify-content: space-between; margin-top: 20px"
       >
         <div style="width: 49%" class="uk-inline">
-          <a class="uk-form-icon" href="#" uk-icon="icon: heart"></a>
           <input class="uk-input" type="text" placeholder="Niveau d'objet" />
         </div>
         <div style="width: 49%" class="uk-inline">
-          <a class="uk-form-icon" href="#" uk-icon="icon: bolt"></a>
           <input
             class="uk-input"
             type="text"
@@ -277,7 +272,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr v-for="(type, index) in stuffTypes" v-bind:key="type">
             <td>
               <img
                 :src="require(`@/assets/img/profile/stuff/item1.webp`)"
@@ -291,7 +286,7 @@
               />
             </td>
             <td style="display: flex">
-              <div style="margin-top: 7px">Casque</div>
+              <div style="margin-top: 7px">{{ type }}</div>
             </td>
             <td>
               <select class="uk-select" id="form-stacked-select">
@@ -312,8 +307,10 @@
             </td>
             <td>
               <input
+                v-if="index < 6"
                 class="uk-input"
                 type="number"
+                style="width: 80px"
                 v-model="casqueLvl"
                 min="1"
                 max="15"
@@ -331,6 +328,20 @@ export default {
   data() {
     return {
       casqueLvl: 1,
+      stuffTypes: [
+        "Tête",
+        "Epaule",
+        "Torse",
+        "Jambes",
+        "Mains",
+        "Arme",
+        "Collier",
+        "Boucle 1",
+        "Boucle 2",
+        "Bague 1",
+        "Bague 2",
+        "Pierre",
+      ],
     };
   },
 };
