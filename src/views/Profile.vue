@@ -20,6 +20,11 @@
           </div>
         </div>
 
+        <div class="uk-margin-medium-top">
+          <span>Guilde : Mokoko Family</span><br />
+          <span>Serveur : Zinnervale</span>
+        </div>
+
         <div class="right-part uk-margin-medium-top" style="display: flex">
           <div style="width: 70px; margin-right: 50px">
             <img
