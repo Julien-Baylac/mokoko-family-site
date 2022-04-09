@@ -185,7 +185,7 @@
         </ul>
         <span class="uk-margin-medium-right">
           <div
-            class="uk-background-cover uk-panel uk-flex uk-flex-center uk-flex-middle"
+            class="uk-background-cover uk-panel uk-flex uk-flex-center uk-flex-middle img-profil-nav"
             v-bind:style="{
               backgroundImage:
                 'url(' + require(`@/assets/img/profile/selfi.jpg`) + ')',
@@ -347,5 +347,8 @@ a.logo {
 .uk-tile-secondary:not(.uk-preserve-color) .uk-tab > .uk-active > a {
   color: #b3ff9c;
   border-color: #b3ff9c;
+}
+.img-profil-nav:hover {
+  border: grey 1px solid;
 }
 </style>
