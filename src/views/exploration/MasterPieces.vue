@@ -5,8 +5,12 @@
       <div class="uk-flex uk-flex-between">
         <div style="margin-top: 20px">
           <dl class="uk-description-list">
-            <dt>Barème du Top puissance</dt>
-            <dd>Niveau x10 | Expé niveau x15 | Point x3 | Ilvl x2</dd>
+            <dt>Recherche des Oeuvres d'art</dt>
+            <dd>
+              Faites une recherche par tableau en cliquant sur l'image ou
+              recherchez directement une oeuvre d'art parmis les
+              {{ islands.length }} référencées
+            </dd>
           </dl>
         </div>
       </div>
@@ -14,11 +18,20 @@
         <div>
           <div class="uk-inline uk-dark" style="padding-left: 40px">
             <img
-              :src="require(`@/assets/img/exploration/islands_map.png`)"
+              :src="require(`@/assets/img/exploration/masterpiece_map.png`)"
               width="1800"
               height="1200"
               style="border-radius: 10px"
             />
+            <a
+              v-for="marker in markers"
+              v-bind:key="`${marker.zone}-${marker.sector}`"
+              class="uk-position-absolute uk-transform-center"
+              :style="`left: ${marker.left}%; top: ${marker.top}%`"
+              :uk-tooltip="`${capitalize(marker.zone)} ${marker.sector}`"
+              @click="targetZone(marker.zone, marker.sector)"
+              uk-marker
+            ></a>
           </div>
         </div>
       </div>
@@ -27,9 +40,9 @@
         <div>
           <div style="display: flex; justify-content: space-between">
             <h3 id="table-title" style="margin-bottom: 0">
-              Liste des Coeurs de géants ({{ filteredIslands.length }})
+              Liste des oeuvres d'art ({{ filteredIslands.length }})
             </h3>
-            <div>
+            <div style="display: flex" class="uk-form-small">
               <button
                 style="margin-right: 10px"
                 class="uk-button uk-button-default uk-button-small"
@@ -38,26 +51,18 @@
               >
                 Annuler
               </button>
-              <div class="uk-button-group">
-                <button
-                  class="uk-button uk-button-default uk-button-small"
-                  v-bind:class="{
-                    'uk-button-secondary': this.validated === false,
-                  }"
-                  @click="validate(false)"
-                >
-                  Non-validée
-                </button>
-                <button
-                  class="uk-button uk-button-default uk-button-small"
-                  v-bind:class="{
-                    'uk-button-secondary': this.validated === true,
-                  }"
-                  @click="validate(true)"
-                >
-                  Validée
-                </button>
-              </div>
+              <select
+                v-model="validated"
+                style="padding-right: 30px"
+                class="uk-select uk-form-small"
+                v-bind:class="{
+                  'uk-button-secondary': this.validated === false,
+                }"
+              >
+                <option :value="null">Tri par validation</option>
+                <option :value="false">Non-validée</option>
+                <option :value="true">Validée</option>
+              </select>
             </div>
           </div>
 
@@ -66,7 +71,7 @@
             <input
               class="uk-input uk-form-small"
               type="text"
-              placeholder="Chercher une île"
+              placeholder="Chercher une oeuvre d'art"
               v-model="filter"
             />
           </div>
@@ -262,6 +267,50 @@ export default {
           sector: "sud-est",
           description: "Sac secret de Setino",
           validated: false,
+        },
+      ],
+      markers: [
+        {
+          zone: "procyon",
+          sector: "nord",
+          left: 28.7,
+          top: 39.7,
+        },
+        {
+          zone: "procyon",
+          sector: "nord",
+          left: 53.9,
+          top: 40.4,
+        },
+        {
+          zone: "procyon",
+          sector: "nord",
+          left: 77.7,
+          top: 46.4,
+        },
+        {
+          zone: "procyon",
+          sector: "nord",
+          left: 27.1,
+          top: 95.4,
+        },
+        {
+          zone: "procyon",
+          sector: "nord",
+          left: 48.4,
+          top: 96,
+        },
+        {
+          zone: "procyon",
+          sector: "nord",
+          left: 48.4,
+          top: 69,
+        },
+        {
+          zone: "procyon",
+          sector: "nord",
+          left: 72.7,
+          top: 93,
         },
       ],
     };

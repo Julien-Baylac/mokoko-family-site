@@ -7,8 +7,12 @@
       <div class="uk-flex uk-flex-between">
         <div style="margin-top: 20px">
           <dl class="uk-description-list">
-            <dt>Barème du Top puissance</dt>
-            <dd>Niveau x10 | Expé niveau x15 | Point x3 | Ilvl x2</dd>
+            <dt>Recherche des feuilles de l'arbre-monde</dt>
+            <dd>
+              Faites une recherche par type de recolte en cliquant sur l'image
+              ou recherchez directement une feuille parmis les
+              {{ islands.length }} référencées
+            </dd>
           </dl>
         </div>
       </div>
@@ -16,7 +20,7 @@
         <div>
           <div class="uk-inline uk-dark" style="padding-left: 40px">
             <img
-              :src="require(`@/assets/img/exploration/islands_map.png`)"
+              :src="require(`@/assets/img/exploration/farm_map.png`)"
               width="1800"
               height="1200"
               style="border-radius: 10px"
@@ -38,9 +42,9 @@
         <div>
           <div style="display: flex; justify-content: space-between">
             <h3 id="table-title" style="margin-bottom: 0">
-              Liste des Coeurs de géants ({{ filteredIslands.length }})
+              Liste des feuilles de l'arbre-monde ({{ filteredIslands.length }})
             </h3>
-            <div>
+            <div style="display: flex" class="uk-form-small">
               <button
                 style="margin-right: 10px"
                 class="uk-button uk-button-default uk-button-small"
@@ -49,26 +53,18 @@
               >
                 Annuler
               </button>
-              <div class="uk-button-group">
-                <button
-                  class="uk-button uk-button-default uk-button-small"
-                  v-bind:class="{
-                    'uk-button-secondary': this.validated === false,
-                  }"
-                  @click="validate(false)"
-                >
-                  Non-validée
-                </button>
-                <button
-                  class="uk-button uk-button-default uk-button-small"
-                  v-bind:class="{
-                    'uk-button-secondary': this.validated === true,
-                  }"
-                  @click="validate(true)"
-                >
-                  Validée
-                </button>
-              </div>
+              <select
+                v-model="validated"
+                style="padding-right: 30px"
+                class="uk-select uk-form-small"
+                v-bind:class="{
+                  'uk-button-secondary': this.validated === false,
+                }"
+              >
+                <option :value="null">Tri par validation</option>
+                <option :value="false">Non-validée</option>
+                <option :value="true">Validée</option>
+              </select>
             </div>
           </div>
 
@@ -77,7 +73,7 @@
             <input
               class="uk-input uk-form-small"
               type="text"
-              placeholder="Chercher une île"
+              placeholder="Chercher une feuille"
               v-model="filter"
             />
           </div>
@@ -116,7 +112,7 @@
             </tbody>
           </table>
           <div style="display: flex; justify-content: center; width: 100%">
-            <span v-if="!filteredIslands.length">Aucune ile</span>
+            <span v-if="!filteredIslands.length">Aucune feuille</span>
           </div>
         </div>
       </div>
@@ -193,142 +189,43 @@ export default {
           description: "Sac secret de Setino",
           validated: false,
         },
-        {
-          id: 7,
-          name: "Symbole insulaire du Désespoir",
-          obtaining: "Coffre",
-          zone: "procyon",
-          sector: "sud",
-          description: "Sac secret de Setino",
-          validated: false,
-        },
-        {
-          id: 8,
-          name: "Symbole insulaire du Désespoir",
-          obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "nord",
-          description: "Sac secret de Setino",
-          validated: false,
-        },
-        {
-          id: 9,
-          name: "Symbole insulaire du Désespoir",
-          obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "centre",
-          description: "Sac secret de Setino",
-          validated: false,
-        },
-        {
-          id: 10,
-          name: "Symbole insulaire du Désespoir",
-          obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "sud",
-          description: "Sac secret de Setino",
-          validated: false,
-        },
-        {
-          id: 11,
-          name: "Symbole insulaire du Désespoir",
-          obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "sud-ouest",
-          description: "Sac secret de Setino",
-          validated: true,
-        },
-        {
-          id: 12,
-          name: "Symbole insulaire du Désespoir",
-          obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "sud-est",
-          description: "Sac secret de Setino",
-          validated: false,
-        },
-        {
-          id: 13,
-          name: "Symbole insulaire du Désespoir",
-          obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "sud",
-          description: "Sac secret de Setino",
-          validated: false,
-        },
-        {
-          id: 14,
-          name: "Symbole insulaire du Désespoir",
-          obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "sud-ouest",
-          description: "Sac secret de Setino",
-          validated: true,
-        },
-        {
-          id: 15,
-          name: "Symbole insulaire du Désespoir",
-          obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "sud-est",
-          description: "Sac secret de Setino",
-          validated: false,
-        },
       ],
       markers: [
         {
           zone: "procyon",
           sector: "nord",
-          left: 35.8,
-          top: 25.7,
-        },
-        {
-          zone: "gienah",
-          sector: "nord-ouest",
-          left: 52.4,
-          top: 29.7,
-        },
-        {
-          zone: "gienah",
-          sector: "nord-est",
-          left: 62.6,
-          top: 27.3,
+          left: 18.5,
+          top: 64,
         },
         {
           zone: "procyon",
-          sector: "centre",
-          left: 40.5,
-          top: 55.7,
-        },
-        {
-          zone: "gienah",
-          sector: "centre-ouest",
-          left: 54.6,
-          top: 57,
+          sector: "nord",
+          left: 38,
+          top: 41.6,
         },
         {
           zone: "procyon",
-          sector: "sud",
-          left: 37.9,
-          top: 82.6,
+          sector: "nord",
+          left: 65.2,
+          top: 41.6,
         },
         {
-          zone: "gienah",
-          sector: "sud-est",
-          left: 66.5,
-          top: 69.6,
+          zone: "procyon",
+          sector: "nord",
+          left: 38,
+          top: 90.6,
         },
         {
-          zone: "gienah",
-          sector: "sud-ouest",
-          left: 61.3,
-          top: 86.2,
+          zone: "procyon",
+          sector: "nord",
+          left: 65.2,
+          top: 90.6,
         },
         {
-          zone: "gienah",
-          sector: "centre-est",
-          left: 66,
-          top: 51.7,
+          zone: "procyon",
+          sector: "nord",
+          left: 84.5,
+          top: 64,
         },
       ],
     };

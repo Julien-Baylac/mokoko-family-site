@@ -5,8 +5,12 @@
       <div class="uk-flex uk-flex-between">
         <div style="margin-top: 20px">
           <dl class="uk-description-list">
-            <dt>Barème du Top puissance</dt>
-            <dd>Niveau x10 | Expé niveau x15 | Point x3 | Ilvl x2</dd>
+            <dt>RECHERCHE DES coeurs de géants</dt>
+            <dd>
+              Faites une recherche en cliquant sur la l'image ou recherchez
+              directement un coeur parmis les
+              {{ hearts.length }} référencés
+            </dd>
           </dl>
         </div>
       </div>
@@ -14,18 +18,18 @@
         <div>
           <div class="uk-inline uk-dark" style="padding-left: 40px">
             <img
-              :src="require(`@/assets/img/exploration/islands_map.png`)"
+              :src="require(`@/assets/img/exploration/heart_map.png`)"
               width="1800"
               height="1200"
               style="border-radius: 10px"
             />
             <a
               v-for="marker in markers"
-              v-bind:key="`${marker.zone}-${marker.sector}`"
+              v-bind:key="`${marker.id}`"
               class="uk-position-absolute uk-transform-center"
               :style="`left: ${marker.left}%; top: ${marker.top}%`"
-              :uk-tooltip="`${capitalize(marker.zone)} ${marker.sector}`"
-              @click="targetZone(marker.zone, marker.sector)"
+              :uk-tooltip="`${getPlace(marker.id)} coeur de géant`"
+              @click="targetId(marker.id)"
               uk-marker
             ></a>
           </div>
@@ -36,9 +40,9 @@
         <div>
           <div style="display: flex; justify-content: space-between">
             <h3 id="table-title" style="margin-bottom: 0">
-              Liste des Coeurs de géants ({{ filteredIslands.length }})
+              Liste des Coeurs de géants ({{ filteredHearts.length }})
             </h3>
-            <div>
+            <div style="display: flex" class="uk-form-small">
               <button
                 style="margin-right: 10px"
                 class="uk-button uk-button-default uk-button-small"
@@ -47,26 +51,18 @@
               >
                 Annuler
               </button>
-              <div class="uk-button-group">
-                <button
-                  class="uk-button uk-button-default uk-button-small"
-                  v-bind:class="{
-                    'uk-button-secondary': this.validated === false,
-                  }"
-                  @click="validate(false)"
-                >
-                  Non-validée
-                </button>
-                <button
-                  class="uk-button uk-button-default uk-button-small"
-                  v-bind:class="{
-                    'uk-button-secondary': this.validated === true,
-                  }"
-                  @click="validate(true)"
-                >
-                  Validée
-                </button>
-              </div>
+              <select
+                v-model="validated"
+                style="padding-right: 30px"
+                class="uk-select uk-form-small"
+                v-bind:class="{
+                  'uk-button-secondary': this.validated === false,
+                }"
+              >
+                <option :value="null">Tri par validation</option>
+                <option :value="false">Non-validée</option>
+                <option :value="true">Validée</option>
+              </select>
             </div>
           </div>
 
@@ -75,7 +71,7 @@
             <input
               class="uk-input uk-form-small"
               type="text"
-              placeholder="Chercher une île"
+              placeholder="Chercher un coeurs de géants"
               v-model="filter"
             />
           </div>
@@ -95,17 +91,17 @@
             </thead>
             <tbody>
               <tr
-                v-for="(island, index) in filteredIslands"
-                v-bind:key="island.id"
+                v-for="(heart, index) in filteredHearts"
+                v-bind:key="heart.id"
               >
                 <th>{{ index + 1 }}</th>
-                <td>{{ island.name }}</td>
-                <td>{{ island.obtaining }}</td>
-                <td>{{ island.description }}</td>
+                <td>{{ heart.name }}</td>
+                <td>{{ heart.obtaining }}</td>
+                <td>{{ heart.description }}</td>
                 <td>
                   <button
                     class="uk-button uk-button-default uk-button-small"
-                    :disabled="island.validated === true"
+                    :disabled="heart.validated === true"
                   >
                     Valider
                   </button>
@@ -114,7 +110,7 @@
             </tbody>
           </table>
           <div style="display: flex; justify-content: center; width: 100%">
-            <span v-if="!filteredIslands.length">Aucune ile</span>
+            <span v-if="!filteredHearts.length">Aucun coeur</span>
           </div>
         </div>
       </div>
@@ -126,23 +122,20 @@
 <script>
 import Footer from "@/components/Footer.vue";
 export default {
-  name: "islands",
+  name: "hearts",
   components: {
     Footer,
   },
   data() {
     return {
-      section: "all",
-      sector: "all",
+      heartId: "all",
       validated: null,
       filter: "",
-      islands: [
+      hearts: [
         {
           id: 1,
           name: "Coeur1",
           obtaining: "Coffre",
-          zone: "gienah",
-          sector: "sud",
           description: "Sac secret de Setino",
           validated: false,
         },
@@ -150,8 +143,6 @@ export default {
           id: 2,
           name: "Symbole de L'île isolée",
           obtaining: "Coffre",
-          zone: "gienah",
-          sector: "sud",
           description: "Sac secret de Setino",
           validated: false,
         },
@@ -159,17 +150,12 @@ export default {
           id: 3,
           name: "Symbole insulaire de l'île aux vagues dorées",
           obtaining: "Coffre",
-          zone: "procyon",
-          sector: "sud",
           description: "Sac secret de Setino",
           validated: false,
         },
         {
           id: 4,
           name: "Symbole insulaire de l'île des Pandas",
-          obtaining: "procyondeee",
-          zone: "procyon",
-          sector: "nord",
           description: "Sac secret de Setino",
           validated: false,
         },
@@ -177,8 +163,6 @@ export default {
           id: 5,
           name: "Symbole insulaire de l'île aux tortues",
           obtaining: "Coffre",
-          zone: "gienah",
-          sector: "sud",
           description: "Sac secret de Setino",
           validated: false,
         },
@@ -186,8 +170,6 @@ export default {
           id: 6,
           name: "Symbole insulaire de l'Île de la sérénité",
           obtaining: "Coffre",
-          zone: "gienah",
-          sector: "sud",
           description: "Sac secret de Setino",
           validated: false,
         },
@@ -195,8 +177,6 @@ export default {
           id: 7,
           name: "Symbole insulaire du Désespoir",
           obtaining: "Coffre",
-          zone: "procyon",
-          sector: "sud",
           description: "Sac secret de Setino",
           validated: false,
         },
@@ -204,8 +184,6 @@ export default {
           id: 8,
           name: "Symbole insulaire du Désespoir",
           obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "nord",
           description: "Sac secret de Setino",
           validated: false,
         },
@@ -213,8 +191,6 @@ export default {
           id: 9,
           name: "Symbole insulaire du Désespoir",
           obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "centre",
           description: "Sac secret de Setino",
           validated: false,
         },
@@ -222,8 +198,6 @@ export default {
           id: 10,
           name: "Symbole insulaire du Désespoir",
           obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "sud",
           description: "Sac secret de Setino",
           validated: false,
         },
@@ -231,8 +205,6 @@ export default {
           id: 11,
           name: "Symbole insulaire du Désespoir",
           obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "sud-ouest",
           description: "Sac secret de Setino",
           validated: true,
         },
@@ -240,8 +212,6 @@ export default {
           id: 12,
           name: "Symbole insulaire du Désespoir",
           obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "sud-est",
           description: "Sac secret de Setino",
           validated: false,
         },
@@ -249,8 +219,6 @@ export default {
           id: 13,
           name: "Symbole insulaire du Désespoir",
           obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "sud",
           description: "Sac secret de Setino",
           validated: false,
         },
@@ -258,8 +226,6 @@ export default {
           id: 14,
           name: "Symbole insulaire du Désespoir",
           obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "sud-ouest",
           description: "Sac secret de Setino",
           validated: true,
         },
@@ -267,75 +233,94 @@ export default {
           id: 15,
           name: "Symbole insulaire du Désespoir",
           obtaining: "procyondeee",
-          zone: "gienah",
-          sector: "sud-est",
           description: "Sac secret de Setino",
           validated: false,
         },
       ],
       markers: [
         {
-          zone: "procyon",
-          sector: "nord",
-          left: 35.8,
-          top: 25.7,
+          id: 1,
+          left: 22.9,
+          top: 22,
         },
         {
-          zone: "gienah",
-          sector: "nord-ouest",
-          left: 52.4,
-          top: 29.7,
+          id: 2,
+          left: 40.4,
+          top: 31.7,
         },
         {
-          zone: "gienah",
-          sector: "nord-est",
-          left: 62.6,
-          top: 27.3,
+          id: 3,
+          left: 51.8,
+          top: 31.7,
         },
         {
-          zone: "procyon",
-          sector: "centre",
-          left: 40.5,
-          top: 55.7,
+          id: 4,
+          left: 63.3,
+          top: 31.7,
         },
         {
-          zone: "gienah",
-          sector: "centre-ouest",
-          left: 54.6,
-          top: 57,
+          id: 5,
+          left: 80.6,
+          top: 21.9,
         },
         {
-          zone: "procyon",
-          sector: "sud",
-          left: 37.9,
-          top: 82.6,
+          id: 6,
+          left: 25.8,
+          top: 49.5,
         },
         {
-          zone: "gienah",
-          sector: "sud-est",
-          left: 66.5,
-          top: 69.6,
+          id: 7,
+          left: 38.8,
+          top: 54.5,
         },
         {
-          zone: "gienah",
-          sector: "sud-ouest",
-          left: 61.3,
-          top: 86.2,
+          id: 8,
+          left: 51.8,
+          top: 58.3,
         },
         {
-          zone: "gienah",
-          sector: "centre-est",
-          left: 66,
-          top: 51.7,
+          id: 9,
+          left: 64.7,
+          top: 55.3,
+        },
+        {
+          id: 10,
+          left: 77.8,
+          top: 50.4,
+        },
+        {
+          id: 11,
+          left: 18.7,
+          top: 77,
+        },
+        {
+          id: 12,
+          left: 37.5,
+          top: 83,
+        },
+        {
+          id: 13,
+          left: 51.8,
+          top: 83,
+        },
+        {
+          id: 14,
+          left: 65.6,
+          top: 83,
+        },
+        {
+          id: 15,
+          left: 85.2,
+          top: 77.8,
         },
       ],
     };
   },
   computed: {
-    filteredIslands() {
+    filteredHearts() {
       let newZonesArray = [];
       let finalArray = [];
-      this.islands.forEach((element) => {
+      this.hearts.forEach((element) => {
         if (this.section === "all") {
           newZonesArray.push(element);
         }
@@ -358,21 +343,20 @@ export default {
     },
   },
   methods: {
-    changeSection(section) {
-      this.section = section;
-      this.sector = "all";
-    },
     changeSector(sector) {
       this.sector = sector;
     },
-    targetZone(zone, sector) {
-      this.section = zone;
-      this.sector = sector;
+    targetId(heartId) {
+      this.heartId = heartId;
     },
-    capitalize(value) {
-      if (!value) return "";
-      value = value.toString();
-      return value.charAt(0).toUpperCase() + value.slice(1);
+    getPlace(value) {
+      if (value === 1) {
+        return value + "er";
+      } else if (value === 2) {
+        return value + "nd";
+      } else {
+        return value + "eme";
+      }
     },
     validate(boolean) {
       this.validated = boolean;

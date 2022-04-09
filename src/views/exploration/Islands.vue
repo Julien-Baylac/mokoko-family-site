@@ -5,8 +5,12 @@
       <div class="uk-flex uk-flex-between">
         <div style="margin-top: 20px">
           <dl class="uk-description-list">
-            <dt>Barème du Top puissance</dt>
-            <dd>Niveau x10 | Expé niveau x15 | Point x3 | Ilvl x2</dd>
+            <dt>Recherche des âmes insulaires</dt>
+            <dd>
+              Faites une recherche par zone en cliquant sur la carte ou
+              recherchez directement une île parmis les
+              {{ islands.length }} référencées
+            </dd>
           </dl>
         </div>
       </div>
@@ -145,7 +149,7 @@
             <h3 id="table-title" style="margin-bottom: 0">
               Liste des îles ({{ filteredIslands.length }})
             </h3>
-            <div>
+            <div style="display: flex" class="uk-form-small">
               <button
                 style="margin-right: 10px"
                 class="uk-button uk-button-default uk-button-small"
@@ -154,26 +158,18 @@
               >
                 Annuler
               </button>
-              <div class="uk-button-group">
-                <button
-                  class="uk-button uk-button-default uk-button-small"
-                  v-bind:class="{
-                    'uk-button-secondary': this.validated === false,
-                  }"
-                  @click="validate(false)"
-                >
-                  Non-validée
-                </button>
-                <button
-                  class="uk-button uk-button-default uk-button-small"
-                  v-bind:class="{
-                    'uk-button-secondary': this.validated === true,
-                  }"
-                  @click="validate(true)"
-                >
-                  Validée
-                </button>
-              </div>
+              <select
+                v-model="validated"
+                style="padding-right: 30px"
+                class="uk-select uk-form-small"
+                v-bind:class="{
+                  'uk-button-secondary': this.validated === false,
+                }"
+              >
+                <option :value="null">Tri par validation</option>
+                <option :value="false">Non-validée</option>
+                <option :value="true">Validée</option>
+              </select>
             </div>
           </div>
 

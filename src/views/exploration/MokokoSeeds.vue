@@ -1,12 +1,15 @@
 <template>
   <div class="mokoko-seeds">
     <div class="uk-container">
-      <h3 class="uk-article-title uk-margin-medium-top">Grainse de Mokoko</h3>
+      <h3 class="uk-article-title uk-margin-medium-top">Graines de Mokoko</h3>
       <div class="uk-flex uk-flex-between">
         <div style="margin-top: 20px">
           <dl class="uk-description-list">
-            <dt>Barème du Top puissance</dt>
-            <dd>Niveau x10 | Expé niveau x15 | Point x3 | Ilvl x2</dd>
+            <dt>RECHERCHE DES Graines de mokoko</dt>
+            <dd>
+              Faites une recherche par zone en cliquant sur la carte ou
+              recherchez directement via le filtre au dessus du tableau
+            </dd>
           </dl>
         </div>
       </div>
@@ -14,7 +17,7 @@
         <div>
           <div class="uk-inline uk-dark" style="padding-left: 40px">
             <img
-              :src="require(`@/assets/img/exploration/islands_map.png`)"
+              :src="require(`@/assets/img/exploration/mokoko_map.png`)"
               width="1800"
               height="1200"
               style="border-radius: 10px"
@@ -36,9 +39,9 @@
         <div>
           <div style="display: flex; justify-content: space-between">
             <h3 id="table-title" style="margin-bottom: 0">
-              Liste des étoiles d'omnium ({{ filteredIslands.length }})
+              Liste des zones ({{ filteredIslands.length }})
             </h3>
-            <div>
+            <div style="display: flex" class="uk-form-small">
               <button
                 style="margin-right: 10px"
                 class="uk-button uk-button-default uk-button-small"
@@ -47,26 +50,18 @@
               >
                 Annuler
               </button>
-              <div class="uk-button-group">
-                <button
-                  class="uk-button uk-button-default uk-button-small"
-                  v-bind:class="{
-                    'uk-button-secondary': this.validated === false,
-                  }"
-                  @click="validate(false)"
-                >
-                  Non-validée
-                </button>
-                <button
-                  class="uk-button uk-button-default uk-button-small"
-                  v-bind:class="{
-                    'uk-button-secondary': this.validated === true,
-                  }"
-                  @click="validate(true)"
-                >
-                  Validée
-                </button>
-              </div>
+              <select
+                v-model="validated"
+                style="padding-right: 30px"
+                class="uk-select uk-form-small"
+                v-bind:class="{
+                  'uk-button-secondary': this.validated === false,
+                }"
+              >
+                <option :value="null">Tri par validation</option>
+                <option :value="false">Non-validée</option>
+                <option :value="true">Validée</option>
+              </select>
             </div>
           </div>
 
@@ -75,7 +70,7 @@
             <input
               class="uk-input uk-form-small"
               type="text"
-              placeholder="Chercher une île"
+              placeholder="Chercher une zone"
               v-model="filter"
             />
           </div>
@@ -195,34 +190,98 @@ export default {
       markers: [
         {
           zone: "procyon",
-          left: 35.8,
-          top: 25.7,
-        },
-        {
-          zone: "gienah",
-          left: 52.4,
-          top: 29.7,
-        },
-        {
-          zone: "gienah",
-          sector: "nord-est",
-          left: 62.6,
-          top: 27.3,
+          left: 26,
+          top: 33,
         },
         {
           zone: "procyon",
-          left: 40.5,
-          top: 55.7,
-        },
-        {
-          zone: "gienah",
-          left: 54.6,
-          top: 57,
+          left: 37,
+          top: 31,
         },
         {
           zone: "procyon",
-          left: 37.9,
-          top: 82.6,
+          left: 57,
+          top: 10,
+        },
+        {
+          zone: "procyon",
+          left: 55,
+          top: 30,
+        },
+        {
+          zone: "procyon",
+          left: 64,
+          top: 33,
+        },
+        {
+          zone: "procyon",
+          left: 71,
+          top: 32,
+        },
+        {
+          zone: "procyon",
+          left: 27,
+          top: 53.5,
+        },
+        {
+          zone: "procyon",
+          left: 38,
+          top: 59.5,
+        },
+        {
+          zone: "procyon",
+          left: 56,
+          top: 43.5,
+        },
+        {
+          zone: "procyon",
+          left: 57,
+          top: 59.5,
+        },
+        {
+          zone: "procyon",
+          left: 64,
+          top: 58,
+        },
+        {
+          zone: "procyon",
+          left: 76,
+          top: 47,
+        },
+        {
+          zone: "procyon",
+          left: 25,
+          top: 85,
+        },
+        {
+          zone: "procyon",
+          left: 32,
+          top: 76,
+        },
+        {
+          zone: "procyon",
+          left: 40,
+          top: 85,
+        },
+        {
+          zone: "procyon",
+          left: 46.5,
+          top: 77,
+        },
+        {
+          zone: "procyon",
+          left: 58.8,
+          top: 75,
+        },
+        {
+          zone: "procyon",
+          left: 67.8,
+          top: 76,
+        },
+        {
+          zone: "procyon",
+          left: 58.3,
+          top: 90,
         },
       ],
     };

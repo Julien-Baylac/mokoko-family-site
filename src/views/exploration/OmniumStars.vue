@@ -5,8 +5,11 @@
       <div class="uk-flex uk-flex-between">
         <div style="margin-top: 20px">
           <dl class="uk-description-list">
-            <dt>Barème du Top puissance</dt>
-            <dd>Niveau x10 | Expé niveau x15 | Point x3 | Ilvl x2</dd>
+            <dt>RECHERCHE DES étoiles d'omnium</dt>
+            <dd>
+              Faites une recherche en cliquant sur la l'image ou recherchez
+              directement une étoile parmis les {{ islands.length }} référencées
+            </dd>
           </dl>
         </div>
       </div>
@@ -14,14 +17,14 @@
         <div>
           <div class="uk-inline uk-dark" style="padding-left: 40px">
             <img
-              :src="require(`@/assets/img/exploration/islands_map.png`)"
+              :src="require(`@/assets/img/exploration/stars_map.png`)"
               width="1800"
               height="1200"
               style="border-radius: 10px"
             />
             <a
               v-for="marker in markers"
-              v-bind:key="`${marker.zone}-${marker.sector}`"
+              v-bind:key="`${marker.zone}`"
               class="uk-position-absolute uk-transform-center"
               :style="`left: ${marker.left}%; top: ${marker.top}%`"
               :uk-tooltip="`${capitalize(marker.zone)} ${marker.sector}`"
@@ -38,7 +41,7 @@
             <h3 id="table-title" style="margin-bottom: 0">
               Liste des étoiles d'omnium ({{ filteredIslands.length }})
             </h3>
-            <div>
+            <div style="display: flex" class="uk-form-small">
               <button
                 style="margin-right: 10px"
                 class="uk-button uk-button-default uk-button-small"
@@ -47,26 +50,18 @@
               >
                 Annuler
               </button>
-              <div class="uk-button-group">
-                <button
-                  class="uk-button uk-button-default uk-button-small"
-                  v-bind:class="{
-                    'uk-button-secondary': this.validated === false,
-                  }"
-                  @click="validate(false)"
-                >
-                  Non-validée
-                </button>
-                <button
-                  class="uk-button uk-button-default uk-button-small"
-                  v-bind:class="{
-                    'uk-button-secondary': this.validated === true,
-                  }"
-                  @click="validate(true)"
-                >
-                  Validée
-                </button>
-              </div>
+              <select
+                v-model="validated"
+                style="padding-right: 30px"
+                class="uk-select uk-form-small"
+                v-bind:class="{
+                  'uk-button-secondary': this.validated === false,
+                }"
+              >
+                <option :value="null">Tri par validation</option>
+                <option :value="false">Non-validée</option>
+                <option :value="true">Validée</option>
+              </select>
             </div>
           </div>
 
@@ -75,7 +70,7 @@
             <input
               class="uk-input uk-form-small"
               type="text"
-              placeholder="Chercher une île"
+              placeholder="Chercher une étoile"
               v-model="filter"
             />
           </div>
@@ -191,37 +186,51 @@ export default {
           description: "Sac secret de Setino",
           validated: false,
         },
+        {
+          id: 7,
+          name: "Symbole insulaire de l'Île de la sérénité",
+          obtaining: "Coffre",
+          zone: "gienah",
+          sector: "sud",
+          description: "Sac secret de Setino",
+          validated: false,
+        },
       ],
       markers: [
         {
           zone: "procyon",
-          left: 35.8,
-          top: 25.7,
-        },
-        {
-          zone: "gienah",
-          left: 52.4,
-          top: 29.7,
-        },
-        {
-          zone: "gienah",
-          left: 62.6,
-          top: 27.3,
+          left: 15,
+          top: 32.7,
         },
         {
           zone: "procyon",
-          left: 40.5,
-          top: 55.7,
-        },
-        {
-          zone: "gienah",
-          left: 54.6,
-          top: 57,
+          left: 31,
+          top: 28,
         },
         {
           zone: "procyon",
-          left: 37.9,
-          top: 82.6,
+          left: 53.3,
+          top: 20,
+        },
+        {
+          zone: "procyon",
+          left: 84.5,
+          top: 22,
+        },
+        {
+          zone: "procyon",
+          left: 20,
+          top: 73.9,
+        },
+        {
+          zone: "procyon",
+          left: 52,
+          top: 66,
+        },
+        {
+          zone: "procyon",
+          left: 65.2,
+          top: 50,
         },
       ],
     };

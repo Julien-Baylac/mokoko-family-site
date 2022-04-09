@@ -1,12 +1,18 @@
 <template>
-  <div id="app" class="uk-background-secondary uk-light">
-    <nav class="uk-navbar-container" style="background-color: black" uk-navbar>
-      <div class="nav-overlay uk-navbar-left uk-light">
+  <div id="app" v-bind:class="{ 'uk-background-secondary': darkMode }">
+    <nav
+      class="uk-navbar-container"
+      v-bind:class="{ 'uk-light': darkMode }"
+      style="background-color: black"
+      v-bind:style="{ backgroundColor: darkMode ? '#121212' : '#ececec' }"
+      uk-navbar
+    >
+      <div class="nav-overlay uk-navbar-left">
         <ul class="uk-navbar-nav">
           <a
             class="uk-navbar-item uk-logo"
             href="#"
-            style="margin-right: 40px; margin-left: 20px"
+            style="margin-right: 40px; margin-left: 20px; color: #85ea85"
             >Mokoko Family</a
           >
           <li>
@@ -115,13 +121,13 @@
               </div>
             </li>
           </ul>
-          <li>
-            <router-link to="/profile"><span>Mon profil</span></router-link>
-          </li>
         </ul>
       </div>
 
-      <div class="nav-overlay uk-navbar-right uk-light">
+      <div
+        class="nav-overlay uk-navbar-right"
+        v-bind:class="{ 'uk-light': darkMode }"
+      >
         <ul class="uk-navbar-nav" style="margin-right: 40px">
           <!-- socials -->
           <li>
@@ -154,14 +160,82 @@
             }"
             style="height: 30px; width: 30px; border-radius: 30px"
           ></div>
+          <div uk-dropdown="mode: click">
+            <ul class="uk-nav uk-dropdown-nav">
+              <li class="uk-nav-header">Parametres</li>
+              <li>
+                <a @click="switchTheme"
+                  ><font-awesome-icon
+                    icon="fa-solid fa-circle-half-stroke"
+                    style="margin-right: 3px"
+                  />{{ darkMode ? "Désactiver" : "Activer" }}
+                  <span> dark mode</span>
+                </a>
+              </li>
+              <li>
+                <router-link to="/profile"
+                  ><span
+                    ><font-awesome-icon
+                      icon="fa-solid fa-user"
+                      style="margin-right: 8px"
+                    />Mon profil</span
+                  ></router-link
+                >
+              </li>
+              <li class="uk-nav-divider uk-margin-top"></li>
+              <li style="display: flex; justify-content: center">
+                <button
+                  class="uk-button uk-button-secondary uk-button-small disconnect-button"
+                >
+                  <font-awesome-icon
+                    icon="fa-solid fa-arrow-right-from-bracket"
+                  />
+                  <span style="margin-left: 7px">Déconnexion</span>
+                </button>
+              </li>
+            </ul>
+          </div>
         </span>
       </div>
     </nav>
     <div class="">
-      <router-view class="uk-light" />
+      <router-view v-bind:class="{ 'uk-light': darkMode }" />
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: "app",
+  data() {
+    return {
+      currentTheme: "1",
+    };
+  },
+  mounted() {
+    if (localStorage.getItem("dark-mode")) {
+      this.currentTheme = localStorage.getItem("dark-mode");
+    } else {
+      localStorage.setItem("dark-mode", this.currentTheme);
+    }
+  },
+  computed: {
+    darkMode() {
+      if (this.currentTheme === "0") {
+        return false;
+      } else {
+        return true;
+      }
+    },
+  },
+  methods: {
+    switchTheme() {
+      localStorage.setItem("dark-mode", this.currentTheme === "0" ? "1" : "0");
+      this.currentTheme = localStorage.getItem("dark-mode");
+    },
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -187,10 +261,17 @@
   background: #f8f8f8;
   box-shadow: none;
 }
+.uk-dropdown {
+  background: #f8f8f8;
+  box-shadow: none;
+}
 .uk-button {
   text-transform: none;
 }
 .uk-navbar-dropdown-grid {
   margin-left: 0;
+}
+.disconnect-button {
+  margin-top: 17px;
 }
 </style>
