@@ -1,5 +1,11 @@
 <template>
-  <div id="app" v-bind:class="{ 'uk-background-secondary': darkMode }">
+  <div
+    id="app"
+    v-bind:class="{
+      'uk-background-secondary': darkMode,
+      'dark-mode': darkMode,
+    }"
+  >
     <nav
       class="uk-navbar-container"
       v-bind:class="{ 'uk-light': darkMode }"
@@ -9,10 +15,22 @@
     >
       <div class="nav-overlay uk-navbar-left">
         <ul class="uk-navbar-nav">
+          <img
+            :src="require(`@/assets/img/logo/logo.png`)"
+            style="
+              border-radius: 30px;
+              width: 50px;
+              height: 50px;
+              margin-left: 40px;
+              margin-top: 13px;
+              background-color: #121212;
+            "
+          />
           <a
             class="uk-navbar-item uk-logo"
             href="#"
-            style="margin-right: 40px; margin-left: 20px; color: #85ea85"
+            style="margin-right: 40px; padding-left: 10px"
+            v-bind:style="{ color: darkMode ? '#2ed451' : '#287f28' }"
             >Mokoko Family</a
           >
           <li>
@@ -44,7 +62,7 @@
           </li>
           <ul class="uk-navbar-nav">
             <li>
-              <a href="#">Collections</a>
+              <a href="#">Exploration</a>
               <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
                 <div
                   class="uk-navbar-dropdown-grid uk-child-width-1-2"
@@ -54,7 +72,6 @@
                   <div>
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                       <li class="uk-nav-header">Exploration</li>
-
                       <li>
                         <router-link to="/affinities">Affinités</router-link>
                       </li>
@@ -96,6 +113,19 @@
                       </li>
                     </ul>
                   </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <ul class="uk-navbar-nav">
+            <li>
+              <a href="#">Collections</a>
+              <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
+                <div
+                  class="uk-navbar-dropdown-grid uk-child-width-1-2"
+                  style="padding-left: 0"
+                  uk-grid
+                >
                   <div>
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                       <li class="uk-nav-header">Collections</li>
@@ -104,15 +134,13 @@
                       <li>
                         <router-link to="/pets">Familiers</router-link>
                       </li>
+                      <li>
+                        <router-link to="/mounts">Montures</router-link>
+                      </li>
                       <li class="uk-nav-header">Marchands itinérants</li>
                       <li>
                         <router-link to="/timeline"
                           ><span>Les objets</span></router-link
-                        >
-                      </li>
-                      <li>
-                        <router-link to="/timeline"
-                          ><span>Timeline</span></router-link
                         >
                       </li>
                     </ul>
@@ -121,6 +149,9 @@
               </div>
             </li>
           </ul>
+          <li>
+            <router-link to="/timeline"><span>Timeline</span></router-link>
+          </li>
         </ul>
       </div>
 
@@ -232,6 +263,7 @@ export default {
     switchTheme() {
       localStorage.setItem("dark-mode", this.currentTheme === "0" ? "1" : "0");
       this.currentTheme = localStorage.getItem("dark-mode");
+      location.reload();
     },
   },
 };
@@ -274,7 +306,42 @@ export default {
 .uk-navbar-dropdown-grid {
   margin-left: 0;
 }
+.uk-table-hover tbody tr:hover {
+  background: #e9f7e8;
+}
+.uk-tab > .uk-active > a {
+  color: #68d940;
+  border-color: #68d940;
+}
 .disconnect-button {
   margin-top: 17px;
+}
+
+//Dark mode
+.dark-mode {
+  .uk-description-list > dt,
+  .uk-nav-header,
+  .uk-card-title {
+    color: #fff;
+  }
+  .uk-card,
+  .uk-dropdown,
+  .uk-navbar-dropdown {
+    background: #393939;
+  }
+}
+.uk-card-primary.uk-card-body .uk-tab > .uk-active > a,
+.uk-card-primary > :not([class*="uk-card-media"]) .uk-tab > .uk-active > a,
+.uk-card-secondary.uk-card-body .uk-tab > .uk-active > a,
+.uk-card-secondary > :not([class*="uk-card-media"]) .uk-tab > .uk-active > a,
+.uk-light .uk-tab > .uk-active > a,
+.uk-offcanvas-bar .uk-tab > .uk-active > a,
+.uk-overlay-primary .uk-tab > .uk-active > a,
+.uk-section-primary:not(.uk-preserve-color) .uk-tab > .uk-active > a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-tab > .uk-active > a,
+.uk-tile-primary:not(.uk-preserve-color) .uk-tab > .uk-active > a,
+.uk-tile-secondary:not(.uk-preserve-color) .uk-tab > .uk-active > a {
+  color: #b3ff9c;
+  border-color: #b3ff9c;
 }
 </style>
