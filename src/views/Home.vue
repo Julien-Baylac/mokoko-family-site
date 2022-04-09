@@ -2,7 +2,7 @@
   <div class="home">
     <Header></Header>
     <div
-      class="uk-height-large uk-background-cover uk-overflow-hidden uk-light uk-flex"
+      class="uk-container uk-height-large uk-background-cover uk-overflow-hidden uk-light uk-flex"
       :style="require(`@/assets/img/home/yorn.jpeg`)"
     >
       <div
@@ -12,6 +12,26 @@
           Headline
         </h1>
         <p uk-parallax="opacity: 0,1; y: 100,0; scale: 0.5,1; end: 50vh + 50%;">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </div>
+    </div>
+    <div
+      class="uk-container uk-height-large uk-background-cover uk-overflow-hidden uk-light uk-flex"
+      style="background-image: url('images/dark.jpg')"
+    >
+      <div
+        class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical"
+      >
+        <h1
+          uk-parallax="opacity: 0,1,1; y: -100,0,0; x: 100,100,0; scale: 2,1,1; end: 50vh + 50%;"
+        >
+          Headline
+        </h1>
+        <p
+          uk-parallax="opacity: 0,1,1; y: 100,0,0; x: -100,-100,0; scale: 0.5,1,1; end: 50vh + 50%;"
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>

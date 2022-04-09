@@ -4,7 +4,42 @@
       class="uk-position-top-left"
       style="margin-top: 120px; margin-left: 40px"
     >
-      {{ localTime }}
+      <div
+        style="
+          background-color: rgba(0, 0, 0, 0.4);
+          padding: 15px;
+          border-radius: 4px;
+        "
+      >
+        <span>Est des Etats-unis : {{ formatTime("us-est") }} </span><br />
+        <span>Ouest des Etats-unis : {{ formatTime("us-est") }} </span><br />
+        <span>Europe centrale : {{ formatTime("us-est") }} </span><br />
+        <span>Europe occidentale : {{ formatTime("us-est") }} </span><br />
+        <span>Amérique du Sud : {{ formatTime("us-est") }} </span>
+      </div>
+      <div
+        style="
+          background-color: rgba(0, 0, 0, 0.4);
+          padding: 15px;
+          border-radius: 4px;
+          margin-top: 10px;
+        "
+      >
+        <span style="display: flex; align-items: center"
+          >Zinnervale :
+          <div
+            style="
+              height: 10px;
+              width: 10px;
+              background-color: green;
+              border-radius: 20px;
+              margin-left: 10px;
+              margin-right: 7px;
+            "
+          ></div>
+          En ligne
+        </span>
+      </div>
     </div>
     <div class="uk-position-center">
       <div>
@@ -315,8 +350,10 @@
 </template>
 
 <script>
+import moment from "moment";
+
 export default {
-  name: "HelloWorld",
+  name: "header-home",
   props: {
     msg: String,
   },
@@ -337,9 +374,12 @@ export default {
       image.classList.toggle("image-light");
     }
   },
-  computed: {
-    localTime() {
-      return "ee";
+  computed: {},
+  methods: {
+    formatTime() {
+      let time = moment();
+
+      return time.format("LT");
     },
   },
 };
