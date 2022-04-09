@@ -265,8 +265,11 @@ export default {
   background: #f8f8f8;
   box-shadow: none;
 }
-.uk-button {
+.uk-button,
+.uk-input,
+.uk-select {
   text-transform: none;
+  border-radius: 3px;
 }
 .uk-navbar-dropdown-grid {
   margin-left: 0;
