@@ -15,27 +15,26 @@
     >
       <div class="nav-overlay uk-navbar-left">
         <ul class="uk-navbar-nav">
-          <img
-            :src="require(`@/assets/img/logo/logo.png`)"
-            style="
-              border-radius: 30px;
-              width: 50px;
-              height: 50px;
-              margin-left: 40px;
-              margin-top: 13px;
-              background-color: #121212;
-            "
-          />
-          <a
-            class="uk-navbar-item uk-logo"
-            href="#"
-            style="margin-right: 40px; padding-left: 10px"
-            v-bind:style="{ color: darkMode ? '#2ed451' : '#287f28' }"
-            >Mokoko Family</a
+          <router-link to="/" class="logo" style="display: flex">
+            <img
+              :src="require(`@/assets/img/logo/logo.png`)"
+              style="
+                border-radius: 30px;
+                width: 50px;
+                height: 50px;
+                margin-left: 40px;
+                margin-top: 13px;
+                background-color: #121212;
+              "
+            />
+            <a
+              class="uk-navbar-item uk-logo"
+              href="#"
+              style="margin-right: 40px; padding-left: 10px"
+              v-bind:style="{ color: darkMode ? '#2ed451' : '#287f28' }"
+              >Mokoko Family</a
+            ></router-link
           >
-          <li>
-            <router-link to="/">Home</router-link>
-          </li>
           <li>
             <router-link to="/activities">Activités</router-link>
             <div class="uk-navbar-dropdown">
@@ -287,6 +286,9 @@ export default {
       color: #42b983;
     }
   }
+}
+a.logo {
+  text-decoration: none !important;
 }
 .uk-navbar-dropdown {
   margin-top: 0 !important;
