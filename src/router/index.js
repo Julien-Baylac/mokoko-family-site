@@ -5,8 +5,10 @@ import Login from "../views/Login.vue";
 import CreateAccount from "../views/CreateAccount.vue";
 import Direct from "../views/Direct.vue";
 import Ranking from "../views/Ranking.vue";
-import Skins from "../views/Skins.vue";
-import Pets from "../views/Pets.vue";
+import Skins from "../views/collections/Skins.vue";
+import Pets from "../views/collections/Pets.vue";
+import Mounts from "../views/collections/Mounts.vue";
+import WanderingMerchant from "../views/collections/WanderingMerchant.vue";
 import Activities from "../views/Activities.vue";
 import Islands from "../views/exploration/Islands.vue";
 import GiantsHearts from "../views/exploration/GiantsHearts.vue";
@@ -111,6 +113,16 @@ const routes = [
     path: "/skins",
     name: "Skins",
     component: Skins,
+  },
+  {
+    path: "/mounts",
+    name: "Mounts",
+    component: Mounts,
+  },
+  {
+    path: "/wandering-merchant",
+    name: "WanderingMerchant",
+    component: WanderingMerchant,
   },
   //profile
   {

@@ -3,7 +3,10 @@
     class="footer"
     v-bind:class="{ 'uk-background-secondary': darkMode }"
     v-bind:style="{ backgroundColor: darkMode ? '#121212' : '#ececec' }"
-  ></div>
+    style="display: flex; justify-content: center; align-items: center"
+  >
+    <span>MokokoFamily-Beta@0.0.1 - 2022</span>
+  </div>
 </template>
 
 <script>
@@ -36,6 +39,5 @@ export default {
 .footer {
   background-color: gainsboro;
   height: 150px;
-  margin-top: 150px;
 }
 </style>

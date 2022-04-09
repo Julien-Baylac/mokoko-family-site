@@ -138,8 +138,13 @@
                       </li>
                       <li class="uk-nav-header">Marchands itinérants</li>
                       <li>
+                        <router-link to="/wandering-merchant"
+                          ><span>Les objets en ventes</span></router-link
+                        >
+                      </li>
+                      <li>
                         <router-link to="/timeline"
-                          ><span>Les objets</span></router-link
+                          ><span>Timeline</span></router-link
                         >
                       </li>
                     </ul>
@@ -148,9 +153,6 @@
               </div>
             </li>
           </ul>
-          <li>
-            <router-link to="/timeline"><span>Timeline</span></router-link>
-          </li>
         </ul>
       </div>
 
