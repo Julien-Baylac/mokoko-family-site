@@ -259,7 +259,7 @@
         </div>
       </div>
     </div>
-    <div class="char-table" style="margin-top: 50px; margin-bottom: 100px">
+    <div class="char-table" style="margin-top: 50px">
       <h2 class="uk-h2">Equipement</h2>
       <table class="uk-table uk-table-striped">
         <thead>

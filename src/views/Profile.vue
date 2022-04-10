@@ -57,15 +57,15 @@
           </li>
           <li @click="changeSection('exploration')"><a>Exploration</a></li>
           <li @click="changeSection('collection')"><a>Collection</a></li>
-          <li @click="changeSection('collection')"><a>Collection</a></li>
-          <li @click="changeSection('collection')"><a>Builds</a></li>
+          <li @click="changeSection('build')"><a>Builds</a></li>
         </ul>
       </div>
       <Character v-if="section === 'character'" />
       <Exploration v-if="section === 'exploration'" />
       <Collection v-if="section === 'collection'" />
+      <Build v-if="section === 'build'" />
     </div>
-    <Footer />
+    <Footer style="margin-top: 100px" />
   </div>
 </template>
 
@@ -73,10 +73,11 @@
 import Character from "@/views/profile/Character.vue";
 import Exploration from "@/views/profile/Exploration.vue";
 import Collection from "@/views/profile/Collection.vue";
+import Build from "@/views/profile/Build.vue";
 import Footer from "@/components/Footer.vue";
 
 export default {
-  components: { Character, Footer, Exploration, Collection },
+  components: { Character, Footer, Exploration, Collection, Build },
   name: "ranking",
   data() {
     return {
