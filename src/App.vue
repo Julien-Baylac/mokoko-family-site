@@ -188,7 +188,7 @@
             class="uk-background-cover uk-panel uk-flex uk-flex-center uk-flex-middle img-profil-nav"
             v-bind:style="{
               backgroundImage:
-                'url(' + require(`@/assets/img/profile/selfi.jpg`) + ')',
+                'url(' + require(`@/assets/img/profile/profil-selfi.png`) + ')',
             }"
             style="height: 30px; width: 30px; border-radius: 30px"
           ></div>

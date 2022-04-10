@@ -1,42 +1,52 @@
 <template>
   <div class="profile">
     <div class="uk-container">
-      <div style="display: flex; justify-content: space-between">
-        <div>
+      <div
+        class="uk-margin-medium-top"
+        style="display: flex; justify-content: space-between"
+      >
+        <div style="display: flex">
+          <div
+            class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light"
+            :data-src="require(`@/assets/img/profile/profil-selfi.png`)"
+            style="
+              width: 100px;
+              height: 100px;
+              border-radius: 7px;
+              margin-right: 20px;
+              margin-top: 10px;
+            "
+            uk-img
+          ></div>
           <div>
-            <h3 class="uk-article-title uk-margin-medium-top">
+            <h3 class="uk-article-title" style="margin-bottom: 0px">
               <span style="margin-right: 20px">Oow</span
               ><span style="font-size: 20px">Niv. 54</span>
             </h3>
-            <dl class="uk-description-list">
-              <dt>
-                <span style="">Pistolancier</span> -
-                <span style="font-size: 10px">Chevalier solitaire</span>
-              </dt>
-              <dd>
-                <span>Niv. Expédition</span>
-              </dd>
-            </dl>
+            <div style="display: flex; align-items: center">
+              <img
+                :src="require(`@/assets/img/classes/pistolancier.png`)"
+                style="width: 50px; height: 50px; margin-right: 10px"
+              />
+              <dl class="uk-description-list" style="margin-top: 7px">
+                <dt>
+                  <span style="">Pistolancier</span> -
+                  <span style="font-size: 10px">Chevalier solitaire</span>
+                </dt>
+                <dd>
+                  <span>Niv. Expédition 90</span>
+                </dd>
+              </dl>
+            </div>
           </div>
         </div>
 
         <div class="uk-margin-medium-top">
-          <span>Guilde : Mokoko Family</span><br />
-          <span>Serveur : Zinnervale</span>
+          <span>Mokoko Family</span><br />
+          <span>Zinnervale</span>
         </div>
 
-        <div class="right-part uk-margin-medium-top" style="display: flex">
-          <div style="width: 70px; margin-right: 50px">
-            <img
-              :src="require(`@/assets/img/exploration/ilvl.webp`)"
-              style="width: 100%"
-            />
-            <div
-              style="display: flex; justify-content: center; margin-top: 10px"
-            >
-              <span>90</span>
-            </div>
-          </div>
+        <div class="right-part" style="display: flex">
           <div style="width: 70px">
             <img
               :src="require(`@/assets/img/exploration/ilvl.webp`)"

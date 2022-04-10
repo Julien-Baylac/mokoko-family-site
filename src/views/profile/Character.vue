@@ -254,6 +254,9 @@
           <div class="uk-form-controls">
             <select class="uk-select" id="form-horizontal-select">
               <option>Chevalier solitaire</option>
+              <option>Chevalier solitaire</option>
+              <option>Support</option>
+              <option>Dps</option>
             </select>
           </div>
         </div>
