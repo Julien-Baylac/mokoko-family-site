@@ -37,7 +37,7 @@
     </div>
     <div>
       <h2 style="margin-top: 50px">Choix des sorts</h2>
-      <table class="uk-table uk-table-striped">
+      <table class="uk-table uk-table-striped uk-table-justify">
         <thead>
           <tr>
             <th>Icone</th>
@@ -48,9 +48,34 @@
         </thead>
         <tbody>
           <tr v-for="item in 8" v-bind:key="item">
-            <td>Table Data</td>
-            <td>Table Data</td>
+            <td style="width: 80px">
+              <img
+                :src="require(`@/assets/img/skills/gl_skill_01_2.webp`)"
+                style="
+                  background-color: purple;
+                  border-radius: 5px;
+                  margin-left: 20px;
+                "
+                width="50"
+                height="50"
+              />
+            </td>
             <td>
+              <select class="uk-select" id="form-stacked-select">
+                <option>Pistolance tranchante</option>
+                <option>Balle de feu</option>
+                <option>Pistolance ascendante</option>
+                <option>Ruée ascendante</option>
+              </select>
+            </td>
+            <td
+              style="
+                display: flex;
+                justify-content: center;
+                margin-left: 10px;
+                width: 150px;
+              "
+            >
               <div>
                 <ul class="uk-dotnav">
                   <li><a>Item 1</a></li>
@@ -72,7 +97,38 @@
                 </ul>
               </div>
             </td>
-            <td>Table Data</td>
+            <td>
+              <img
+                :src="require(`@/assets/img/runes/use_7_196.webp`)"
+                style="
+                  background-color: purple;
+                  border-radius: 5px;
+                  margin-right: 20px;
+                "
+                width="50"
+                height="50"
+              />
+              <select class="uk-select" style="width: 40%; margin-right: 20px">
+                <option>Normal</option>
+                <option>Inhabituel</option>
+                <option>Rare</option>
+                <option>Epique</option>
+                <option>Légendaire</option>
+                <option>Relique</option>
+              </select>
+              <select class="uk-select" style="width: 40%">
+                <option>Recharge rapide</option>
+                <option>Bourrasque</option>
+                <option>Focalisation</option>
+                <option>Saignement</option>
+                <option>Protection</option>
+                <option>Conviction</option>
+                <option>Purification</option>
+                <option>Mur de fer</option>
+                <option>Rage</option>
+                <option>Richesse</option>
+              </select>
+            </td>
           </tr>
         </tbody>
       </table>
