@@ -160,73 +160,49 @@
         class="nav-overlay uk-navbar-right"
         v-bind:class="{ 'uk-light': darkMode }"
       >
-        <ul class="uk-navbar-nav" style="margin-right: 40px">
-          <!-- socials -->
-          <li>
-            <a href="https://discord.com/invite/cE9aZh4bPn" target="_blank"
-              ><span uk-icon="icon: discord"></span
-            ></a>
-          </li>
-          <li>
-            <a href="https://www.twitch.tv/mokokofamily" target="_blank"
-              ><span uk-icon="icon: twitch"></span
-            ></a>
-          </li>
-          <li>
-            <a href="https://www.instagram.com/mokoko.family" target="_blank"
-              ><span uk-icon="icon: instagram"></span
-            ></a>
-          </li>
-          <li>
-            <a href="https://twitter.com/MokokoFamily" target="_blank"
-              ><span uk-icon="icon: twitter"></span
-            ></a>
-          </li>
-        </ul>
-        <span class="uk-margin-medium-right">
-          <div
-            class="uk-background-cover uk-panel uk-flex uk-flex-center uk-flex-middle img-profil-nav"
-            v-bind:style="{
-              backgroundImage:
-                'url(' + require(`@/assets/img/profile/profil-selfi.png`) + ')',
-            }"
-            style="height: 30px; width: 30px; border-radius: 30px"
-          ></div>
-          <div uk-dropdown="mode: click">
-            <ul class="uk-nav uk-dropdown-nav">
-              <li class="uk-nav-header">Parametres</li>
-              <li>
-                <a @click="switchTheme"
-                  ><font-awesome-icon
-                    icon="fa-solid fa-circle-half-stroke"
-                    style="margin-right: 3px"
-                  />{{ darkMode ? "Désactiver" : "Activer" }}
-                  <span> dark mode</span>
-                </a>
-              </li>
-              <li>
-                <router-link to="/profile"
-                  ><span
-                    ><font-awesome-icon
-                      icon="fa-solid fa-user"
-                      style="margin-right: 8px"
-                    />Mon profil</span
-                  ></router-link
-                >
-              </li>
-              <li class="uk-nav-divider uk-margin-top"></li>
-              <li style="display: flex; justify-content: center">
-                <button
-                  class="uk-button uk-button-secondary uk-button-small disconnect-button"
-                >
-                  <font-awesome-icon
-                    icon="fa-solid fa-arrow-right-from-bracket"
-                  />
-                  <span style="margin-left: 7px">Déconnexion</span>
-                </button>
-              </li>
-            </ul>
-          </div>
+        <span class="">
+          <ul class="uk-navbar-nav">
+            <li>
+              <a
+                ><span uk-icon="icon: user" style="margin-right: 30px"></span
+              ></a>
+              <div class="uk-navbar-dropdown">
+                <ul class="uk-nav uk-dropdown-nav">
+                  <li class="uk-nav-header">Parametres</li>
+                  <li>
+                    <a @click="switchTheme"
+                      ><font-awesome-icon
+                        icon="fa-solid fa-circle-half-stroke"
+                        style="margin-right: 3px"
+                      />{{ darkMode ? "Désactiver" : "Activer" }}
+                      <span> dark mode</span>
+                    </a>
+                  </li>
+                  <li>
+                    <router-link to="/profile"
+                      ><span
+                        ><font-awesome-icon
+                          icon="fa-solid fa-user"
+                          style="margin-right: 8px"
+                        />Mon profil</span
+                      ></router-link
+                    >
+                  </li>
+                  <li class="uk-nav-divider uk-margin-top"></li>
+                  <li style="display: flex; justify-content: center">
+                    <button
+                      class="uk-button uk-button-secondary uk-button-small disconnect-button"
+                    >
+                      <font-awesome-icon
+                        icon="fa-solid fa-arrow-right-from-bracket"
+                      />
+                      <span style="margin-left: 7px">Déconnexion</span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
         </span>
       </div>
     </nav>
@@ -350,5 +326,8 @@ a.logo {
 }
 .img-profil-nav:hover {
   border: grey 1px solid;
+}
+.uk-table th {
+  text-transform: none !important;
 }
 </style>

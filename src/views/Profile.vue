@@ -47,7 +47,7 @@
         </div>
 
         <div class="right-part" style="display: flex">
-          <div style="width: 70px">
+          <div style="width: 50px">
             <img
               :src="require(`@/assets/img/exploration/ilvl.webp`)"
               style="width: 100%"
@@ -65,9 +65,9 @@
           <li class="uk-active" @click="changeSection('character')">
             <a>Personnage</a>
           </li>
+          <li @click="changeSection('build')"><a>Builds</a></li>
           <li @click="changeSection('exploration')"><a>Exploration</a></li>
           <li @click="changeSection('collection')"><a>Collection</a></li>
-          <li @click="changeSection('build')"><a>Builds</a></li>
         </ul>
       </div>
       <Character v-if="section === 'character'" />
