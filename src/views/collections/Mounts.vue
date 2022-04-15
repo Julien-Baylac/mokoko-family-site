@@ -12,63 +12,74 @@
           <h3 class="uk-article-title">Les montures</h3>
           <div>
             <p uk-margin>
-              <span style="margin-right: 10px"> Mode d'affichage </span>
               <button
                 class="uk-button uk-button-default uk-button-small"
                 style="margin-right: 7px"
-              >
-                Liste
-              </button>
-              <button
-                class="uk-button uk-button-default uk-button-small"
-                style="margin-right: 7px"
+                :style="
+                  displayType === 'gallery' ? 'background-color: #313131' : ''
+                "
+                @click="displayType = 'gallery'"
               >
                 Galerie
               </button>
               <button
                 class="uk-button uk-button-default uk-button-small"
                 style="margin-right: 7px"
+                :style="
+                  displayType === 'list' ? 'background-color: #313131' : ''
+                "
+                @click="displayType = 'list'"
               >
-                Sliders
+                Liste
               </button>
             </p>
           </div>
         </div>
         <div class="uk-margin-medium-top">
           <ul class="uk-flex-center" uk-tab>
-            <li><a href="#">Toutes</a></li>
-            <li><a href="#">Exploration</a></li>
-            <li><a href="#">PvP</a></li>
-            <li><a href="#">Drops Twitch</a></li>
-            <li><a href="#">Boutique</a></li>
-            <li><a href="#">Packs</a></li>
+            <li @click="obtentionType = 'all'"><a>Toutes</a></li>
+            <li @click="obtentionType = 'exploration'"><a>Exploration</a></li>
+            <li @click="obtentionType = 'pvp'"><a>PvP</a></li>
+            <li @click="obtentionType = 'twitch'"><a>Drops Twitch</a></li>
+            <li @click="obtentionType = 'shop'"><a>Boutique</a></li>
+            <li @click="obtentionType = 'pack'"><a>packs</a></li>
           </ul>
         </div>
         <div style="display: flex; justify-content: space-between">
           <h3 id="table-title" style="margin-bottom: 0">
-            Liste des îles ({{ filteredVehicles.length }})
+            Liste des montures ({{ filteredVehicles.length }})
           </h3>
-          <div style="display: flex" class="uk-form-small">
-            <button
-              style="margin-right: 10px"
-              class="uk-button uk-button-default uk-button-small"
-              :disabled="this.validated === null"
-              @click="validate(null)"
-            >
-              Annuler
-            </button>
-            <select
-              v-model="validated"
-              style="padding-right: 30px"
-              class="uk-select uk-form-small"
-              v-bind:class="{
-                'uk-button-secondary': this.validated === false,
-              }"
-            >
-              <option :value="null">Trier les montures obtenues</option>
-              <option :value="false">Obtenues</option>
-              <option :value="true">Non obtenues</option>
-            </select>
+          <div style="display: flex">
+            <div style="display: flex" class="uk-form-small">
+              <button
+                style="margin-right: 10px"
+                class="uk-button uk-button-default uk-button-small"
+                :disabled="
+                  this.availableFilter === null && this.acquiredFilter === null
+                "
+                @click="resetFilter()"
+              >
+                Annuler
+              </button>
+              <select
+                v-model="availableFilter"
+                style="padding-right: 30px"
+                class="uk-select uk-form-small"
+              >
+                <option :value="null">Trier par disponibilité</option>
+                <option :value="false">Disponibles</option>
+                <option :value="true">Indisponibles</option>
+              </select>
+              <select
+                v-model="acquiredFilter"
+                style="padding-right: 30px; margin-left: 10px"
+                class="uk-select uk-form-small"
+              >
+                <option :value="null">Trier les montures obtenues</option>
+                <option :value="false">Obtenues</option>
+                <option :value="true">Non obtenues</option>
+              </select>
+            </div>
           </div>
         </div>
         <div class="uk-inline uk-width-expand uk-margin-top uk-margin-bottom">
@@ -76,11 +87,49 @@
           <input
             class="uk-input uk-form-small"
             type="text"
-            placeholder="Chercher une zone"
+            placeholder="Chercher une monture"
             v-model="filter"
           />
         </div>
-        <table class="uk-table uk-table-striped" style="margin-bottom: 60px">
+
+        <ul
+          class="uk-subnav uk-subnav-pill"
+          uk-switcher="animation: uk-animation-slide-left-medium, uk-animation-slide-right-medium"
+        >
+          <li>
+            <a class="mount-switcher" @click="vehicleType = 'all'">Toutes</a>
+          </li>
+          <li>
+            <a class="mount-switcher" @click="vehicleType = 'wolf'">Loups</a>
+          </li>
+          <li>
+            <a class="mount-switcher" @click="vehicleType = 'overboard'"
+              >Overboards</a
+            >
+          </li>
+          <li>
+            <a class="mount-switcher" @click="vehicleType = 'raptor'"
+              >Raptors</a
+            >
+          </li>
+          <li>
+            <a class="mount-switcher" @click="vehicleType = 'horse'">Chevaux</a>
+          </li>
+          <li>
+            <a class="mount-switcher" @click="vehicleType = 'turtle'"
+              >Tortues</a
+            >
+          </li>
+          <li>
+            <a class="mount-switcher" @click="vehicleType = 'bug'">Insectes</a>
+          </li>
+        </ul>
+
+        <table
+          v-if="displayType === 'list'"
+          class="uk-table uk-table-striped"
+          style="margin-bottom: 60px"
+        >
           <thead>
             <tr>
               <th>Icone</th>
@@ -91,7 +140,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="vehicle in vehicles" v-bind:key="vehicle.id">
+            <tr v-for="vehicle in filteredVehicles" v-bind:key="vehicle.id">
               <td style="width: 80px">
                 <img
                   :src="
@@ -103,23 +152,44 @@
                   height="50"
                 />
               </td>
-              <td>{{ vehicle.name }}</td>
-              <td>{{ vehicle.obtention }}</td>
-              <td>{{ getTime(vehicle.last_obtention_date) }}</td>
+              <td>
+                <div style="margin-top: 12px">{{ vehicle.name }}</div>
+              </td>
+              <td>
+                <div style="margin-top: 12px">{{ vehicle.obtention }}</div>
+              </td>
+              <td>
+                <div style="margin-top: 12px">
+                  {{ getTime(vehicle.last_obtention_date) }}
+                </div>
+              </td>
               <td>
                 <button
                   class="uk-button uk-button-default uk-button-small"
-                  style="margin-right: 5px"
+                  style="margin-right: 5px; margin-top: 10px"
                 >
                   Infos
                 </button>
-                <button class="uk-button uk-button-default uk-button-small">
+                <button
+                  class="uk-button uk-button-default uk-button-small"
+                  style="margin-top: 10px"
+                >
                   Ajouter à ma collection
                 </button>
               </td>
             </tr>
           </tbody>
         </table>
+        <div v-if="displayType === 'gallery'">
+          <div class="uk-child-width-1-3" uk-grid>
+            <mountCard
+              v-for="vehicle in filteredVehicles"
+              v-bind:key="vehicle.id"
+              :name="vehicle.name"
+              style="padding: 10px"
+            ></mountCard>
+          </div>
+        </div>
       </div>
     </div>
     <Footer style="margin-top: 60px" />
@@ -128,109 +198,119 @@
 
 <script>
 import Footer from "@/components/Footer.vue";
+import mountCard from "@/components/collections/mountCard.vue";
 import moment from "moment";
 
 export default {
   components: {
     Footer,
+    mountCard,
   },
   data() {
     return {
       validated: null,
+      displayType: "gallery",
+      obtentionType: "all",
+      vehicleType: "all",
+      availableFilter: null,
+      acquiredFilter: null,
       vehicles: [
         {
-          name: "Monture : Cerbère",
+          name: "Cerbère",
           id: 316,
           quality: "orange",
-          obtention_type: "Pack",
+          type: "overboard",
+          obtention_type: "pack",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: [2022, 1, 22],
         },
         {
-          name: "Monture : Cerbère",
+          name: "Cerbère",
           id: 316,
           quality: "orange",
-          obtention_type: "Pack",
+          type: "wolf",
+          obtention_type: "pvp",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: null,
         },
         {
-          name: "Monture : Cerbère",
+          name: "Cerbère",
           id: 316,
           quality: "orange",
-          obtention_type: "Pack",
+          type: "bug",
+          obtention_type: "pack",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: [2007, 0, 29],
         },
         {
-          name: "Monture : Cerbère",
+          name: "Cerbère",
           id: 316,
           quality: "orange",
-          obtention_type: "Pack",
+          obtention_type: "pack",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: [2007, 0, 29],
         },
         {
-          name: "Monture : Cerbère",
+          name: "Cerbère",
           id: 316,
           quality: "orange",
-          obtention_type: "Pack",
+          obtention_type: "pack",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: [2007, 0, 29],
         },
         {
-          name: "Monture : Cerbère",
+          name: "Cerbère",
           id: 316,
           quality: "orange",
-          obtention_type: "Pack",
+          obtention_type: "pack",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: [2007, 0, 29],
         },
         {
-          name: "Monture : Cerbère",
+          name: "Cerbère",
           id: 316,
           quality: "orange",
-          obtention_type: "Pack",
+          obtention_type: "pack",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: [2007, 0, 29],
         },
         {
-          name: "Monture : Cerbère",
+          name: "Cerbère",
           id: 316,
           quality: "orange",
-          obtention_type: "Pack",
+          obtention_type: "pack",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: [2007, 0, 29],
         },
         {
-          name: "Monture : Cerbère",
+          name: "Cerbère",
           id: 316,
           quality: "orange",
-          obtention_type: "Pack",
+          obtention_type: "pack",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: [2007, 0, 29],
         },
         {
-          name: "Monture : Cerbère",
+          name: "Cerbère",
           id: 316,
           quality: "orange",
-          obtention_type: "Pack",
+          obtention_type: "shop",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: [2007, 0, 29],
         },
         {
-          name: "Monture : Cerbère",
+          name: "Cerbère",
           id: 316,
           quality: "orange",
-          obtention_type: "Pack",
+          obtention_type: "shop",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: [2007, 0, 29],
         },
         {
-          name: "Monture : Cerbère",
+          name: "Cerbère",
           id: 316,
           quality: "orange",
-          obtention_type: "Pack",
+          obtention_type: "shop",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: [2007, 0, 29],
         },
@@ -240,7 +320,15 @@ export default {
   computed: {
     filteredVehicles() {
       let finalArray = [];
-      finalArray = this.vehicles;
+
+      this.vehicles.forEach((element) => {
+        if (this.obtentionType === "all") {
+          finalArray.push(element);
+        } else if (this.obtentionType === element.obtention_type) {
+          finalArray.push(element);
+        }
+      });
+      console.log(finalArray);
       return finalArray;
     },
   },
@@ -255,8 +343,45 @@ export default {
     validate(boolean) {
       this.validated = boolean;
     },
+    filter() {},
+    resetFilter() {
+      this.availableFilter = null;
+      this.acquiredFilter = null;
+    },
   },
 };
 </script>
 
-<style></style>
+<style>
+.uk-grid {
+  margin-left: 0;
+}
+.uk-grid-margin {
+  margin-top: 0 !important;
+}
+.mount-switcher {
+  text-transform: none !important;
+  border-radius: 3px;
+}
+.uk-card-primary.uk-card-body .uk-subnav-pill > .uk-active > a,
+.uk-card-primary
+  > :not([class*="uk-card-media"])
+  .uk-subnav-pill
+  > .uk-active
+  > a,
+.uk-card-secondary.uk-card-body .uk-subnav-pill > .uk-active > a,
+.uk-card-secondary
+  > :not([class*="uk-card-media"])
+  .uk-subnav-pill
+  > .uk-active
+  > a,
+.uk-light .uk-subnav-pill > .uk-active > a,
+.uk-offcanvas-bar .uk-subnav-pill > .uk-active > a,
+.uk-overlay-primary .uk-subnav-pill > .uk-active > a,
+.uk-section-primary:not(.uk-preserve-color) .uk-subnav-pill > .uk-active > a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-subnav-pill > .uk-active > a,
+.uk-tile-primary:not(.uk-preserve-color) .uk-subnav-pill > .uk-active > a,
+.uk-tile-secondary:not(.uk-preserve-color) .uk-subnav-pill > .uk-active > a {
+  background-color: #81fe5a;
+}
+</style>

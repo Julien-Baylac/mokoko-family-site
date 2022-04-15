@@ -170,7 +170,7 @@
                 <ul class="uk-nav uk-dropdown-nav">
                   <li class="uk-nav-header">Parametres</li>
                   <li>
-                    <a @click="switchTheme"
+                    <a style="color: grey"
                       ><font-awesome-icon
                         icon="fa-solid fa-circle-half-stroke"
                         style="margin-right: 3px"

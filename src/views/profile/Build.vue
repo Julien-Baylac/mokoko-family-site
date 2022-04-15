@@ -61,7 +61,11 @@
               />
             </td>
             <td>
-              <select class="uk-select" id="form-stacked-select">
+              <select
+                class="uk-select"
+                id="form-stacked-select"
+                style="margin-top: 5px"
+              >
                 <option>Pistolance tranchante</option>
                 <option>Balle de feu</option>
                 <option>Pistolance ascendante</option>

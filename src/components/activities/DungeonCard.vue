@@ -67,10 +67,16 @@
             margin-top: 80px;
           "
         >
-          <button class="uk-button uk-button-default uk-button-small">
+          <button
+            class="uk-button uk-button-default uk-button-small"
+            style="background-color: rgb(0 0 0 / 60%)"
+          >
             Besoin
           </button>
-          <button class="uk-button uk-button-default uk-button-small">
+          <button
+            class="uk-button uk-button-default uk-button-small"
+            style="background-color: rgb(0 0 0 / 60%)"
+          >
             Terminé
           </button>
         </div>
