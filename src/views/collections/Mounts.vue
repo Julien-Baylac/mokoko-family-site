@@ -223,6 +223,7 @@ export default {
           obtention_type: "pack",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: [2022, 1, 22],
+          obtained: true,
         },
         {
           name: "Cerbère",
@@ -232,6 +233,7 @@ export default {
           obtention_type: "pvp",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: null,
+          obtained: true,
         },
         {
           name: "Cerbère",
@@ -249,6 +251,7 @@ export default {
           obtention_type: "pack",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: [2007, 0, 29],
+          obtained: false,
         },
         {
           name: "Cerbère",
@@ -257,6 +260,7 @@ export default {
           obtention_type: "pack",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: [2007, 0, 29],
+          obtained: false,
         },
         {
           name: "Cerbère",
@@ -265,6 +269,7 @@ export default {
           obtention_type: "pack",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: [2007, 0, 29],
+          obtained: true,
         },
         {
           name: "Cerbère",
@@ -273,6 +278,7 @@ export default {
           obtention_type: "pack",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: [2007, 0, 29],
+          obtained: true,
         },
         {
           name: "Cerbère",
@@ -281,6 +287,7 @@ export default {
           obtention_type: "pack",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: [2007, 0, 29],
+          obtained: true,
         },
         {
           name: "Cerbère",
@@ -289,6 +296,7 @@ export default {
           obtention_type: "pack",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: [2007, 0, 29],
+          obtained: true,
         },
         {
           name: "Cerbère",
@@ -297,6 +305,7 @@ export default {
           obtention_type: "shop",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: [2007, 0, 29],
+          obtained: true,
         },
         {
           name: "Cerbère",
@@ -305,6 +314,7 @@ export default {
           obtention_type: "shop",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: [2007, 0, 29],
+          obtained: true,
         },
         {
           name: "Cerbère",
@@ -313,23 +323,57 @@ export default {
           obtention_type: "shop",
           obtention: "Dans le pack fondateur de la précommande",
           last_obtention_date: [2007, 0, 29],
+          obtained: false,
         },
       ],
     };
   },
   computed: {
     filteredVehicles() {
-      let finalArray = [];
+      let filteredArrayType = [];
+      let filteredArrayAvailable = [];
 
+      //obtainable type
       this.vehicles.forEach((element) => {
         if (this.obtentionType === "all") {
-          finalArray.push(element);
+          filteredArrayType.push(element);
         } else if (this.obtentionType === element.obtention_type) {
-          finalArray.push(element);
+          filteredArrayType.push(element);
         }
       });
-      console.log(finalArray);
-      return finalArray;
+      //available
+      if (this.acquiredFilter === true) {
+        filteredArrayAvailable = filteredArrayType.filter(
+          (element) => element.last_obtention_date !== null
+        );
+      } else if (this.acquiredFilter === false) {
+        filteredArrayAvailable = filteredArrayType.filter(
+          (element) => element.last_obtention_date === null
+        );
+      } else {
+        filteredArrayAvailable = filteredArrayType;
+      }
+
+      //vehicles obtained
+      let obtainedFilteredArray = [];
+      if (this.availableFilter !== null) {
+        obtainedFilteredArray = filteredArrayAvailable.filter(
+          (element) => element.obtained !== this.availableFilter
+        );
+      } else {
+        obtainedFilteredArray = filteredArrayAvailable;
+      }
+
+      //type vehicles
+      let newTypeMountsArray = [];
+      if (this.vehicleType !== "all") {
+        newTypeMountsArray = obtainedFilteredArray.filter(
+          (element) => element.type === this.vehicleType
+        );
+      } else {
+        newTypeMountsArray = obtainedFilteredArray;
+      }
+      return newTypeMountsArray;
     },
   },
   methods: {
