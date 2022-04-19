@@ -10,8 +10,8 @@
             class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light"
             :data-src="require(`@/assets/img/profile/profil-selfi.png`)"
             style="
-              width: 100px;
-              height: 100px;
+              width: 115px;
+              height: 115px;
               border-radius: 7px;
               margin-right: 20px;
               margin-top: 10px;
@@ -26,7 +26,12 @@
             <div style="display: flex; align-items: center">
               <img
                 :src="require(`@/assets/img/classes/pistolancier.png`)"
-                style="width: 50px; height: 50px; margin-right: 10px"
+                style="
+                  width: 70px;
+                  height: 70px;
+                  margin-right: 10px;
+                  margin-bottom: 14px;
+                "
               />
               <dl class="uk-description-list" style="margin-top: 7px">
                 <dt>
@@ -36,27 +41,18 @@
                 <dd>
                   <span>Niv. Expédition 90</span>
                 </dd>
+                <dd>
+                  <span>Niveau d'objet 1370</span>
+                </dd>
               </dl>
             </div>
           </div>
         </div>
 
-        <div class="uk-margin-medium-top">
-          <span>Mokoko Family</span><br />
-          <span>Zinnervale</span>
-        </div>
-
         <div class="right-part" style="display: flex">
-          <div style="width: 50px">
-            <img
-              :src="require(`@/assets/img/exploration/ilvl.webp`)"
-              style="width: 100%"
-            />
-            <div
-              style="display: flex; justify-content: center; margin-top: 10px"
-            >
-              <span>1358.33</span>
-            </div>
+          <div>
+            <span>Mokoko Family</span><br />
+            <span>Zinnervale</span>
           </div>
         </div>
       </div>
@@ -65,7 +61,8 @@
           <li class="uk-active" @click="changeSection('character')">
             <a>Personnage</a>
           </li>
-          <li @click="changeSection('build')"><a>Builds</a></li>
+          <!-- <li @click="changeSection('build')"><a>Builds</a></li> -->
+          <li @click="changeSection('exploration')"><a>Activités</a></li>
           <li @click="changeSection('exploration')"><a>Exploration</a></li>
           <li @click="changeSection('collection')"><a>Collection</a></li>
         </ul>

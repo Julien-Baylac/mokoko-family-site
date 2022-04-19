@@ -42,7 +42,7 @@
             <li @click="obtentionType = 'pvp'"><a>PvP</a></li>
             <li @click="obtentionType = 'twitch'"><a>Drops Twitch</a></li>
             <li @click="obtentionType = 'shop'"><a>Boutique</a></li>
-            <li @click="obtentionType = 'pack'"><a>packs</a></li>
+            <li @click="obtentionType = 'pack'"><a>Packs</a></li>
           </ul>
         </div>
         <div style="display: flex; justify-content: space-between">

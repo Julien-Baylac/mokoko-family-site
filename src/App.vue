@@ -37,27 +37,6 @@
           >
           <li>
             <router-link to="/activities">Activités</router-link>
-            <div class="uk-navbar-dropdown">
-              <ul class="uk-nav uk-navbar-dropdown-nav">
-                <li class="uk-nav-header">Permanents</li>
-                <li>
-                  <router-link to="/activities">Donjons</router-link>
-                </li>
-                <li>
-                  <router-link to="/activities">Raids</router-link>
-                </li>
-                <li>
-                  <router-link to="/activities">Gardiens</router-link>
-                </li>
-                <li class="uk-nav-header">Temporaires</li>
-                <li>
-                  <router-link to="/activities">Events</router-link>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <router-link to="/ranking">Classements</router-link>
           </li>
           <ul class="uk-navbar-nav">
             <li>
@@ -153,6 +132,10 @@
               </div>
             </li>
           </ul>
+
+          <li style="margin-left: 40px">
+            <router-link to="/ranking">La communauté</router-link>
+          </li>
         </ul>
       </div>
 
@@ -164,12 +147,20 @@
           <ul class="uk-navbar-nav">
             <li>
               <a
-                ><span uk-icon="icon: user" style="margin-right: 30px"></span
+                ><span
+                  uk-icon="icon: user"
+                  style="
+                    margin-right: 30px;
+                    border: 1px grey solid;
+                    border-radius: 50px;
+                    padding: 3px;
+                  "
+                ></span
               ></a>
               <div class="uk-navbar-dropdown">
                 <ul class="uk-nav uk-dropdown-nav">
                   <li class="uk-nav-header">Parametres</li>
-                  <li>
+                  <!-- <li>
                     <a style="color: grey"
                       ><font-awesome-icon
                         icon="fa-solid fa-circle-half-stroke"
@@ -177,14 +168,36 @@
                       />{{ darkMode ? "Désactiver" : "Activer" }}
                       <span> dark mode</span>
                     </a>
+                  </li> -->
+                  <li>
+                    <router-link to="/profile"
+                      ><span
+                        ><span
+                          uk-icon="user"
+                          style="
+                            margin-right: 10px;
+                            border: 1px grey solid;
+                            padding: 1px;
+                            border-radius: 3px;
+                          "
+                        ></span>
+                        <span>Mon profil</span></span
+                      ></router-link
+                    >
                   </li>
                   <li>
                     <router-link to="/profile"
                       ><span
-                        ><font-awesome-icon
-                          icon="fa-solid fa-user"
-                          style="margin-right: 8px"
-                        />Mon profil</span
+                        ><span
+                          uk-icon="settings"
+                          style="
+                            margin-right: 6px;
+                            border: 1px grey solid;
+                            padding: 1px;
+                            border-radius: 3px;
+                          "
+                        ></span>
+                        Parametres</span
                       ></router-link
                     >
                   </li>
