@@ -174,7 +174,7 @@
                   class="uk-button uk-button-default uk-button-small"
                   style="margin-top: 10px"
                 >
-                  Ajouter à ma collection
+                  Ajouter
                 </button>
               </td>
             </tr>

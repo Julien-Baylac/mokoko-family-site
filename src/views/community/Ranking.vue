@@ -28,14 +28,7 @@
           <div class="uk-flex uk-flex-right">
             <span style="font-size: 30px">34st</span>
           </div>
-          <div class="uk-flex uk-flex-right">
-            <button
-              class="uk-button uk-button-default uk-button-small"
-              style="margin-top: 10px"
-            >
-              Sortir du classement
-            </button>
-          </div>
+          <div class="uk-flex uk-flex-right"></div>
         </div>
       </div>
 
@@ -205,7 +198,7 @@
         </tbody>
       </table>
     </div>
-    <Footer />
+    <Footer style="margin-top: 100px" />
   </div>
 </template>
 

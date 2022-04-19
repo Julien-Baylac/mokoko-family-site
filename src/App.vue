@@ -50,9 +50,7 @@
                   <div>
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                       <li class="uk-nav-header">Exploration</li>
-                      <li>
-                        <router-link to="/affinities">Affinités</router-link>
-                      </li>
+
                       <li>
                         <router-link to="/islands">Âmes insulaires</router-link>
                       </li>
@@ -95,7 +93,7 @@
               </div>
             </li>
           </ul>
-          <ul class="uk-navbar-nav">
+          <ul class="uk-navbar-nav" style="margin-right: 20px">
             <li>
               <a href="#">Collections</a>
               <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
@@ -126,15 +124,20 @@
                           ><span>Timeline</span></router-link
                         >
                       </li>
+                      <li class="uk-nav-header">Affinités</li>
+                      <li>
+                        <router-link to="/affinities">Affinités</router-link>
+                      </li>
                     </ul>
                   </div>
                 </div>
               </div>
             </li>
           </ul>
+          <hr class="uk-divider-vertical" />
 
-          <li style="margin-left: 40px">
-            <router-link to="/ranking">La communauté</router-link>
+          <li style="margin-left: 20px">
+            <router-link to="/community">La communauté</router-link>
           </li>
         </ul>
       </div>
@@ -342,5 +345,8 @@ a.logo {
 }
 .uk-table th {
   text-transform: none !important;
+}
+.uk-divider-vertical {
+  height: 40px;
 }
 </style>

@@ -101,28 +101,12 @@
             <a class="mount-switcher" @click="vehicleType = 'all'">Toutes</a>
           </li>
           <li>
-            <a class="mount-switcher" @click="vehicleType = 'wolf'">Loups</a>
-          </li>
-          <li>
-            <a class="mount-switcher" @click="vehicleType = 'overboard'"
-              >Overboards</a
+            <a class="mount-switcher" @click="vehicleType = 'wolf'"
+              >Masque seul</a
             >
           </li>
           <li>
-            <a class="mount-switcher" @click="vehicleType = 'raptor'"
-              >Raptors</a
-            >
-          </li>
-          <li>
-            <a class="mount-switcher" @click="vehicleType = 'horse'">Chevaux</a>
-          </li>
-          <li>
-            <a class="mount-switcher" @click="vehicleType = 'turtle'"
-              >Tortues</a
-            >
-          </li>
-          <li>
-            <a class="mount-switcher" @click="vehicleType = 'bug'">Insectes</a>
+            <a class="mount-switcher" @click="vehicleType = 'wolf'">Full set</a>
           </li>
         </ul>
 
@@ -175,7 +159,7 @@
                   class="uk-button uk-button-default uk-button-small"
                   style="margin-top: 10px"
                 >
-                  Ajouter à ma collection
+                  Ajouter
                 </button>
               </td>
             </tr>

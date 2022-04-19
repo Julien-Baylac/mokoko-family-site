@@ -4,7 +4,7 @@ import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import CreateAccount from "../views/CreateAccount.vue";
 import Direct from "../views/Direct.vue";
-import Ranking from "../views/Ranking.vue";
+import Ranking from "../views/community/Ranking.vue";
 import Skins from "../views/collections/Skins.vue";
 import Pets from "../views/collections/Pets.vue";
 import Mounts from "../views/collections/Mounts.vue";
@@ -19,6 +19,7 @@ import WorldTreeLeaves from "../views/exploration/WorldTreeLeaves.vue";
 import Igneas from "../views/exploration/Igneas.vue";
 import TreasureMaps from "../views/exploration/TreasureMaps.vue";
 import Affinities from "../views/exploration/Affinities.vue";
+import Community from "../views/Community.vue";
 import Profile from "../views/Profile.vue";
 import TimeLine from "../views/TimeLine.vue";
 
@@ -45,6 +46,11 @@ const routes = [
     path: "/direct",
     name: "Direct",
     component: Direct,
+  },
+  {
+    path: "/community",
+    name: "Community",
+    component: Community,
   },
   //activities
   {

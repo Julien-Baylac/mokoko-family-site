@@ -4,82 +4,69 @@
       <!-- left part -->
       <div class="sidebar">
         <ul class="uk-tab-left tabs" style="margin-left: 50px" uk-tab>
-          <li class="first-tab" @click="changeActivity('dungeons')">
+          <li class="first-tab" @click="changeActivity('players')">
             <a
               ><ul class="uk-dotnav">
                 <li class="">
                   <a>Item 1</a>
                 </li>
               </ul>
-              Donjons</a
-            >
-          </li>
-          <li @click="changeActivity('raids')">
-            <a
-              ><ul class="uk-dotnav">
-                <li class="">
-                  <a>Item 1</a>
-                </li>
-              </ul>
-              Raids</a
+              Les joueurs</a
             >
           </li>
 
-          <li @click="changeActivity('guardians')">
+          <li @click="changeActivity('ranking')">
             <a
               ><ul class="uk-dotnav">
                 <li class="">
                   <a>Item 1</a>
                 </li>
               </ul>
-              Gardiens
+              Classements
             </a>
           </li>
-          <!-- <li @click="changeActivity('events')">
+          <li @click="changeActivity('stats')">
             <a
               ><ul class="uk-dotnav">
-                <li class="uk-active">
+                <li class="">
                   <a>Item 1</a>
                 </li>
               </ul>
-              Events
-            </a>
-          </li> -->
+              Statistiques</a
+            >
+          </li>
         </ul>
       </div>
 
       <!-- right part -->
       <div class="uk-width-expand right-part">
-        <Dungeons v-if="activity === 'dungeons'" />
-        <Raids v-if="activity === 'raids'" />
-        <Guardians v-if="activity === 'guardians'" />
-        <Events v-if="activity === 'events'" />
+        <Players v-if="section === 'players'" />
+        <Statistics v-if="section === 'stats'" />
+        <Ranking v-if="section === 'ranking'" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Dungeons from "./activities/Dungeons.vue";
-import Raids from "./activities/Raids.vue";
-import Guardians from "./activities/Guardians.vue";
-import Events from "./activities/Events.vue";
+import Players from "./community/Players.vue";
+import Statistics from "./community/Statistics.vue";
+import Ranking from "./community/Ranking.vue";
 
 export default {
   components: {
-    Dungeons,
-    Raids,
-    Guardians,
-    Events,
+    Players,
+    Statistics,
+    Ranking,
   },
   data() {
     return {
-      activity: "dungeons",
+      section: "players",
     };
   },
   methods: {
-    changeActivity(activity) {
-      this.activity = activity;
+    changeActivity(section) {
+      this.section = section;
     },
   },
 };

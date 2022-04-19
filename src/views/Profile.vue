@@ -65,6 +65,9 @@
           <li @click="changeSection('exploration')"><a>Activités</a></li>
           <li @click="changeSection('exploration')"><a>Exploration</a></li>
           <li @click="changeSection('collection')"><a>Collection</a></li>
+          <li @click="changeSection('collection')" style="margin-left: 50px">
+            <a>IRL & Réseaux Sociaux</a>
+          </li>
         </ul>
       </div>
       <Character v-if="section === 'character'" />
