@@ -12,14 +12,14 @@
       </div>
       <div class="uk-margin-medium-top">
         <ul class="uk-flex-center" uk-tab>
-          <li><a @click="changeSection('classes')">Classes</a></li>
           <li><a @click="changeSection('ilvl')">Ilvl</a></li>
+          <li><a @click="changeSection('classes')">Classes</a></li>
           <li><a @click="changeSection('comparator')">Comparateur</a></li>
         </ul>
       </div>
       <div style="margin-top: 50px">
-        <classBars v-if="section === 'classes'"></classBars>
         <ilvl v-if="section === 'ilvl'"></ilvl>
+        <classBars v-if="section === 'classes'"></classBars>
         <comparator v-if="section === 'comparator'"></comparator>
       </div>
     </div>
@@ -37,7 +37,7 @@ export default {
   components: { Footer, classBars, ilvl, comparator },
   data() {
     return {
-      section: "classes",
+      section: "ilvl",
     };
   },
   methods: {

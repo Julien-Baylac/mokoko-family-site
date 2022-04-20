@@ -64,7 +64,9 @@ export default {
     },
     styles: {
       type: Object,
-      default: () => {},
+      default: () => {
+        backgroundColor: "#fff";
+      },
     },
     plugins: {
       type: Array,

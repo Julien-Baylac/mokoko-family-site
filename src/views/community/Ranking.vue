@@ -26,7 +26,17 @@
         </div>
         <div style="margin-top: -20px">
           <div class="uk-flex uk-flex-right">
-            <span style="font-size: 30px">34st</span>
+            <span
+              style="
+                font-size: 20px;
+                border: 1px solid grey;
+                border-radius: 40px;
+                padding: 10px;
+                height: 35px;
+                width: 35px;
+              "
+              >34st</span
+            >
           </div>
           <div class="uk-flex uk-flex-right"></div>
         </div>
