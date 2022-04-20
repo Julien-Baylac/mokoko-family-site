@@ -15,20 +15,19 @@
         "
       >
         <span>Marchands Itinérants</span>
-        <div style="margin-top: 15px" class="uk-text-center">
+        <div style="margin-top: 15px" class="uk-text-left">
           <div style="color: #7dbaff">
             <span uk-icon="copy" style="margin-right: 10px"></span
-            ><span>Séria - </span>
+            ><span>Séria </span
+            ><span>{{ getTime("2022-04-20T11:11:57.056-07:00") }}</span>
           </div>
-          <span uk-icon="arrow-down"></span>
+          <div class="uk-text-center">
+            <span uk-icon="minus"></span>
+          </div>
           <div style="color: #deab60">
             <span uk-icon="copy" style="margin-right: 10px"></span
-            ><span>Mei</span>
-          </div>
-          <span uk-icon="arrow-down"></span>
-          <div style="color: #7dbaff">
-            <span uk-icon="copy" style="margin-right: 10px"></span
-            ><span>Séria</span>
+            ><span>Mei </span
+            ><span>{{ getTime("2022-04-20T11:11:57.056-07:00") }}</span>
           </div>
         </div>
       </div>
@@ -120,7 +119,7 @@
         </div>
       </div>
     </div>
-    <div class="uk-position-center">
+    <div class="uk-position-bottom" style="margin-bottom: 80px">
       <div>
         <div style="display: flex; justify-content: center">
           <span> Mokoko Family </span>
@@ -168,6 +167,13 @@ export default {
     },
     substractTime(hours) {
       return this.time.locale("fr").subtract(hours, "h").format("LT");
+    },
+    getTime(date) {
+      if (date !== null) {
+        return moment(date).lang("fr").from(this.time);
+      } else {
+        return "Disponible";
+      }
     },
   },
 };

@@ -12,10 +12,15 @@
       </div>
       <div class="uk-margin-medium-top">
         <ul class="uk-flex-center" uk-tab>
-          <li><a href="#">Classes</a></li>
-          <li><a href="#">Ilvl</a></li>
-          <li><a href="#">Comparateur</a></li>
+          <li><a @click="changeSection('classes')">Classes</a></li>
+          <li><a @click="changeSection('ilvl')">Ilvl</a></li>
+          <li><a @click="changeSection('comparator')">Comparateur</a></li>
         </ul>
+      </div>
+      <div style="margin-top: 50px">
+        <classBars v-if="section === 'classes'"></classBars>
+        <ilvl v-if="section === 'ilvl'"></ilvl>
+        <comparator v-if="section === 'comparator'"></comparator>
       </div>
     </div>
     <Footer style="margin-top: 100px" />
@@ -24,8 +29,22 @@
 
 <script>
 import Footer from "@/components/Footer.vue";
+import classBars from "@/components/statistics/classBars.vue";
+import ilvl from "@/components/statistics/ilvl.vue";
+import comparator from "../../components/statistics/comparator.vue";
+
 export default {
-  components: { Footer },
+  components: { Footer, classBars, ilvl, comparator },
+  data() {
+    return {
+      section: "classes",
+    };
+  },
+  methods: {
+    changeSection(section) {
+      this.section = section;
+    },
+  },
 };
 </script>
 
