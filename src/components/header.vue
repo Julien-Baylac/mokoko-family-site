@@ -94,7 +94,7 @@
               <div
                 class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s"
               >
-                Hours
+                Heures
               </div>
             </div>
             <div class="uk-countdown-separator">:</div>
@@ -112,7 +112,7 @@
               <div
                 class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s"
               >
-                Seconds
+                Secondes
               </div>
             </div>
           </div>
@@ -122,10 +122,28 @@
     <div class="uk-position-bottom" style="margin-bottom: 80px">
       <div>
         <div style="display: flex; justify-content: center">
-          <span> Mokoko Family </span>
+          <img
+            :src="require(`@/assets/img/logo/logo-grey.png`)"
+            style="
+              border-radius: 30px;
+              width: 60px;
+              height: 60px;
+              margin-bottom: 10px;
+              border: 1px grey solid;
+            "
+          />
+        </div>
+
+        <div style="display: flex; justify-content: center">
+          <span style="font-size: 25px"> Mokoko Family </span>
         </div>
         <div style="display: flex; justify-content: center">
-          <span>Beta-0.0.1</span>
+          <span style="font-size: 13px"
+            >Communauté Francophone de Lost Ark</span
+          >
+        </div>
+        <div style="display: flex; justify-content: center; margin-top: 10px">
+          <span style="font-size: 13px">Beta-0.0.1</span>
         </div>
       </div>
     </div>
