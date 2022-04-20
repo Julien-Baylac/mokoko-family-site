@@ -1,6 +1,6 @@
 <template>
   <div
-    class="image"
+    class="header"
     v-bind:class="{ 'image-light': isDay, 'image-dark': !isDay }"
   >
     <div
@@ -14,7 +14,23 @@
           border-radius: 4px;
         "
       >
-        zerze
+        <span>Marchands Itinérants</span>
+        <div style="margin-top: 15px" class="uk-text-center">
+          <div style="color: #7dbaff">
+            <span uk-icon="copy" style="margin-right: 10px"></span
+            ><span>Séria - </span>
+          </div>
+          <span uk-icon="arrow-down"></span>
+          <div style="color: #deab60">
+            <span uk-icon="copy" style="margin-right: 10px"></span
+            ><span>Mei</span>
+          </div>
+          <span uk-icon="arrow-down"></span>
+          <div style="color: #7dbaff">
+            <span uk-icon="copy" style="margin-right: 10px"></span
+            ><span>Séria</span>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -56,6 +72,52 @@
           ></div>
           En ligne
         </span>
+      </div>
+      <div
+        style="
+          background-color: rgba(0, 0, 0, 0.4);
+          padding: 15px;
+          border-radius: 4px;
+          margin-top: 10px;
+        "
+      >
+        <span style="display: flex; align-items: center; margin-bottom: 20px"
+          >Reset du serveur - Europe occidentale
+        </span>
+        <div style="display: flex; justify-content: center">
+          <div
+            class="uk-grid-small uk-child-width-auto"
+            uk-grid
+            uk-countdown="date: 2022-04-27T08:23:45+00:00"
+          >
+            <div>
+              <div class="uk-countdown-number uk-countdown-hours"></div>
+              <div
+                class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s"
+              >
+                Hours
+              </div>
+            </div>
+            <div class="uk-countdown-separator">:</div>
+            <div>
+              <div class="uk-countdown-number uk-countdown-minutes"></div>
+              <div
+                class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s"
+              >
+                Minutes
+              </div>
+            </div>
+            <div class="uk-countdown-separator">:</div>
+            <div>
+              <div class="uk-countdown-number uk-countdown-seconds"></div>
+              <div
+                class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s"
+              >
+                Seconds
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="uk-position-center">
@@ -115,193 +177,17 @@ export default {
 body {
   margin: 0;
 }
-
-.image {
-  transition: fill 3s ease-in-out;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 80vh 1fr;
-  grid-template-rows: 72vh 1fr;
-  background-color: var(--trees);
+.header {
+  height: calc(100vh - 80px);
+  background-color: rgb(42, 82, 82);
 }
-
-[class*="section_"] {
-  grid-column: 1 / -1;
-  grid-row: 1;
-  height: 100%;
-  width: 100%;
+.uk-countdown-number {
+  font-size: 3rem;
 }
-
-svg {
-  width: 100%;
-  height: 100%;
+.uk-countdown-separator {
+  font-size: 2rem;
 }
-
-.section_sky {
-  grid-column: 1 / -1;
-  grid-row: 1;
-}
-
-.section_rl,
-.section_ml,
-.section_fl {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.section_rm,
-.section_mm,
-.section_fm {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-.section_rr,
-.section_mr,
-.section_fr {
-  grid-column: 3;
-  grid-row: 1;
-}
-
-[class*="section_f"],
-.section_trees {
-  isolation: isolate;
-}
-
-.section_mfog {
-  height: 30%;
-  margin-top: 30vh;
-}
-
-.section_ffog {
-  height: 30%;
-  margin-top: auto;
-}
-
-.section_sun {
-  height: 16vh;
-  width: 16vh;
-  margin: 4vh auto 0;
-}
-
-.gradient stop {
-  transition: stop-color 3s ease-in-out;
-}
-
-.image-light {
-  --rear_highlight: #ff8080;
-  --rear_shadow: #c26d80;
-  --mid_highlight: #ff6666;
-  --mid_shadow: #824b6c;
-  --fore_highlight: #ff4d4d;
-  --fore_shadow: #623851;
-  --trees: #412536;
-  --sky-bottom: #ffad66;
-  --sky-mid: #ff8080;
-  --sky-top: #412536;
-  --fog: #ffff66;
-  --sun: #ff4f23;
-}
-
-.image-dark {
-  --rear_highlight: #a5cfe6;
-  --rear_shadow: #7095af;
-  --mid_highlight: #88d1fb;
-  --mid_shadow: #4b6c82;
-  --fore_highlight: #87d5f7;
-  --fore_shadow: #385162;
-  --trees: #253641;
-  --sky-bottom: #a1cde4;
-  --sky-mid: #7eb9d8;
-  --sky-top: #051f33;
-  --fog: #c9dfff;
-  --sun: #6daac2;
-}
-
-.image-light .moon {
-  opacity: 0;
-}
-
-.image-dark .moon {
-  opacity: 0.22;
-}
-
-.screen {
-  mix-blend-mode: screen;
-}
-
-.fog {
-  fill: url(#gradient-fog);
-  opacity: 0.22;
-}
-
-.moon {
-  isolation: isolate;
-  opacity: 0.22;
-  mix-blend-mode: multiply;
-  transition: opacity 3s ease-in-out;
-}
-
-.moon-grey1 {
-  fill: #757575;
-}
-
-.moon-grey2 {
-  fill: #595959;
-}
-
-.moon-grey3 {
-  fill: #b2b2b2;
-}
-
-.moon-grey4 {
-  fill: #ddd;
-}
-
-path,
-polygon {
-  transition: fill 3s ease-in-out;
-}
-
-.image {
-  transition: background-color 3s ease-in-out;
-}
-
-.switch {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-}
-
-.switch span {
-  filter: saturate(0);
-  background-color: transparent;
-  opacity: 0.5;
-  padding: 0.25rem;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  transition: border-bottom-color 3s ease-in-out, filter 3s ease-in-out,
-    opacity 3s ease-in-out;
-}
-
-.switch span:first-child {
-  margin-right: 1rem;
-}
-
-[aria-checked="false"] span:first-child {
-  filter: none;
-  opacity: 1;
-  border-color: white;
-}
-
-[aria-checked="true"] span:last-child {
-  filter: none;
-  opacity: 1;
-  border-color: white;
+.uk-countdown-label {
+  font-size: 0.7rem !important;
 }
 </style>

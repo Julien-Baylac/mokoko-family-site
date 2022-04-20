@@ -6,14 +6,10 @@
       :style="require(`@/assets/img/home/yorn.jpeg`)"
     >
       <div
-        class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical"
+        class="uk-width-1-2 uk-text-center uk-margin-auto uk-margin-auto-vertical"
       >
-        <h2 uk-parallax="opacity: 0,1; y: -100,0; scale: 2,1; end: 50vh + 50%;">
-          Completez vos collections
-        </h2>
-        <div
-          uk-parallax="opacity: 0,1; y: 100,0; scale: 0.5,1; end: 50vh + 50%;"
-        >
+        <h2>Completez vos collections</h2>
+        <div>
           Partez à la recherche des toutes les montures, pets et skins avec
           l'outil de collection de la Mokoko Family. Ajoutez à votre collection
           tous ceux que vous avec récupéré et retrouvez les dans votre profil.
@@ -47,25 +43,111 @@
     </div>
     <!-- deuxieme div -->
     <div class="uk-container">
-      <h2>Rejoindre la Mokokok Family</h2>
-      <div>Rejoignez nous sur les réseaux sociaux.</div>
+      <div style="display: flex; margin-top: 50px; margin-bottom: 40px">
+        <div
+          class="uk-child-width-1-2"
+          style="display: flex; justify-content: center"
+        >
+          <img
+            class="uk-transition-scale-up uk-transition-opaque"
+            :src="require(`@/assets/img/socials/cadre-webcam.png`)"
+            style="
+              position: absolute;
+              margin-top: -46px;
+              width: 550px;
+              margin-left: 24px;
+            "
+            alt=""
+          />
+          <video
+            src="https://yootheme.com/site/images/media/yootheme-pro.mp4"
+            style="border-radius: 20px; width: 60%"
+            loop
+            muted
+            playsinline
+            uk-video="autoplay: inview"
+          ></video>
+        </div>
+        <div>
+          <div class="uk-text-center" style="margin-top: 10px">
+            <div style="margin-bottom: 10px">
+              <span
+                uk-icon="icon: twitch;ratio: 3.5"
+                style="font-size: 50px"
+              ></span>
+            </div>
+            Retrouver nous sur Twitch, les matins pour suivre le développement
+            des outils avec <span style="font-weight: bold">Oow</span>, et
+            l'après-midi pour du gameplay frénétique avec
+            <span style="font-weight: bold">AimzLoaded</span>.
+            <div
+              class="uk-grid-small uk-child-width-auto"
+              style="margin-top: 20px; display: flex; justify-content: center"
+              uk-grid
+            >
+              <div>
+                <a
+                  class="uk-button uk-button-text uk-text-center"
+                  style="margin-right: 20px"
+                  href="https://www.twitch.tv/mokokofamily"
+                  target="_blank"
+                  >Venir nous voir sur twitch</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="uk-child-width-expand@s uk-text-center" uk-grid>
-        <div style="padding: 10px; border: 1px solid grey; border-radius: 5px">
-          <img :src="require(`@/assets/img/socials/discord.png`)" />
-        </div>
-        <div style="padding: 10px; border: 1px solid grey; border-radius: 5px">
-          <img :src="require(`@/assets/img/socials/youtube.png`)" />
-        </div>
-        <div style="padding: 10px; border: 1px solid grey; border-radius: 5px">
-          <img :src="require(`@/assets/img/socials/instagram.png`)" />
-        </div>
-        <div style="padding: 10px; border: 1px solid grey; border-radius: 5px">
-          <img :src="require(`@/assets/img/socials/twitter.png`)" />
-        </div>
+        <a
+          class="uk-inline-clip uk-transition-toggle"
+          tabindex="0"
+          style="padding: 30px"
+          href="https://www.instagram.com/mokoko.family"
+          target="_blank"
+        >
+          <img
+            class="uk-transition-scale-up uk-transition-opaque"
+            :src="require(`@/assets/img/socials/discord.png`)"
+            width="1800"
+            height="1200"
+            alt=""
+          />
+        </a>
+        <a
+          class="uk-inline-clip uk-transition-toggle"
+          tabindex="0"
+          style="padding: 30px"
+          href="https://www.instagram.com/mokoko.family"
+          target="_blank"
+        >
+          <img
+            class="uk-transition-scale-up uk-transition-opaque"
+            :src="require(`@/assets/img/socials/instagram.png`)"
+            width="1800"
+            height="1200"
+            alt=""
+          />
+        </a>
+        <a
+          class="uk-inline-clip uk-transition-toggle"
+          tabindex="0"
+          style="padding: 30px"
+          href="https://www.instagram.com/mokoko.family"
+          target="_blank"
+        >
+          <img
+            class="uk-transition-scale-up uk-transition-opaque"
+            :src="require(`@/assets/img/socials/twitter.png`)"
+            width="1800"
+            height="1200"
+            alt=""
+          />
+        </a>
       </div>
     </div>
 
-    <Footer style="margin-top: 100px" />
+    <Footer style="margin-top: 50px" />
   </div>
 </template>
 
