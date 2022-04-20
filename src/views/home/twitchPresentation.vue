@@ -6,7 +6,7 @@
         class="uk-child-width-1-2"
       >
         <div style="position: relative; left: 100px">
-          <img
+          <!-- <img
             class="uk-transition-scale-up uk-transition-opaque"
             :src="require(`@/assets/img/socials/cadre-webcam.png`)"
             style="
@@ -19,10 +19,10 @@
               margin-left: -20px;
               user-select: none;
             "
-          />
+          /> -->
           <video
             src="https://yootheme.com/site/images/media/yootheme-pro.mp4"
-            style="position: absolute; border-radius: 20px; width: 400px"
+            style="position: absolute; border-radius: 8px; width: 450px"
             uk-video="autoplay: inview"
             loop
             muted
