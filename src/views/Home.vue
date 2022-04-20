@@ -43,29 +43,37 @@
     </div>
     <!-- deuxieme div -->
     <div class="uk-container">
-      <div style="display: flex; margin-top: 50px; margin-bottom: 40px">
-        <div
-          class="uk-child-width-1-2"
-          style="display: flex; justify-content: center"
-        >
+      <div
+        style="
+          display: flex;
+          justify-content: flex-end;
+          margin-top: 50px;
+          margin-bottom: 40px;
+        "
+        class="uk-child-width-1-2"
+      >
+        <div style="position: relative; left: 100px">
           <img
             class="uk-transition-scale-up uk-transition-opaque"
             :src="require(`@/assets/img/socials/cadre-webcam.png`)"
             style="
               position: absolute;
-              margin-top: -46px;
-              width: 550px;
-              margin-left: 24px;
+              width: 480px;
+              height: 200px:
+              position: absolute;
+              z-index: 1;
+              margin-top: -39px;
+              margin-left: -20px;
+              user-select: none;
             "
-            alt=""
           />
           <video
             src="https://yootheme.com/site/images/media/yootheme-pro.mp4"
-            style="border-radius: 20px; width: 60%"
+            style="position: absolute; border-radius: 20px; width: 400px"
+            uk-video="autoplay: inview"
             loop
             muted
             playsinline
-            uk-video="autoplay: inview"
           ></video>
         </div>
         <div>
@@ -77,8 +85,8 @@
               ></span>
             </div>
             Retrouver nous sur Twitch, les matins pour suivre le développement
-            des outils avec <span style="font-weight: bold">Oow</span>, et
-            l'après-midi pour du gameplay frénétique avec
+            des outils avec <span style="font-weight: bold">Oow</span>, et en
+            soirée pour du gameplay frénétique avec
             <span style="font-weight: bold">AimzLoaded</span>.
             <div
               class="uk-grid-small uk-child-width-auto"
@@ -98,6 +106,7 @@
           </div>
         </div>
       </div>
+
       <div class="uk-child-width-expand@s uk-text-center" uk-grid>
         <a
           class="uk-inline-clip uk-transition-toggle"
@@ -109,6 +118,7 @@
           <img
             class="uk-transition-scale-up uk-transition-opaque"
             :src="require(`@/assets/img/socials/discord.png`)"
+            style="user-select: none"
             width="1800"
             height="1200"
             alt=""
@@ -124,6 +134,7 @@
           <img
             class="uk-transition-scale-up uk-transition-opaque"
             :src="require(`@/assets/img/socials/instagram.png`)"
+            style="user-select: none"
             width="1800"
             height="1200"
             alt=""
@@ -139,6 +150,7 @@
           <img
             class="uk-transition-scale-up uk-transition-opaque"
             :src="require(`@/assets/img/socials/twitter.png`)"
+            style="user-select: none"
             width="1800"
             height="1200"
             alt=""

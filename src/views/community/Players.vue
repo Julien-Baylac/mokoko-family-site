@@ -5,7 +5,7 @@
       <div class="uk-flex uk-flex-between">
         <div style="margin-top: 20px">
           <dl class="uk-description-list">
-            <dt>Barème du Top puissance</dt>
+            <dt>Les joueurs de la communauté</dt>
             <dd>Niveau x10 | Expé niveau x15 | Point x3 | Ilvl x2</dd>
           </dl>
         </div>

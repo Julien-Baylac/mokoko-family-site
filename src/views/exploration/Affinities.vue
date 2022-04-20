@@ -27,43 +27,6 @@
             </dd>
           </dl>
         </div>
-
-        <div>
-          <ul
-            class="uk-breadcrumb"
-            style="margin-bottom: 10px; margin-top: 35px"
-          >
-            <li>
-              <span style="color: #666">Continents: </span
-              ><span :style="'color: ' + percentColor(30)">30%</span>
-            </li>
-            <li>
-              <span style="color: #666">En mer : </span
-              ><span :style="'color: ' + percentColor(40)">40%</span>
-            </li>
-            <li>
-              <span style="color: #666">Trixion : </span>
-              <span :style="'color: ' + percentColor(0)">0%</span>
-            </li>
-          </ul>
-          <ul
-            class="uk-breadcrumb"
-            style="margin-bottom: 10px; margin-top: 10px"
-          >
-            <li>
-              <span style="color: #666">Coeurs de Géant: </span>
-              <span :style="'color: ' + percentColor(40)">40%</span>
-            </li>
-            <li>
-              <span style="color: #666">Étoiles d'Omnium: </span>
-              <span :style="'color: ' + percentColor(100)">100%</span>
-            </li>
-            <li>
-              <span style="color: #666">Cartes: </span>
-              <span :style="'color: ' + percentColor(63)">63%</span>
-            </li>
-          </ul>
-        </div>
       </div>
 
       <div class="uk-margin-medium-top" style="margin-bottom: 40px">
