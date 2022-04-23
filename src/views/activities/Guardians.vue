@@ -1,5 +1,11 @@
 <template>
   <div class="dungeon">
+    <Header
+      wallpaper="guardian_wallpaper"
+      title="Raids de gardien"
+      subtitle="Inscriptions aux raids de gardien"
+      :description="`Faites une recherche en cliquant sur l'image ou recherchez directement via le filtre au dessus du tableau`"
+    ></Header>
     <div class="dungeon-container" style="margin-bottom: 100px">
       <div class="uk-margin-medium-top" style="margin-bottom: 40px">
         <ul class="uk-flex-center" uk-tab>
@@ -8,30 +14,48 @@
           <li @click="changeTier(3)"><a> Tier 3</a></li>
         </ul>
       </div>
-      <div
-        v-for="guardian in filtredGuardianList"
-        v-bind:key="guardian.id"
-        class="dungeon-list"
+
+      <ul
+        class="uk-subnav uk-subnav-pill uk-margin-left"
+        uk-switcher="animation: uk-animation-slide-left-medium, uk-animation-slide-right-medium"
       >
-        <GuardianCard
-          :name="guardian.name"
-          :ilvl="guardian.ilvl"
-          :groupSize="guardian.groupSize"
-          :imgUrl="guardian.imgUrl"
-        />
-      </div>
+        <li
+          v-for="guardianList in filtredGuardianList"
+          v-bind:key="guardianList.part"
+        >
+          <a>Partie {{ guardianList.part }}</a>
+        </li>
+      </ul>
+      <ul class="uk-switcher uk-margin">
+        <li
+          v-for="guardianList in filtredGuardianList"
+          v-bind:key="guardianList.part"
+        >
+          <div>
+            <GuardianCard
+              class="guardian-list"
+              :guardians="guardianList.guardians"
+            />
+          </div>
+        </li>
+      </ul>
       <!-- <hr class="uk-divider-icon" /> -->
     </div>
+    <Footer />
   </div>
 </template>
 
 <script>
+import Footer from "@/components/Footer.vue";
 import GuardianCard from "@/components/activities/GuardianCard.vue";
+import Header from "@/components/activities/header.vue";
 
 export default {
   props: {},
   components: {
     GuardianCard,
+    Footer,
+    Header,
   },
   data() {
     return {
@@ -40,70 +64,183 @@ export default {
         {
           id: 1,
           tier: 1,
-          guardians: [
+          guardiansParts: [
             {
-              id: 1,
               part: 1,
-              name: "Ur'nil",
-              ilvl: 302,
-              groupSize: 4,
-              imgUrl: "urnil",
+              guardians: [
+                {
+                  id: 1,
+                  name: "Ur'nil",
+                  ilvl: 302,
+                  groupSize: 4,
+                  imgUrl: "urnil",
+                },
+                {
+                  id: 2,
+                  name: "Lumerus",
+                  ilvl: 340,
+                  groupSize: 4,
+                  imgUrl: "lumerus",
+                },
+                {
+                  id: 3,
+                  name: "Legioros Glacies",
+                  ilvl: 380,
+                  groupSize: 4,
+                  imgUrl: "legioros",
+                },
+                {
+                  id: 4,
+                  name: "Vertus",
+                  ilvl: 420,
+                  groupSize: 4,
+                  imgUrl: "vertus",
+                },
+              ],
             },
             {
-              id: 2,
+              part: 2,
+              guardians: [
+                {
+                  id: 5,
+                  name: "Ur'nilzzzz",
+                  ilvl: 302,
+                  groupSize: 4,
+                  imgUrl: "urnil",
+                },
+                {
+                  id: 6,
+                  name: "Lumeruzzzzs",
+                  ilvl: 340,
+                  groupSize: 4,
+                  imgUrl: "lumerus",
+                },
+                {
+                  id: 7,
+                  name: "Legioros Glazzzzcies",
+                  ilvl: 380,
+                  groupSize: 4,
+                  imgUrl: "legioros",
+                },
+                {
+                  id: 8,
+                  name: "Vertuzzzs",
+                  ilvl: 420,
+                  groupSize: 4,
+                  imgUrl: "vertus",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 2,
+          tier: 2,
+          guardiansParts: [
+            {
               part: 1,
-              name: "Lumerus",
-              ilvl: 340,
-              groupSize: 4,
-              imgUrl: "lumerus",
+              guardians: [
+                {
+                  id: 1,
+                  name: "Ur'nil",
+                  ilvl: 302,
+                  groupSize: 4,
+                  imgUrl: "urnil",
+                },
+                {
+                  id: 2,
+                  name: "Lumerus",
+                  ilvl: 340,
+                  groupSize: 4,
+                  imgUrl: "lumerus",
+                },
+                {
+                  id: 3,
+                  name: "Legioros Glacies",
+                  ilvl: 380,
+                  groupSize: 4,
+                  imgUrl: "legioros",
+                },
+                {
+                  id: 4,
+                  name: "Vertus",
+                  ilvl: 420,
+                  groupSize: 4,
+                  imgUrl: "vertus",
+                },
+              ],
             },
             {
-              id: 3,
+              part: 2,
+              guardians: [
+                {
+                  id: 5,
+                  name: "Ur'nilzzzz",
+                  ilvl: 302,
+                  groupSize: 4,
+                  imgUrl: "urnil",
+                },
+                {
+                  id: 6,
+                  name: "Lumeruzzzzs",
+                  ilvl: 340,
+                  groupSize: 4,
+                  imgUrl: "lumerus",
+                },
+                {
+                  id: 7,
+                  name: "Legioros Glazzzzcies",
+                  ilvl: 380,
+                  groupSize: 4,
+                  imgUrl: "legioros",
+                },
+                {
+                  id: 8,
+                  name: "Vertuzzzs",
+                  ilvl: 420,
+                  groupSize: 4,
+                  imgUrl: "vertus",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 3,
+          tier: 3,
+          guardiansParts: [
+            {
               part: 1,
-              name: "Legioros Glacies",
-              ilvl: 380,
-              groupSize: 4,
-              imgUrl: "legioros",
-            },
-            {
-              id: 4,
-              part: 1,
-              name: "Vertus",
-              ilvl: 420,
-              groupSize: 4,
-              imgUrl: "vertus",
-            },
-            {
-              id: 5,
-              part: 2,
-              name: "Chromanium",
-              ilvl: 460,
-              groupSize: 4,
-              imgUrl: "chromanium",
-            },
-            {
-              id: 6,
-              part: 2,
-              name: "Nacrasena",
-              ilvl: 500,
-              groupSize: 4,
-              imgUrl: "nacrasena",
-            },
-            {
-              id: 7,
-              part: 2,
-              name: "Yoho, le renard de feu",
-              ilvl: 540,
-              groupSize: 4,
-              imgUrl: "yoho",
-            },
-            {
-              id: 8,
-              part: 2,
-              name: "Tytalos",
-              ilvl: 580,
-              groupSize: 4,
-              imgUrl: "tytalos",
+              guardians: [
+                {
+                  id: 1,
+                  name: "Ur'nil",
+                  ilvl: 302,
+                  groupSize: 4,
+                  imgUrl: "urnil",
+                },
+                {
+                  id: 2,
+                  name: "Lumerus",
+                  ilvl: 340,
+                  groupSize: 4,
+                  imgUrl: "lumerus",
+                },
+                {
+                  id: 3,
+                  name: "Legioros Glacies",
+                  ilvl: 380,
+                  groupSize: 4,
+                  imgUrl: "legioros",
+                },
+                {
+                  id: 4,
+                  name: "Vertus",
+                  ilvl: 420,
+                  groupSize: 4,
+                  imgUrl: "vertus",
+                },
+              ],
             },
           ],
         },
@@ -115,7 +252,7 @@ export default {
       let newArray = [];
       this.guardiansTiersList.forEach((element) => {
         if (element.tier === this.tier) {
-          newArray.push(...element.guardians);
+          newArray = element.guardiansParts;
         }
       });
       return newArray;

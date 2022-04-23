@@ -1,177 +1,233 @@
 <template>
-  <div class="header"></div>
+  <div
+    class="header"
+    uk-parallax="bgy: -200"
+    v-bind:style="{
+      backgroundImage:
+        'url(' + require(`@/assets/img/home/header-image.jpeg`) + ')',
+    }"
+  >
+    <div
+      class="uk-position-top-right"
+      header-image.jpeg
+      style="margin-top: 120px; margin-right: 40px"
+    >
+      <div
+        style="
+          background-color: rgba(0, 0, 0, 0.6);
+          padding: 15px;
+          border-radius: 4px;
+        "
+      >
+        <span>Marchands Itinérants</span>
+        <div style="margin-top: 15px" class="uk-text-left">
+          <div style="color: #7dbaff">
+            <span uk-icon="copy" style="margin-right: 10px"></span
+            ><span>Séria </span
+            ><span>{{ getTime("2022-04-20T11:11:57.056-07:00") }}</span>
+          </div>
+          <div class="uk-text-center">
+            <span uk-icon="minus"></span>
+          </div>
+          <div style="color: #deab60">
+            <span uk-icon="copy" style="margin-right: 10px"></span
+            ><span>Mei </span
+            ><span>{{ getTime("2022-04-20T11:11:57.056-07:00") }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="uk-position-top-left"
+      style="margin-top: 120px; margin-left: 40px"
+    >
+      <div
+        style="
+          background-color: rgba(0, 0, 0, 0.6);
+          padding: 15px;
+          border-radius: 4px;
+        "
+      >
+        <span>Est des Etats-unis : {{ substractTime(4) }} </span><br />
+        <span>Ouest des Etats-unis : {{ substractTime(7) }} </span><br />
+        <span>Europe centrale : {{ addTime(1) }} </span><br />
+        <span>Europe occidentale : {{ addTime() }} </span><br />
+        <span>Amérique du Sud : {{ addTime(3) }} </span>
+      </div>
+      <div
+        style="
+          background-color: rgba(0, 0, 0, 0.6);
+          padding: 15px;
+          border-radius: 4px;
+          margin-top: 10px;
+        "
+      >
+        <span style="display: flex; align-items: center"
+          >Zinnervale :
+          <div
+            style="
+              height: 10px;
+              width: 10px;
+              background-color: green;
+              border-radius: 20px;
+              margin-left: 10px;
+              margin-right: 7px;
+            "
+          ></div>
+          En ligne
+        </span>
+      </div>
+      <div
+        style="
+          background-color: rgba(0, 0, 0, 0.6);
+          padding: 15px;
+          border-radius: 4px;
+          margin-top: 10px;
+        "
+      >
+        <span style="display: flex; align-items: center; margin-bottom: 20px"
+          >Reset du serveur - Europe occidentale
+        </span>
+        <div style="display: flex; justify-content: center">
+          <div
+            class="uk-grid-small uk-child-width-auto"
+            uk-grid
+            uk-countdown="date: 2022-04-27T08:23:45+00:00"
+          >
+            <div>
+              <div class="uk-countdown-number uk-countdown-hours"></div>
+              <div
+                class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s"
+              >
+                Heures
+              </div>
+            </div>
+            <div class="uk-countdown-separator">:</div>
+            <div>
+              <div class="uk-countdown-number uk-countdown-minutes"></div>
+              <div
+                class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s"
+              >
+                Minutes
+              </div>
+            </div>
+            <div class="uk-countdown-separator">:</div>
+            <div>
+              <div class="uk-countdown-number uk-countdown-seconds"></div>
+              <div
+                class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s"
+              >
+                Secondes
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="uk-position-bottom"
+      style="
+        margin-bottom: 80px;
+        background-color: rgba(0, 0, 0, 0.6);
+        padding-top: 20px;
+        padding-bottom: 20px;
+      "
+    >
+      <div>
+        <div style="display: flex; justify-content: center">
+          <img
+            :src="require(`@/assets/img/logo/logo-grey.png`)"
+            style="
+              border-radius: 30px;
+              width: 60px;
+              height: 60px;
+              margin-bottom: 10px;
+              border: 2px grey solid;
+            "
+          />
+        </div>
+
+        <div style="display: flex; justify-content: center">
+          <span style="font-size: 25px"> Mokoko Family </span>
+        </div>
+        <div style="display: flex; justify-content: center">
+          <span style="font-size: 13px"
+            >Communauté Francophone de Lost Ark</span
+          >
+        </div>
+        <div style="display: flex; justify-content: center; margin-top: 10px">
+          <span style="font-size: 13px">Beta-0.0.1</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
+import moment from "moment";
+
 export default {
-  name: "HelloWorld",
+  name: "header-home",
+  data() {
+    return {
+      time: moment(),
+      marginStone1: 0,
+    };
+  },
   props: {
     msg: String,
   },
   components: {},
+  beforeMount() {
+    setInterval(() => {
+      this.time = moment();
+    }, 1000);
+  },
+  computed: {
+    isDay() {
+      var currentHour = this.time.format("HH");
+      if (currentHour >= 9 && currentHour < 21) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
+  methods: {
+    addTime(hours) {
+      return this.time.locale("fr").add(hours, "h").format("LT");
+    },
+    substractTime(hours) {
+      return this.time.locale("fr").subtract(hours, "h").format("LT");
+    },
+    getTime(date) {
+      if (date !== null) {
+        return moment(date).lang("fr").from(this.time);
+      } else {
+        return "Disponible";
+      }
+    },
+  },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-$scrub: #c0b3a0;
-$dayTime: true;
-$dayDuration: 120s;
-$foregroundDuration: 30s;
-$hillsDuration: 60s;
-$rocks1Duration: 120s;
-$rocks2Duration: 240s;
-
-section {
+body {
   margin: 0;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background-color: $scrub;
 }
-
-.content {
-  position: absolute;
-  width: 100%;
-  height: 80%;
-  overflow: hidden;
+.video {
+  height: calc(100vh - 80px);
 }
-
-.paralax {
-  position: absolute;
-  width: 100%;
-  height: 80%;
-  overflow: hidden;
-  background: url("http://www.testomic.com/public/codepen-assets/img/paralax/background.jpg");
-  background-size: cover;
-  background-position: center;
+.header {
+  height: calc(100vh - 80px);
 }
-
-.paralax .layer {
-  position: absolute;
-  width: 400%;
+.uk-countdown-number {
+  font-size: 3rem;
 }
-
-.paralax .foreground {
-  height: 50%;
-  bottom: 0;
-  background: url("http://www.testomic.com/public/codepen-assets/img/paralax/foreground.png")
-    repeat-x;
-  background-size: 25% 100%;
-  animation: slideshow $foregroundDuration linear infinite;
+.uk-countdown-separator {
+  font-size: 2rem;
 }
-
-.paralax .hills {
-  height: 40%;
-  bottom: 15%;
-  background: url("http://www.testomic.com/public/codepen-assets/img/paralax/hills.png")
-    repeat-x;
-  background-size: 25% 100%;
-  animation: slideshow $hillsDuration linear infinite;
-}
-
-.paralax .rocks1 {
-  height: 35%;
-  bottom: 25%;
-  background: url("http://www.testomic.com/public/codepen-assets/img/paralax/rocks1.png")
-    repeat-x;
-  background-size: 25% 100%;
-  animation: slideshow $rocks1Duration linear infinite;
-}
-
-.paralax .rocks2 {
-  height: 40%;
-  bottom: 15%;
-  background: url("http://www.testomic.com/public/codepen-assets/img/paralax/rocks2.png")
-    repeat-x;
-  background-size: 25% 100%;
-  animation: slideshow $rocks2Duration linear infinite;
-}
-
-@keyframes slideshow {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes dayToNight {
-  0% {
-    -webkit-filter: hue-rotate(0deg) brightness(1);
-    filter: hue-rotate(0deg) brightness(1);
-  }
-  50% {
-    -webkit-filter: hue-rotate(180deg) brightness(0.1);
-    filter: hue-rotate(180deg) brightness(0.1);
-  }
-  100% {
-    -webkit-filter: hue-rotate(0deg) brightness(1);
-    filter: hue-rotate(0deg) brightness(1);
-  }
-}
-
-/**	
-* Nonatomic Branding
-*/
-#link {
-  font-family: "Roboto", sans-serif;
-  position: fixed;
-  bottom: 5%;
-  width: 100%;
-  text-align: center;
-}
-
-.img-url {
-  text-decoration: none;
-}
-
-.url {
-  opacity: 0.5;
-  text-decoration: none;
-}
-
-a:link {
-  color: white;
-}
-
-a:visited {
-  color: white;
-}
-
-a:hover {
-  color: purple;
-}
-
-a:active {
-  color: white;
-}
-
-#small-logo {
-  width: 30px;
-  transform: translate(-10px, 12px);
-  opacity: 1;
-}
-
-/**
-* Versions
-*/
-#versions {
-  font-family: "Roboto", sans-serif;
-  position: fixed;
-  top: 5%;
-  width: 100%;
-  text-align: center;
-}
-
-.url-highlighted {
-  opacity: 1;
-  text-decoration: none;
-}
-
-.url-normal {
-  opacity: 0.5;
-  text-decoration: none;
+.uk-countdown-label {
+  font-size: 0.7rem !important;
 }
 </style>

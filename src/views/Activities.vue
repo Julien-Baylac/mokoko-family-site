@@ -5,29 +5,34 @@
       <div class="sidebar">
         <ul class="uk-tab-left tabs" style="margin-left: 50px" uk-tab>
           <li class="first-tab" @click="changeActivity('dungeons')">
-            <a>Donjons</a>
-          </li>
-          <li @click="changeActivity('raids')"><a>Raids</a></li>
-          <li @click="changeActivity('guardians')">
             <a
-              >Gardiens
-              <ul class="uk-dotnav">
-                <li class="uk-active" style="margin-left: 15px">
+              ><ul class="uk-dotnav">
+                <li class="">
                   <a>Item 1</a>
                 </li>
-                <li><a>Item 2</a></li>
-              </ul></a
+              </ul>
+              Donjons</a
             >
           </li>
-          <li @click="changeActivity('events')">
+
+          <li @click="changeActivity('guardians')">
             <a
-              >Events
-              <ul class="uk-dotnav">
-                <li class="uk-active" style="margin-left: 15px">
+              ><ul class="uk-dotnav">
+                <li class="">
                   <a>Item 1</a>
                 </li>
-                <li><a>Item 2</a></li>
-              </ul></a
+              </ul>
+              Gardiens
+            </a>
+          </li>
+          <li @click="changeActivity('raids')">
+            <a
+              ><ul class="uk-dotnav">
+                <li class="">
+                  <a>Item 1</a>
+                </li>
+              </ul>
+              Raids</a
             >
           </li>
         </ul>
@@ -71,19 +76,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.sidebar {
-  height: calc(100vh - 80px);
-  .tabs {
-    height: 100%;
-    .first-tab {
-      margin-top: 32vh;
+.activities {
+  .sidebar {
+    height: calc(100vh - 80px);
+    .tabs {
+      height: 100%;
+      .first-tab {
+        margin-top: 32vh;
+      }
     }
   }
-}
-.right-part {
-  padding-left: 5%;
-  padding-right: 5%;
-  height: calc(100vh - 80px);
-  overflow: scroll;
+  .right-part {
+    height: calc(100vh - 80px);
+    overflow: scroll;
+  }
+  .uk-grid {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+  }
+  .uk-dotnav {
+    margin-right: 10px;
+  }
 }
 </style>

@@ -1,7 +1,71 @@
 <template>
-  <div class="uk-section dungeon-card">
-    <div class="uk-flex">
-      <div class="uk-width-1-5">
+  <div class="dungeon-card">
+    <div
+      class="uk-background-cover uk-height-medium uk-light uk-flex"
+      uk-parallax="bgy: -10"
+      style="border-radius: 10px; display: block"
+      v-bind:style="{
+        backgroundImage:
+          'url(' + require(`@/assets/img/dungeons/${imgUrl}.png`) + ')',
+      }"
+    >
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 65px;
+        "
+      >
+        <span
+          style="
+            background-color: rgb(0 0 0 / 60%);
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            margin-left: 10px;
+          "
+          >{{ groupSize }} Personnes</span
+        >
+        <span
+          style="
+            background-color: rgb(0 0 0 / 60%);
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            margin-right: 10px;
+          "
+          >Niveau d'object : {{ ilvl }}</span
+        >
+      </div>
+      <h3
+        class="uk-text-center uk-margin-auto uk-margin-auto-vertical"
+        style="
+          background-color: rgb(0 0 0 / 60%);
+          padding-top: 20px;
+          padding-bottom: 20px;
+        "
+      >
+        {{ name }}
+      </h3>
+      <div
+        style="display: flex; justify-content: space-between; margin-top: 60px"
+      >
+        <button
+          class="uk-button uk-button-default uk-button-small"
+          style="background-color: rgb(0 0 0 / 60%); margin-left: 10px"
+        >
+          Besoin
+        </button>
+        <button
+          class="uk-button uk-button-default uk-button-small"
+          style="background-color: rgb(0 0 0 / 60%); margin-right: 10px"
+        >
+          Terminé
+        </button>
+      </div>
+    </div>
+    <div class="uk-flex" style="margin-top: 20px">
+      <div class="uk-width-1-2">
         <div class="uk-child-width-expand@s" uk-grid>
           <div>
             <div
@@ -22,60 +86,69 @@
               </div>
             </div>
 
-            <ul class="uk-list uk-list-collapse" style="margin-top: 0px">
-              <li v-for="char in need" v-bind:key="char.id">
-                <img
-                  class="uk-preserve-width uk-border-circle"
-                  :src="require(`@/assets/img/classes/${char.class}.png`)"
-                  width="20"
-                  height="20"
-                  style="background-color: black; margin-right: 5px"
-                  alt=""
-                />
-                {{ char.name }}
-              </li>
-            </ul>
+            <div>
+              <ul
+                class="uk-list uk-list-collapse uk-list-striped uk-margin-top"
+              >
+                <li>
+                  <img
+                    class="uk-preserve-width uk-border-circle"
+                    :src="require(`@/assets/img/classes/gunlancer.png`)"
+                    width="20"
+                    height="20"
+                    style="margin-right: 15px; margin-bottom: 4px"
+                    alt=""
+                  />NomDuPerso
+                  <span style="color: grey; font-size: 13px; margin-left: 7px"
+                    >1340</span
+                  >
+                </li>
+                <li>
+                  <img
+                    class="uk-preserve-width uk-border-circle"
+                    :src="require(`@/assets/img/classes/paladin.png`)"
+                    width="20"
+                    height="20"
+                    style="margin-right: 15px; margin-bottom: 4px"
+                    alt=""
+                  />NomDuPerso
+                  <span style="color: grey; font-size: 13px; margin-left: 7px"
+                    >1340</span
+                  >
+                </li>
+                <li>
+                  <img
+                    class="uk-preserve-width uk-border-circle"
+                    :src="require(`@/assets/img/classes/bard.png`)"
+                    width="20"
+                    height="20"
+                    style="margin-right: 15px; margin-bottom: 4px"
+                    alt=""
+                  />NomDuPerso
+                  <span style="color: grey; font-size: 13px; margin-left: 7px"
+                    >1340</span
+                  >
+                </li>
+                <li>
+                  <img
+                    class="uk-preserve-width uk-border-circle"
+                    :src="require(`@/assets/img/classes/striker.png`)"
+                    width="20"
+                    height="20"
+                    style="margin-right: 15px; margin-bottom: 4px"
+                    alt=""
+                  />NomDuPerso
+                  <span style="color: grey; font-size: 13px; margin-left: 7px"
+                    >1340</span
+                  >
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-      <div
-        class="uk-background-cover uk-height-medium uk-light uk-flex uk-width-3-5"
-        uk-parallax="bgy: -100"
-        style="border-radius: 10px; display: block; padding: 30px"
-        v-bind:style="{
-          backgroundImage:
-            'url(' + require(`@/assets/img/dungeons/${imgUrl}.png`) + ')',
-        }"
-      >
-        <div
-          style="
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 80px;
-          "
-        >
-          <span>{{ groupSize }} Personnes</span>
-          <span>Niveau d'object : {{ ilvl }}</span>
-        </div>
-        <h3 class="uk-text-center uk-margin-auto uk-margin-auto-vertical">
-          {{ name }}
-        </h3>
-        <div
-          style="
-            display: flex;
-            justify-content: space-between;
-            margin-top: 80px;
-          "
-        >
-          <button class="uk-button uk-button-default uk-button-small">
-            Besoin
-          </button>
-          <button class="uk-button uk-button-default uk-button-small">
-            Terminé
-          </button>
-        </div>
-      </div>
-      <div class="uk-width-1-5">
+
+      <div class="uk-width-1-2 dungeon-card-right-part">
         <div class="uk-child-width-expand@s" uk-grid>
           <div>
             <div
@@ -99,17 +172,64 @@
               class="uk-list uk-list-collapse"
               style="margin-left: 10px; margin-top: 0px"
             >
-              <li v-for="char in done" v-bind:key="char.id">
-                <img
-                  class="uk-preserve-width uk-border-circle"
-                  :src="require(`@/assets/img/classes/${char.class}.png`)"
-                  width="20"
-                  height="20"
-                  style="background-color: black; margin-right: 5px"
-                  alt=""
-                />
-                {{ char.name }}
-              </li>
+              <div>
+                <ul
+                  class="uk-list uk-list-collapse uk-list-striped uk-margin-top"
+                >
+                  <li>
+                    <img
+                      class="uk-preserve-width uk-border-circle"
+                      :src="require(`@/assets/img/classes/gunlancer.png`)"
+                      width="20"
+                      height="20"
+                      style="margin-right: 15px; margin-bottom: 4px"
+                      alt=""
+                    />NomDuPerso
+                    <span style="color: grey; font-size: 13px; margin-left: 7px"
+                      >1340</span
+                    >
+                  </li>
+                  <li>
+                    <img
+                      class="uk-preserve-width uk-border-circle"
+                      :src="require(`@/assets/img/classes/paladin.png`)"
+                      width="20"
+                      height="20"
+                      style="margin-right: 15px; margin-bottom: 4px"
+                      alt=""
+                    />NomDuPerso
+                    <span style="color: grey; font-size: 13px; margin-left: 7px"
+                      >1340</span
+                    >
+                  </li>
+                  <li>
+                    <img
+                      class="uk-preserve-width uk-border-circle"
+                      :src="require(`@/assets/img/classes/bard.png`)"
+                      width="20"
+                      height="20"
+                      style="margin-right: 15px; margin-bottom: 4px"
+                      alt=""
+                    />NomDuPerso
+                    <span style="color: grey; font-size: 13px; margin-left: 7px"
+                      >1340</span
+                    >
+                  </li>
+                  <li>
+                    <img
+                      class="uk-preserve-width uk-border-circle"
+                      :src="require(`@/assets/img/classes/striker.png`)"
+                      width="20"
+                      height="20"
+                      style="margin-right: 15px; margin-bottom: 4px"
+                      alt=""
+                    />NomDuPerso
+                    <span style="color: grey; font-size: 13px; margin-left: 7px"
+                      >1340</span
+                    >
+                  </li>
+                </ul>
+              </div>
             </ul>
           </div>
         </div>
@@ -176,5 +296,9 @@ export default {
 <style lang="scss" scoped>
 .dungeon-card {
   margin-bottom: 30px;
+  width: 95%;
+}
+.dungeon-card-right-part {
+  margin-left: 30px;
 }
 </style>
