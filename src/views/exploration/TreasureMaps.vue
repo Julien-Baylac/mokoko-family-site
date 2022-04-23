@@ -1,5 +1,11 @@
 <template>
   <div class="islands">
+    <Header
+      wallpaper="treasures_wallpaper"
+      title="Symboles insulaires"
+      subtitle="RECHERCHE DES ÂMES INSULAIRES"
+      :description="`Faites une recherche par zone en cliquant sur la carte ou recherchez directement une île parmis les ${islands.length} référencées`"
+    ></Header>
     <div class="uk-container">
       <h3 class="uk-article-title uk-margin-medium-top">Trésors des mers</h3>
       <div class="uk-flex uk-flex-between">
@@ -16,7 +22,7 @@
       </div>
       <div class="uk-child-width-1" uk-grid>
         <div>
-          <div class="uk-inline uk-dark" style="padding-left: 40px">
+          <div class="uk-inline uk-dark">
             <img
               :src="require(`@/assets/img/exploration/treasures_map.png`)"
               width="1800"
@@ -219,16 +225,19 @@
         </div>
       </div>
     </div>
-    <Footer />
+    <Footer style="margin-top: 70px" />
   </div>
 </template>
 
 <script>
 import Footer from "@/components/Footer.vue";
+import Header from "@/components/explorations/header.vue";
+
 export default {
   name: "islands",
   components: {
     Footer,
+    Header,
   },
   data() {
     return {

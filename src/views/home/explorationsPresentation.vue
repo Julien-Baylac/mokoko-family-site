@@ -5,7 +5,6 @@
         <div
           class="uk-height-medium uk-background-cover uk-light uk-flex"
           style="border-radius: 10px"
-          uk-parallax="bgy: -70"
           :style="{
             'background-image':
               'url(' + require('@/assets/img/home/exploration.jpeg') + ')',

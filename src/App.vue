@@ -149,6 +149,9 @@
         <span class="">
           <ul class="uk-navbar-nav">
             <li>
+              <router-link to="/login">se connecter</router-link>
+            </li>
+            <li>
               <a
                 ><span
                   uk-icon="icon: user"
@@ -174,34 +177,7 @@
                   </li> -->
                   <li>
                     <router-link to="/profile"
-                      ><span
-                        ><span
-                          uk-icon="user"
-                          style="
-                            margin-right: 10px;
-                            border: 1px grey solid;
-                            padding: 1px;
-                            border-radius: 3px;
-                          "
-                        ></span>
-                        <span>Mon profil</span></span
-                      ></router-link
-                    >
-                  </li>
-                  <li>
-                    <router-link to="/profile"
-                      ><span
-                        ><span
-                          uk-icon="settings"
-                          style="
-                            margin-right: 6px;
-                            border: 1px grey solid;
-                            padding: 1px;
-                            border-radius: 3px;
-                          "
-                        ></span>
-                        Parametres</span
-                      ></router-link
+                      ><span> <span>Mon profil</span></span></router-link
                     >
                   </li>
                   <li class="uk-nav-divider uk-margin-top"></li>
@@ -269,7 +245,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
-
 #nav {
   padding: 30px;
   a {

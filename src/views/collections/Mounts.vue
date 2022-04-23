@@ -1,40 +1,8 @@
 <template>
   <div class="mounts">
+    <Header wallpaper="mount_wallpaper" title="Les montures"></Header>
     <div class="uk-container">
       <div class="uk-margin-medium-top">
-        <div
-          style="
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-          "
-        >
-          <h3 class="uk-article-title">Les montures</h3>
-          <div>
-            <p uk-margin>
-              <button
-                class="uk-button uk-button-default uk-button-small"
-                style="margin-right: 7px"
-                :style="
-                  displayType === 'gallery' ? 'background-color: #313131' : ''
-                "
-                @click="displayType = 'gallery'"
-              >
-                Galerie
-              </button>
-              <button
-                class="uk-button uk-button-default uk-button-small"
-                style="margin-right: 7px"
-                :style="
-                  displayType === 'list' ? 'background-color: #313131' : ''
-                "
-                @click="displayType = 'list'"
-              >
-                Liste
-              </button>
-            </p>
-          </div>
-        </div>
         <div class="uk-margin-medium-top">
           <ul class="uk-flex-center" uk-tab>
             <li @click="obtentionType = 'all'"><a>Toutes</a></li>
@@ -199,12 +167,14 @@
 <script>
 import Footer from "@/components/Footer.vue";
 import mountCard from "@/components/collections/mountCard.vue";
+import Header from "@/components/collections/header.vue";
 import moment from "moment";
 
 export default {
   components: {
     Footer,
     mountCard,
+    Header,
   },
   data() {
     return {

@@ -1,15 +1,12 @@
 <template>
   <div class="players">
+    <Header
+      wallpaper="stats_wallpaper"
+      title="Statistiques"
+      subtitle="Les joueurs de la communauté"
+      :description="`Faites une recherche en cliquant sur l'image ou recherchez directement via le filtre au dessus du tableau`"
+    ></Header>
     <div class="uk-container">
-      <h3 class="uk-article-title uk-margin-medium-top">Statistiques</h3>
-      <div class="uk-flex uk-flex-between">
-        <div style="margin-top: 20px">
-          <dl class="uk-description-list">
-            <dt>Barème du Top puissance</dt>
-            <dd>Niveau x10 | Expé niveau x15 | Point x3 | Ilvl x2</dd>
-          </dl>
-        </div>
-      </div>
       <div class="uk-margin-medium-top">
         <ul class="uk-flex-center" uk-tab>
           <li><a @click="changeSection('ilvl')">Ilvl</a></li>
@@ -29,12 +26,13 @@
 
 <script>
 import Footer from "@/components/Footer.vue";
-import classBars from "@/components/statistics/classBars.vue";
-import ilvl from "@/components/statistics/ilvl.vue";
-import comparator from "../../components/statistics/comparator.vue";
+import classBars from "@/components/community/statistics/classBars.vue";
+import ilvl from "@/components/community/statistics/ilvl.vue";
+import comparator from "../../components/community/statistics/comparator.vue";
+import Header from "@/components/community/header.vue";
 
 export default {
-  components: { Footer, classBars, ilvl, comparator },
+  components: { Footer, classBars, ilvl, comparator, Header },
   data() {
     return {
       section: "ilvl",

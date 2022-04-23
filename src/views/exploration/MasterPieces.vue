@@ -1,22 +1,15 @@
 <template>
   <div class="master-pieces">
-    <div class="uk-container">
-      <h3 class="uk-article-title uk-margin-medium-top">Oeuvres d'art</h3>
-      <div class="uk-flex uk-flex-between">
-        <div style="margin-top: 20px">
-          <dl class="uk-description-list">
-            <dt>Recherche des Oeuvres d'art</dt>
-            <dd>
-              Faites une recherche par tableau en cliquant sur l'image ou
-              recherchez directement une oeuvre d'art parmis les
-              {{ islands.length }} référencées
-            </dd>
-          </dl>
-        </div>
-      </div>
-      <div class="uk-child-width-1" uk-grid>
+    <div>
+      <Header
+        wallpaper="masterpiece_wallpaper"
+        title="Oeuvres d'art"
+        subtitle="RECHERCHE DES Oeuvres d'art"
+        :description="`Faites une recherche en cliquant sur la l'image ou recherchez directement une oeuvre d'art parmis les ${filteredIslands.length} référencés`"
+      ></Header>
+      <div class="uk-container" style="margin-top: 70px">
         <div>
-          <div class="uk-inline uk-dark" style="padding-left: 40px">
+          <div class="uk-inline uk-dark">
             <img
               :src="require(`@/assets/img/exploration/masterpiece_map.png`)"
               width="1800"
@@ -36,7 +29,7 @@
         </div>
       </div>
 
-      <div class="uk-margin-medium">
+      <div class="uk-margin-medium uk-container">
         <div>
           <div style="display: flex; justify-content: space-between">
             <h3 id="table-title" style="margin-bottom: 0">
@@ -115,16 +108,19 @@
         </div>
       </div>
     </div>
-    <Footer />
+    <Footer style="margin-top: 70px" />
   </div>
 </template>
 
 <script>
 import Footer from "@/components/Footer.vue";
+import Header from "@/components/explorations/header.vue";
+
 export default {
   name: "islands",
   components: {
     Footer,
+    Header,
   },
   data() {
     return {

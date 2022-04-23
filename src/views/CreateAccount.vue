@@ -1,13 +1,36 @@
 <template>
-  <div class="login">
+  <div class="create-account">
     <div
-      class="uk-position-center uk-overlay uk-overlay-default"
-      style="width: 400px"
+      class="uk-position-center uk-overlay uk-overlay-default uk-background-secondary"
+      style="width: 400px; border-radius: 6px"
     >
       <div class="uk-flex uk-flex-center">
-        <h2>Mokoko Family</h2>
+        <div style="margin-top: -70px">
+          <div style="display: flex; justify-content: center">
+            <img
+              :src="require(`@/assets/img/logo/logo-grey.png`)"
+              style="
+                border-radius: 50px;
+                width: 80px;
+                height: 80px;
+                margin-bottom: 10px;
+                border: 2px grey solid;
+                background-color: #222;
+              "
+            />
+          </div>
+
+          <div style="display: flex; justify-content: center">
+            <span style="font-size: 25px"> Mokoko Family </span>
+          </div>
+          <div style="display: flex; justify-content: center">
+            <span style="font-size: 13px"
+              >Communauté Francophone de Lost Ark</span
+            >
+          </div>
+        </div>
       </div>
-      <div class="uk-flex uk-flex-center">
+      <div class="uk-flex uk-flex-center" style="margin-top: 20px">
         <p>Création de compte</p>
       </div>
       <form>
@@ -52,4 +75,9 @@
 export default {};
 </script>
 
-<style></style>
+<style>
+.create-account {
+  height: calc(100vh - 80px);
+  background-color: #404040;
+}
+</style>

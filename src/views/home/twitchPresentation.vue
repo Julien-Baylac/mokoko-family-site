@@ -1,36 +1,24 @@
 <template>
   <div class="twitch-presentation">
     <div class="uk-container">
-      <div
-        style="display: flex; justify-content: flex-end; margin-top: 80px"
-        class="uk-child-width-1-2"
-      >
-        <div style="position: relative; left: 100px">
-          <!-- <img
-            class="uk-transition-scale-up uk-transition-opaque"
-            :src="require(`@/assets/img/socials/cadre-webcam.png`)"
-            style="
-              position: absolute;
-              width: 480px;
-              height: 200px:
-              position: absolute;
-              z-index: 1;
-              margin-top: -39px;
-              margin-left: -20px;
-              user-select: none;
-            "
-          /> -->
+      <div style="display: flex; margin-top: 80px" class="uk-child-width-1-2">
+        <div style="margin-bottom: 40px">
           <video
-            src="https://yootheme.com/site/images/media/yootheme-pro.mp4"
-            style="position: absolute; border-radius: 8px; width: 450px"
+            v-if="require(`@/assets/img/home/twitch-movie.mp4`)"
+            :src="require(`@/assets/img/home/twitch-movie.mp4`)"
+            style="border-radius: 8px; width: 500px; margin-left: 40px"
             uk-video="autoplay: inview"
             loop
             muted
             playsinline
           ></video>
+          <div v-else uk-spinner></div>
         </div>
         <div>
-          <div class="uk-text-center" style="margin-top: 10px">
+          <div
+            class="uk-text-center"
+            style="margin-top: 45px; padding-left: 25px; padding-right: 20px"
+          >
             <div style="margin-bottom: 10px">
               <span
                 uk-icon="icon: twitch;ratio: 3.5"
@@ -59,10 +47,10 @@
           </div>
         </div>
       </div>
-
+      <hr class="uk-divider-icon" />
       <div
         class="uk-child-width-expand@s uk-text-center"
-        style="margin-top: 70px"
+        style="margin-top: 20px"
         uk-grid
       >
         <a
@@ -91,6 +79,22 @@
           <img
             class="uk-transition-scale-up uk-transition-opaque"
             :src="require(`@/assets/img/socials/instagram.png`)"
+            style="user-select: none"
+            width="1800"
+            height="1200"
+            alt=""
+          />
+        </a>
+        <a
+          class="uk-inline-clip uk-transition-toggle"
+          tabindex="0"
+          style="padding: 30px"
+          href="https://www.instagram.com/mokoko.family"
+          target="_blank"
+        >
+          <img
+            class="uk-transition-scale-up uk-transition-opaque"
+            :src="require(`@/assets/img/socials/youtube.png`)"
             style="user-select: none"
             width="1800"
             height="1200"

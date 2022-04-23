@@ -1,47 +1,12 @@
 <template>
   <div class="ranking">
+    <Header
+      wallpaper="ranking_wallpaper"
+      title="Classements"
+      :subtitle="textDt"
+      :description="textDd"
+    ></Header>
     <div class="uk-container">
-      <h3 class="uk-article-title uk-margin-medium-top">Classements</h3>
-      <div class="uk-flex uk-flex-between">
-        <div style="margin-top: 20px">
-          <dl v-if="section === 'ilvl'" class="uk-description-list">
-            <dt>Barème du Top puissance</dt>
-            <dd>Niveau x10 | Expé niveau x15 | Point x3 | Ilvl x2</dd>
-          </dl>
-          <dl v-if="section === 'exploration'" class="uk-description-list">
-            <dt>Barème du Top d'exploration</dt>
-            <dd>
-              Symbole x10 | Coeur x10 | étoile x50 | tableau x10 | mokoko x1.5 |
-              Ignéa x200 | feuille x15 | carte x17
-            </dd>
-          </dl>
-          <dl v-if="section === 'collection'" class="uk-description-list">
-            <dt>Barème du Top de collection</dt>
-            <dd>Niveau x10 | Expé niveau x15 | Point x3 | Ilvl x2</dd>
-          </dl>
-          <dl v-if="section === 'steam'" class="uk-description-list">
-            <dt>Barème du Top Steam</dt>
-            <dd>Heure x3 | Succès x20</dd>
-          </dl>
-        </div>
-        <div style="margin-top: -20px">
-          <div class="uk-flex uk-flex-right">
-            <span
-              style="
-                font-size: 20px;
-                border: 1px solid grey;
-                border-radius: 40px;
-                padding: 10px;
-                height: 35px;
-                width: 35px;
-              "
-              >34st</span
-            >
-          </div>
-          <div class="uk-flex uk-flex-right"></div>
-        </div>
-      </div>
-
       <div class="uk-margin-medium-top" style="margin-bottom: 40px">
         <ul class="uk-flex-center" uk-tab>
           <li class="uk-active" @click="changeSection('ilvl')">
@@ -214,10 +179,11 @@
 
 <script>
 import Footer from "@/components/Footer.vue";
+import Header from "@/components/community/header.vue";
 import lodash from "lodash";
 
 export default {
-  components: { Footer },
+  components: { Footer, Header },
   name: "ranking",
   data() {
     return {
@@ -449,6 +415,30 @@ export default {
         newArray.push({ ...el, score: this.scoreCalcul(el) })
       );
       return lodash.sortBy(newArray, "score").reverse();
+    },
+    textDt() {
+      if (this.section === "ilvl") {
+        return "Barème du Top puissance";
+      } else if (this.section === "exploration") {
+        return "Barème du Top d'exploration";
+      } else if (this.section === "collection") {
+        return "Barème du Top de collection";
+      } else if (this.section === "steam") {
+        return "Barème du Top Steam";
+      }
+      return "";
+    },
+    textDd() {
+      if (this.section === "ilvl") {
+        return "Niveau x10 | Expé niveau x15 | Point x3 | Ilvl x2";
+      } else if (this.section === "exploration") {
+        return "Symbole x10 | Coeur x10 | étoile x50 | tableau x10 | mokoko x1.5 | Ignéa x200 | feuille x15 | carte x17";
+      } else if (this.section === "collection") {
+        return "Niveau x10 | Expé niveau x15 | Point x3 | Ilvl x2";
+      } else if (this.section === "steam") {
+        return "Heure x3 | Succès x20";
+      }
+      return "";
     },
   },
   methods: {

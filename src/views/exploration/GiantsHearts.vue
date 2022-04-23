@@ -1,22 +1,15 @@
 <template>
-  <div class="islands">
-    <div class="uk-container">
-      <h3 class="uk-article-title uk-margin-medium-top">Coeurs de géants</h3>
-      <div class="uk-flex uk-flex-between">
-        <div style="margin-top: 20px">
-          <dl class="uk-description-list">
-            <dt>RECHERCHE DES coeurs de géants</dt>
-            <dd>
-              Faites une recherche en cliquant sur la l'image ou recherchez
-              directement un coeur parmis les
-              {{ hearts.length }} référencés
-            </dd>
-          </dl>
-        </div>
-      </div>
+  <div class="giants-hearts">
+    <Header
+      wallpaper="titan_wallpaper"
+      title="Coeurs de géants"
+      subtitle="RECHERCHE DES coeurs de géants"
+      :description="`Faites une recherche en cliquant sur la l'image ou recherchez directement un coeur parmis les ${hearts.length} référencés`"
+    ></Header>
+    <div class="uk-container" style="margin-top: 70px">
       <div class="uk-child-width-1" uk-grid>
         <div>
-          <div class="uk-inline uk-dark" style="padding-left: 40px">
+          <div class="uk-inline uk-dark">
             <img
               :src="require(`@/assets/img/exploration/heart_map.png`)"
               width="1800"
@@ -115,16 +108,19 @@
         </div>
       </div>
     </div>
-    <Footer />
+    <Footer style="margin-top: 70px" />
   </div>
 </template>
 
 <script>
 import Footer from "@/components/Footer.vue";
+import Header from "@/components/explorations/header.vue";
+
 export default {
   name: "hearts",
   components: {
     Footer,
+    Header,
   },
   data() {
     return {

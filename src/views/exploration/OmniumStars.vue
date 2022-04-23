@@ -1,21 +1,15 @@
 <template>
-  <div class="islands">
-    <div class="uk-container">
-      <h3 class="uk-article-title uk-margin-medium-top">Étoiles d'Omnium</h3>
-      <div class="uk-flex uk-flex-between">
-        <div style="margin-top: 20px">
-          <dl class="uk-description-list">
-            <dt>RECHERCHE DES étoiles d'omnium</dt>
-            <dd>
-              Faites une recherche en cliquant sur la l'image ou recherchez
-              directement une étoile parmis les {{ islands.length }} référencées
-            </dd>
-          </dl>
-        </div>
-      </div>
-      <div class="uk-child-width-1" uk-grid>
+  <div class="omnium-stars">
+    <div>
+      <Header
+        wallpaper="stars_wallpaper"
+        title="Etoiles d'omnium"
+        subtitle="RECHERCHE DES étoiles d'omnium"
+        :description="`Faites une recherche en cliquant sur la l'image ou recherchez directement un étoiles parmis les ${stars.length} référencées`"
+      ></Header>
+      <div class="uk-container" style="margin-top: 70px">
         <div>
-          <div class="uk-inline uk-dark" style="padding-left: 40px">
+          <div class="uk-inline uk-dark">
             <img
               :src="require(`@/assets/img/exploration/stars_map.png`)"
               width="1800"
@@ -35,11 +29,11 @@
         </div>
       </div>
 
-      <div class="uk-margin-medium">
+      <div class="uk-margin-medium uk-container">
         <div>
           <div style="display: flex; justify-content: space-between">
             <h3 id="table-title" style="margin-bottom: 0">
-              Liste des étoiles d'omnium ({{ filteredIslands.length }})
+              Liste des étoiles d'omnium ({{ filteredStars.length }})
             </h3>
             <div style="display: flex" class="uk-form-small">
               <button
@@ -89,18 +83,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr
-                v-for="(island, index) in filteredIslands"
-                v-bind:key="island.id"
-              >
+              <tr v-for="(star, index) in filteredStars" v-bind:key="star.id">
                 <th>{{ index + 1 }}</th>
-                <td>{{ island.name }}</td>
-                <td>{{ island.obtaining }}</td>
-                <td>{{ island.description }}</td>
+                <td>{{ star.name }}</td>
+                <td>{{ star.obtaining }}</td>
+                <td>{{ star.description }}</td>
                 <td>
                   <button
                     class="uk-button uk-button-default uk-button-small"
-                    :disabled="island.validated === true"
+                    :disabled="star.validated === true"
                   >
                     Valider
                   </button>
@@ -109,21 +100,24 @@
             </tbody>
           </table>
           <div style="display: flex; justify-content: center; width: 100%">
-            <span v-if="!filteredIslands.length">Aucune ile</span>
+            <span v-if="!filteredStars.length">Aucune ile</span>
           </div>
         </div>
       </div>
     </div>
-    <Footer />
+    <Footer style="margin-top: 70px" />
   </div>
 </template>
 
 <script>
 import Footer from "@/components/Footer.vue";
+import Header from "@/components/explorations/header.vue";
+
 export default {
-  name: "islands",
+  name: "omnium-stars",
   components: {
     Footer,
+    Header,
   },
   data() {
     return {
@@ -131,7 +125,7 @@ export default {
       sector: "all",
       validated: null,
       filter: "",
-      islands: [
+      stars: [
         {
           id: 1,
           name: "Coeur n1",
@@ -236,10 +230,10 @@ export default {
     };
   },
   computed: {
-    filteredIslands() {
+    filteredStars() {
       let newZonesArray = [];
       let finalArray = [];
-      this.islands.forEach((element) => {
+      this.stars.forEach((element) => {
         if (this.section === "all") {
           newZonesArray.push(element);
         }

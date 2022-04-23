@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Header></Header>
-    <activitiesPresentation class="uk-container"></activitiesPresentation>
+    <activitiesPresentation></activitiesPresentation>
     <explorationsPresentation class="uk-container"></explorationsPresentation>
     <collectionPresentation></collectionPresentation>
     <twitchPresentation></twitchPresentation>

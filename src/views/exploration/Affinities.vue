@@ -1,44 +1,27 @@
 <template>
   <div class="affinites">
+    <Header
+      wallpaper="affinity_wallpaper"
+      title="Affinités"
+      :subtitle="subTitleDt"
+      :description="subTitleDd"
+    ></Header>
     <div class="uk-container">
       <div
         class="uk-margin-medium-top"
         style="display: flex; justify-content: space-between"
-      >
-        <div>
-          <h3 class="uk-article-title">Affinités</h3>
-          <dl v-if="sortMethod === 'order'" class="uk-description-list">
-            <dt>Classement dans l'ordre des zones</dt>
-            <dd>Affiche les zones dans l'ordre de la quète principale</dd>
-          </dl>
-          <dl v-if="sortMethod === 'collectibles'" class="uk-description-list">
-            <dt>Classement pour prioriser l'acquisition des collectibles</dt>
-            <dd>Isole les pnjs donnent des collectibles</dd>
-          </dl>
-          <dl v-if="sortMethod === 'cards'" class="uk-description-list">
-            <dt>Classement pour prioriser l'acquisition des cartes</dt>
-            <dd>Affiche la couleur des cartes de chaque pnj.</dd>
-          </dl>
-          <dl v-if="sortMethod === 'igneas'" class="uk-description-list">
-            <dt>Classement pour récupérer les symboles d'ignea</dt>
-            <dd>
-              Les premières zones apparaissent sont les plus faciles à
-              compléter.
-            </dd>
-          </dl>
-        </div>
-      </div>
+      ></div>
 
-      <div class="uk-margin-medium-top" style="margin-bottom: 40px">
+      <div style="margin-bottom: 40px">
         <ul class="uk-flex-center" uk-tab>
           <li class="uk-active" @click="changeSection('order')">
             <a>L'ordre des zones</a>
           </li>
+          <li @click="changeSection('igneas')"><a>Les symboles d'igneas</a></li>
           <li @click="changeSection('collectibles')">
             <a> Les collectibles</a>
           </li>
           <li @click="changeSection('cards')"><a>Les cartes</a></li>
-          <li @click="changeSection('igneas')"><a>Les symboles d'igneas</a></li>
         </ul>
       </div>
 
@@ -53,11 +36,7 @@
             Reste - {{ TotalPts(zone.pnjs) }} pts
           </h5>
         </div>
-        <div
-          class="uk-child-width-1-3"
-          style="display: flex; padding-left: 40px"
-          uk-grid
-        >
+        <div class="uk-child-width-1-3" style="display: flex" uk-grid>
           <Card
             v-for="pnj in zone.pnjs"
             v-bind:key="pnj.id"
@@ -70,19 +49,20 @@
             :hearts="pnj.hearts"
             :stars="pnj.stars"
             :cardColor="cardColoration"
-            style="width: 32%; margin-right: 1%"
+            style="width: 32%; margin-right: 1%; margin-bottom: 10px"
             :AffinityMax="pnj.AffinityMax"
           ></Card>
         </div>
       </div>
     </div>
-    <Footer />
+    <Footer style="margin-top: 70px" />
   </div>
 </template>
 
 <script>
 import Footer from "@/components/Footer.vue";
 import Card from "@/components/reputations/card.vue";
+import Header from "@/components/explorations/header.vue";
 import lodash from "lodash";
 
 export default {
@@ -90,10 +70,13 @@ export default {
   components: {
     Card,
     Footer,
+    Header,
   },
   data() {
     return {
       sortMethod: "order",
+      dt: "",
+      dd: "",
       affinityCompleted: [],
       zones: [
         {
@@ -1033,6 +1016,32 @@ export default {
         return true;
       } else {
         return false;
+      }
+    },
+    subTitleDt() {
+      if (this.sortMethod === "order") {
+        return "Classement dans l'ordre des zones";
+      } else if (this.sortMethod === "collectibles") {
+        return "Classement pour prioriser l'acquisition des collectibles";
+      } else if (this.sortMethod === "cards") {
+        return "Classement pour prioriser l'acquisition des cartes";
+      } else if (this.sortMethod === "igneas") {
+        return "Classement pour récupérer les symboles d'ignea";
+      } else {
+        return "";
+      }
+    },
+    subTitleDd() {
+      if (this.sortMethod === "order") {
+        return "Affiche les zones dans l'ordre de la quète principale";
+      } else if (this.sortMethod === "collectibles") {
+        return "Isole les pnjs donnent des collectibles";
+      } else if (this.sortMethod === "cards") {
+        return "Affiche la couleur des cartes de chaque pnj.";
+      } else if (this.sortMethod === "igneas") {
+        return "Les premières zones apparaissent sont les plus faciles à compléter.";
+      } else {
+        return "";
       }
     },
   },

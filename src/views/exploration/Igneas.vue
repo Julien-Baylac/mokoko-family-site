@@ -1,5 +1,11 @@
 <template>
-  <div class="islands">
+  <div class="igneas">
+    <Header
+      wallpaper="ignea_wallpaper"
+      title="Symboles d'Ignea"
+      subtitle="RECHERCHE DES Symboles d'ignea"
+      :description="`Faites une recherche en cliquant sur l'image ou recherchez directement via le filtre au dessus du tableau`"
+    ></Header>
     <div class="uk-container">
       <h3 class="uk-article-title uk-margin-medium-top">Igneas</h3>
       <div class="uk-flex uk-flex-between">
@@ -16,7 +22,7 @@
       </div>
       <div class="uk-child-width-1" uk-grid>
         <div>
-          <div class="uk-inline uk-dark" style="padding-left: 40px">
+          <div class="uk-inline uk-dark">
             <img
               :src="require(`@/assets/img/exploration/ignea_map.png`)"
               width="1800"
@@ -115,16 +121,19 @@
         </div>
       </div>
     </div>
-    <Footer />
+    <Footer style="margin-top: 70px" />
   </div>
 </template>
 
 <script>
 import Footer from "@/components/Footer.vue";
+import Header from "@/components/explorations/header.vue";
+
 export default {
   name: "islands",
   components: {
     Footer,
+    Header,
   },
   data() {
     return {

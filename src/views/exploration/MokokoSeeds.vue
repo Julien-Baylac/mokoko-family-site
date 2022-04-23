@@ -1,21 +1,15 @@
 <template>
   <div class="mokoko-seeds">
+    <Header
+      wallpaper="mokoko_wallpaper"
+      title="Graines de Mokoko"
+      subtitle="RECHERCHE DES Graines de mokoko"
+      :description="`Faites une recherche par zone en cliquant sur la carte ou recherchez directement via le filtre au dessus du tableau`"
+    ></Header>
     <div class="uk-container">
-      <h3 class="uk-article-title uk-margin-medium-top">Graines de Mokoko</h3>
-      <div class="uk-flex uk-flex-between">
-        <div style="margin-top: 20px">
-          <dl class="uk-description-list">
-            <dt>RECHERCHE DES Graines de mokoko</dt>
-            <dd>
-              Faites une recherche par zone en cliquant sur la carte ou
-              recherchez directement via le filtre au dessus du tableau
-            </dd>
-          </dl>
-        </div>
-      </div>
-      <div class="uk-child-width-1" uk-grid>
+      <div uk-grid style="margin-top: 70px">
         <div>
-          <div class="uk-inline uk-dark" style="padding-left: 40px">
+          <div class="uk-inline uk-dark">
             <img
               :src="require(`@/assets/img/exploration/mokoko_map.png`)"
               width="1800"
@@ -114,16 +108,19 @@
         </div>
       </div>
     </div>
-    <Footer />
+    <Footer style="margin-top: 70px" />
   </div>
 </template>
 
 <script>
 import Footer from "@/components/Footer.vue";
+import Header from "@/components/explorations/header.vue";
+
 export default {
   name: "islands",
   components: {
     Footer,
+    Header,
   },
   data() {
     return {

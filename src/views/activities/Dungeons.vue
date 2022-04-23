@@ -1,5 +1,11 @@
 <template>
   <div class="dungeons" style="width: 100%">
+    <Header
+      wallpaper="dungeon_wallpaper"
+      title="Donjons abyssaux"
+      subtitle="Inscriptions aux donjons abyssaux"
+      :description="`Faites une recherche en cliquant sur l'image ou recherchez directement via le filtre au dessus du tableau`"
+    ></Header>
     <div class="dungeon-container" style="margin-bottom: 100px">
       <div class="uk-margin-medium-top" style="margin-bottom: 40px">
         <ul class="uk-flex-center" uk-tab>
@@ -8,19 +14,33 @@
           <li @click="changeTier(3)"><a> Tier 3</a></li>
         </ul>
       </div>
-      <div
-        v-for="dungeon in filtredDungeonList"
-        v-bind:key="dungeon.id"
-        class="dungeon-list"
+      <ul
+        class="uk-subnav uk-subnav-pill"
+        style="margin-left: 50px; margin-bottom: 20px"
+        uk-switcher="animation: uk-animation-slide-left-medium, uk-animation-slide-right-medium"
       >
-        <DungeonCard
-          :name="dungeon.name"
-          :ilvl="dungeon.ilvl"
-          :groupSize="dungeon.groupSize"
-          :imgUrl="dungeon.imgUrl"
-        />
+        <li
+          v-for="part in partList"
+          v-bind:key="part"
+          @click="changePart(part)"
+        >
+          <a class="collect-switcher">Partie {{ part }}</a>
+        </li>
+      </ul>
+      <div
+        class="dungeon-list"
+        style="display: flex; justify-content: space-between"
+        :class="'uk-child-width-1-' + cardDungeonList.length"
+      >
+        <div v-for="dungeon in cardDungeonList" v-bind:key="dungeon.id">
+          <DungeonCard
+            :imgUrl="dungeon.imgUrl"
+            :name="dungeon.name"
+            :ilvl="dungeon.ilvl"
+            :groupSize="dungeon.groupSize"
+          />
+        </div>
       </div>
-      <!-- <hr class="uk-divider-icon" /> -->
     </div>
     <Footer />
   </div>
@@ -28,6 +48,7 @@
 
 <script>
 import DungeonCard from "@/components/activities/DungeonCard.vue";
+import Header from "@/components/activities/header.vue";
 import Footer from "@/components/Footer.vue";
 
 export default {
@@ -35,9 +56,11 @@ export default {
   components: {
     DungeonCard,
     Footer,
+    Header,
   },
   data() {
     return {
+      currentPart: 1,
       tier: 1,
       dungeonsTiersList: [
         {
@@ -159,10 +182,35 @@ export default {
       });
       return newArray;
     },
+    partList() {
+      let newArray = [];
+      for (const i in this.filtredDungeonList) {
+        if (!newArray.includes(this.filtredDungeonList[i].part)) {
+          newArray.push(this.filtredDungeonList[i].part);
+        }
+      }
+      return newArray;
+    },
+    cardDungeonList() {
+      let newArray = [];
+      console.log(this.filtredDungeonList);
+      console.log(this.partList);
+      this.filtredDungeonList.forEach((element) => {
+        if (element.part === this.currentPart) {
+          newArray.push(element);
+        }
+      });
+      console.log(newArray);
+      return newArray;
+    },
   },
   methods: {
     changeTier(nbTier) {
       this.tier = nbTier;
+      this.currentPart = 1;
+    },
+    changePart(Number) {
+      this.currentPart = Number;
     },
   },
 };

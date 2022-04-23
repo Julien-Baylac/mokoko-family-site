@@ -1,48 +1,52 @@
 <template>
-  <Bar
-    :chart-options="chartOptions"
-    :chart-data="chartData"
-    :chart-id="chartId"
-    :dataset-id-key="datasetIdKey"
-    :plugins="plugins"
-    :css-classes="cssClasses"
-    :styles="styles"
-    :width="width"
-    :height="height"
-  />
+  <div>
+    <LineChartGenerator
+      :chart-options="chartOptions"
+      :chart-data="chartData"
+      :chart-id="chartId"
+      :dataset-id-key="datasetIdKey"
+      :plugins="plugins"
+      :css-classes="cssClasses"
+      :styles="styles"
+      :width="width"
+      :height="height"
+    />
+  </div>
 </template>
 
 <script>
-import { Bar } from "vue-chartjs/legacy";
+import { Line as LineChartGenerator } from "vue-chartjs/legacy";
 
 import {
   Chart as ChartJS,
   Title,
   Tooltip,
   Legend,
-  BarElement,
-  CategoryScale,
+  LineElement,
   LinearScale,
+  CategoryScale,
+  PointElement,
 } from "chart.js";
 
 ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  BarElement,
+  LineElement,
+  LinearScale,
   CategoryScale,
-  LinearScale
+  PointElement
 );
 
 export default {
-  name: "BarChart",
+  name: "LineChart",
   components: {
-    Bar,
+    LineChartGenerator,
   },
   props: {
     chartId: {
       type: String,
-      default: "bar-chart",
+      default: "line-chart",
     },
     datasetIdKey: {
       type: String,
@@ -62,7 +66,9 @@ export default {
     },
     styles: {
       type: Object,
-      default: () => {},
+      default: () => {
+        backgroundColor: "#fff";
+      },
     },
     plugins: {
       type: Array,
@@ -72,28 +78,12 @@ export default {
   data() {
     return {
       chartData: {
-        labels: [
-          "Sorcière",
-          "Berserker",
-          "Paladin",
-          "Sanguelame",
-          "Fusilière",
-          "Barde",
-          "Démoniste",
-          "Pistolancier",
-          "Spirite",
-          "Essentialiste",
-          "Artilleur",
-          "Élémentiste",
-          "Franc-tireur",
-          "Salve implacable",
-          "Pugiliste",
-        ],
+        labels: ["302", "840", "930", "970", "1302", "1350", "1370"],
         datasets: [
           {
             label: "Mokoko Family",
             backgroundColor: "#f87979",
-            data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11, 12, 11, 11],
+            data: [40, 39, 10, 40, 39, 80, 40],
           },
         ],
       },

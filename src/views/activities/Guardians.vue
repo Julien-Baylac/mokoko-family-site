@@ -1,5 +1,11 @@
 <template>
   <div class="dungeon">
+    <Header
+      wallpaper="guardian_wallpaper"
+      title="Raids de gardien"
+      subtitle="Inscriptions aux raids de gardien"
+      :description="`Faites une recherche en cliquant sur l'image ou recherchez directement via le filtre au dessus du tableau`"
+    ></Header>
     <div class="dungeon-container" style="margin-bottom: 100px">
       <div class="uk-margin-medium-top" style="margin-bottom: 40px">
         <ul class="uk-flex-center" uk-tab>
@@ -8,6 +14,7 @@
           <li @click="changeTier(3)"><a> Tier 3</a></li>
         </ul>
       </div>
+
       <ul
         class="uk-subnav uk-subnav-pill uk-margin-left"
         uk-switcher="animation: uk-animation-slide-left-medium, uk-animation-slide-right-medium"
@@ -41,12 +48,14 @@
 <script>
 import Footer from "@/components/Footer.vue";
 import GuardianCard from "@/components/activities/GuardianCard.vue";
+import Header from "@/components/activities/header.vue";
 
 export default {
   props: {},
   components: {
     GuardianCard,
     Footer,
+    Header,
   },
   data() {
     return {
@@ -116,6 +125,117 @@ export default {
                 {
                   id: 8,
                   name: "Vertuzzzs",
+                  ilvl: 420,
+                  groupSize: 4,
+                  imgUrl: "vertus",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 2,
+          tier: 2,
+          guardiansParts: [
+            {
+              part: 1,
+              guardians: [
+                {
+                  id: 1,
+                  name: "Ur'nil",
+                  ilvl: 302,
+                  groupSize: 4,
+                  imgUrl: "urnil",
+                },
+                {
+                  id: 2,
+                  name: "Lumerus",
+                  ilvl: 340,
+                  groupSize: 4,
+                  imgUrl: "lumerus",
+                },
+                {
+                  id: 3,
+                  name: "Legioros Glacies",
+                  ilvl: 380,
+                  groupSize: 4,
+                  imgUrl: "legioros",
+                },
+                {
+                  id: 4,
+                  name: "Vertus",
+                  ilvl: 420,
+                  groupSize: 4,
+                  imgUrl: "vertus",
+                },
+              ],
+            },
+            {
+              part: 2,
+              guardians: [
+                {
+                  id: 5,
+                  name: "Ur'nilzzzz",
+                  ilvl: 302,
+                  groupSize: 4,
+                  imgUrl: "urnil",
+                },
+                {
+                  id: 6,
+                  name: "Lumeruzzzzs",
+                  ilvl: 340,
+                  groupSize: 4,
+                  imgUrl: "lumerus",
+                },
+                {
+                  id: 7,
+                  name: "Legioros Glazzzzcies",
+                  ilvl: 380,
+                  groupSize: 4,
+                  imgUrl: "legioros",
+                },
+                {
+                  id: 8,
+                  name: "Vertuzzzs",
+                  ilvl: 420,
+                  groupSize: 4,
+                  imgUrl: "vertus",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 3,
+          tier: 3,
+          guardiansParts: [
+            {
+              part: 1,
+              guardians: [
+                {
+                  id: 1,
+                  name: "Ur'nil",
+                  ilvl: 302,
+                  groupSize: 4,
+                  imgUrl: "urnil",
+                },
+                {
+                  id: 2,
+                  name: "Lumerus",
+                  ilvl: 340,
+                  groupSize: 4,
+                  imgUrl: "lumerus",
+                },
+                {
+                  id: 3,
+                  name: "Legioros Glacies",
+                  ilvl: 380,
+                  groupSize: 4,
+                  imgUrl: "legioros",
+                },
+                {
+                  id: 4,
+                  name: "Vertus",
                   ilvl: 420,
                   groupSize: 4,
                   imgUrl: "vertus",

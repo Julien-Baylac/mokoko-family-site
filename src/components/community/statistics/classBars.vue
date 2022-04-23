@@ -1,50 +1,50 @@
 <template>
-  <LineChartGenerator
-    :chart-options="chartOptions"
-    :chart-data="chartData"
-    :chart-id="chartId"
-    :dataset-id-key="datasetIdKey"
-    :plugins="plugins"
-    :css-classes="cssClasses"
-    :styles="styles"
-    :width="width"
-    :height="height"
-  />
+  <div>
+    <Bar
+      :chart-options="chartOptions"
+      :chart-data="chartData"
+      :chart-id="chartId"
+      :dataset-id-key="datasetIdKey"
+      :plugins="plugins"
+      :css-classes="cssClasses"
+      :styles="styles"
+      :width="width"
+      :height="height"
+    />
+  </div>
 </template>
 
 <script>
-import { Line as LineChartGenerator } from "vue-chartjs/legacy";
+import { Bar } from "vue-chartjs/legacy";
 
 import {
   Chart as ChartJS,
   Title,
   Tooltip,
   Legend,
-  LineElement,
-  LinearScale,
+  BarElement,
   CategoryScale,
-  PointElement,
+  LinearScale,
 } from "chart.js";
 
 ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  LineElement,
-  LinearScale,
+  BarElement,
   CategoryScale,
-  PointElement
+  LinearScale
 );
 
 export default {
-  name: "LineChart",
+  name: "BarChart",
   components: {
-    LineChartGenerator,
+    Bar,
   },
   props: {
     chartId: {
       type: String,
-      default: "line-chart",
+      default: "bar-chart",
     },
     datasetIdKey: {
       type: String,
@@ -64,9 +64,7 @@ export default {
     },
     styles: {
       type: Object,
-      default: () => {
-        backgroundColor: "#fff";
-      },
+      default: () => {},
     },
     plugins: {
       type: Array,
@@ -76,12 +74,28 @@ export default {
   data() {
     return {
       chartData: {
-        labels: ["302", "840", "930", "970", "1302", "1350", "1370"],
+        labels: [
+          "Sorcière",
+          "Berserker",
+          "Paladin",
+          "Sanguelame",
+          "Fusilière",
+          "Barde",
+          "Démoniste",
+          "Pistolancier",
+          "Spirite",
+          "Essentialiste",
+          "Artilleur",
+          "Élémentiste",
+          "Franc-tireur",
+          "Salve implacable",
+          "Pugiliste",
+        ],
         datasets: [
           {
             label: "Mokoko Family",
             backgroundColor: "#f87979",
-            data: [40, 39, 10, 40, 39, 80, 40],
+            data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11, 12, 11, 11],
           },
         ],
       },

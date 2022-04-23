@@ -1,9 +1,7 @@
 <template>
-  <div class="collection-presentation">
+  <div class="collection-presentation" style="background-color: #323232">
     <div
       class="uk-height-large uk-background-cover uk-overflow-hidden uk-light uk-flex"
-      :style="require(`@/assets/img/home/yorn.jpeg`)"
-      style="background-color: grey"
     >
       <div
         class="uk-width-1-2 uk-text-center uk-margin-auto uk-margin-auto-vertical uk-container"
@@ -11,20 +9,20 @@
         <div style="display: flex; justify-content: space-between">
           <div
             class="uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light"
-            style="height: 80px; width: 32%; border-radius: 7px"
-            data-src="https://images.unsplash.com/photo-1490822180406-880c226c150b?fit=crop&w=650&h=433&q=80"
+            style="height: 100px; width: 32%; border-radius: 7px"
+            :data-src="require(`@/assets/img/home/collection-1.jpeg`)"
             uk-img
           ></div>
           <div
             class="uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light"
-            style="height: 80px; width: 32%; border-radius: 7px"
-            data-src="https://images.unsplash.com/photo-1490822180406-880c226c150b?fit=crop&w=650&h=433&q=80"
+            style="height: 100px; width: 32%; border-radius: 7px"
+            :data-src="require(`@/assets/img/home/collection-2.jpeg`)"
             uk-img
           ></div>
           <div
             class="uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light"
-            style="height: 80px; width: 32%; border-radius: 7px"
-            data-src="https://images.unsplash.com/photo-1490822180406-880c226c150b?fit=crop&w=650&h=433&q=80"
+            style="height: 100px; width: 32%; border-radius: 7px"
+            :data-src="require(`@/assets/img/home/collection-3.jpeg`)"
             uk-img
           ></div>
         </div>

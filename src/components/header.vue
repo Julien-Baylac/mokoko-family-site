@@ -1,15 +1,20 @@
 <template>
   <div
     class="header"
-    v-bind:class="{ 'image-light': isDay, 'image-dark': !isDay }"
+    uk-parallax="bgy: -200"
+    v-bind:style="{
+      backgroundImage:
+        'url(' + require(`@/assets/img/home/header-image.jpeg`) + ')',
+    }"
   >
     <div
       class="uk-position-top-right"
+      header-image.jpeg
       style="margin-top: 120px; margin-right: 40px"
     >
       <div
         style="
-          background-color: rgba(0, 0, 0, 0.4);
+          background-color: rgba(0, 0, 0, 0.6);
           padding: 15px;
           border-radius: 4px;
         "
@@ -38,7 +43,7 @@
     >
       <div
         style="
-          background-color: rgba(0, 0, 0, 0.4);
+          background-color: rgba(0, 0, 0, 0.6);
           padding: 15px;
           border-radius: 4px;
         "
@@ -51,7 +56,7 @@
       </div>
       <div
         style="
-          background-color: rgba(0, 0, 0, 0.4);
+          background-color: rgba(0, 0, 0, 0.6);
           padding: 15px;
           border-radius: 4px;
           margin-top: 10px;
@@ -74,7 +79,7 @@
       </div>
       <div
         style="
-          background-color: rgba(0, 0, 0, 0.4);
+          background-color: rgba(0, 0, 0, 0.6);
           padding: 15px;
           border-radius: 4px;
           margin-top: 10px;
@@ -119,7 +124,15 @@
         </div>
       </div>
     </div>
-    <div class="uk-position-bottom" style="margin-bottom: 80px">
+    <div
+      class="uk-position-bottom"
+      style="
+        margin-bottom: 80px;
+        background-color: rgba(0, 0, 0, 0.6);
+        padding-top: 20px;
+        padding-bottom: 20px;
+      "
+    >
       <div>
         <div style="display: flex; justify-content: center">
           <img
@@ -129,7 +142,7 @@
               width: 60px;
               height: 60px;
               margin-bottom: 10px;
-              border: 1px grey solid;
+              border: 2px grey solid;
             "
           />
         </div>
@@ -158,6 +171,7 @@ export default {
   data() {
     return {
       time: moment(),
+      marginStone1: 0,
     };
   },
   props: {
@@ -201,9 +215,11 @@ export default {
 body {
   margin: 0;
 }
+.video {
+  height: calc(100vh - 80px);
+}
 .header {
   height: calc(100vh - 80px);
-  background-color: rgb(42, 82, 82);
 }
 .uk-countdown-number {
   font-size: 3rem;

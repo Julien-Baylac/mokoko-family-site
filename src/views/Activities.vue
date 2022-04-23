@@ -14,16 +14,6 @@
               Donjons</a
             >
           </li>
-          <li @click="changeActivity('raids')">
-            <a
-              ><ul class="uk-dotnav">
-                <li class="">
-                  <a>Item 1</a>
-                </li>
-              </ul>
-              Raids</a
-            >
-          </li>
 
           <li @click="changeActivity('guardians')">
             <a
@@ -35,16 +25,16 @@
               Gardiens
             </a>
           </li>
-          <!-- <li @click="changeActivity('events')">
+          <li @click="changeActivity('raids')">
             <a
               ><ul class="uk-dotnav">
-                <li class="uk-active">
+                <li class="">
                   <a>Item 1</a>
                 </li>
               </ul>
-              Events
-            </a>
-          </li> -->
+              Raids</a
+            >
+          </li>
         </ul>
       </div>
 

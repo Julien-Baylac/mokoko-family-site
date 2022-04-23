@@ -35,6 +35,16 @@
               Statistiques</a
             >
           </li>
+          <li @click="changeActivity('gallery')">
+            <a
+              ><ul class="uk-dotnav">
+                <li class="">
+                  <a>Item 1</a>
+                </li>
+              </ul>
+              Galerie</a
+            >
+          </li>
         </ul>
       </div>
 
@@ -43,6 +53,7 @@
         <Players v-if="section === 'players'" />
         <Statistics v-if="section === 'stats'" />
         <Ranking v-if="section === 'ranking'" />
+        <Gallery v-if="section === 'gallery'" />
       </div>
     </div>
   </div>
@@ -52,12 +63,14 @@
 import Players from "./community/Players.vue";
 import Statistics from "./community/Statistics.vue";
 import Ranking from "./community/Ranking.vue";
+import Gallery from "./community/Gallery.vue";
 
 export default {
   components: {
     Players,
     Statistics,
     Ranking,
+    Gallery,
   },
   data() {
     return {

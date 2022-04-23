@@ -63,17 +63,20 @@
           </li>
           <!-- <li @click="changeSection('build')"><a>Builds</a></li> -->
           <li @click="changeSection('exploration')"><a>Activités</a></li>
+          <li @click="changeSection('activities')"><a>Activités</a></li>
           <li @click="changeSection('exploration')"><a>Exploration</a></li>
           <li @click="changeSection('collection')"><a>Collection</a></li>
-          <li @click="changeSection('collection')" style="margin-left: 50px">
+          <li @click="changeSection('irl')">
             <a>IRL & Réseaux Sociaux</a>
           </li>
         </ul>
       </div>
       <Character v-if="section === 'character'" />
+      <Activities v-if="section === 'activities'" />
       <Exploration v-if="section === 'exploration'" />
       <Collection v-if="section === 'collection'" />
       <Build v-if="section === 'build'" />
+      <Irl v-if="section === 'irl'" />
     </div>
     <Footer style="margin-top: 100px" />
   </div>
@@ -83,11 +86,21 @@
 import Character from "@/views/profile/Character.vue";
 import Exploration from "@/views/profile/Exploration.vue";
 import Collection from "@/views/profile/Collection.vue";
+import Activities from "@/views/profile/Activities.vue";
 import Build from "@/views/profile/Build.vue";
+import Irl from "@/views/profile/Irl.vue";
 import Footer from "@/components/Footer.vue";
 
 export default {
-  components: { Character, Footer, Exploration, Collection, Build },
+  components: {
+    Character,
+    Footer,
+    Exploration,
+    Collection,
+    Build,
+    Irl,
+    Activities,
+  },
   name: "ranking",
   data() {
     return {
@@ -97,15 +110,6 @@ export default {
   methods: {
     changeSection(section) {
       this.section = section;
-      if (section === "ilvl") {
-        this.current_thead = this.thead_ilvl;
-      } else if (section === "exploration") {
-        this.current_thead = this.thead_exploration;
-      } else if (section === "collection") {
-        this.current_thead = this.thead_collection;
-      } else if (section === "steam") {
-        this.current_thead = this.thead_steam;
-      }
     },
   },
 };
