@@ -3,7 +3,7 @@
     <div class="uk-container">
       <div style="display: flex; margin-top: 80px" class="uk-child-width-1-2">
         <div style="margin-bottom: 40px">
-          <video
+          <!-- <video
             v-if="require(`@/assets/img/home/twitch-movie.mp4`)"
             :src="require(`@/assets/img/home/twitch-movie.mp4`)"
             style="border-radius: 8px; width: 500px; margin-left: 40px"
@@ -12,7 +12,7 @@
             muted
             playsinline
           ></video>
-          <div v-else uk-spinner></div>
+          <div v-else uk-spinner></div> -->
         </div>
         <div>
           <div
