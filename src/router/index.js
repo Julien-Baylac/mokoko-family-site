@@ -21,7 +21,10 @@ import TreasureMaps from "../views/exploration/TreasureMaps.vue";
 import Affinities from "../views/exploration/Affinities.vue";
 import Community from "../views/Community.vue";
 import Profile from "../views/Profile.vue";
-import TimeLine from "../views/TimeLine.vue";
+import Shop from "../views/Shop.vue";
+import Guides from "../views/Guides.vue";
+import Playlist from "../views/Playlist.vue";
+import Contact from "../views/Contact.vue";
 
 Vue.use(VueRouter);
 
@@ -136,11 +139,29 @@ const routes = [
     name: "Profile",
     component: Profile,
   },
-  //timeline
+  //shop
   {
-    path: "/timeline",
-    name: "TimeLine",
-    component: TimeLine,
+    path: "/shop",
+    name: "Shop",
+    component: Shop,
+  },
+  //guides
+  {
+    path: "/guides",
+    name: "Guides",
+    component: Guides,
+  },
+  //playlist
+  {
+    path: "/playlist",
+    name: "Playlist",
+    component: Playlist,
+  },
+  //contact
+  {
+    path: "/contact",
+    name: "Contact",
+    component: Contact,
   },
 ];
 

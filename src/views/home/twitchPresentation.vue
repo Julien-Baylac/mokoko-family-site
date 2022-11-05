@@ -4,15 +4,20 @@
       <div style="display: flex; margin-top: 80px" class="uk-child-width-1-2">
         <div style="margin-bottom: 40px">
           <!-- <video
-            v-if="require(`@/assets/img/home/twitch-movie.mp4`)"
-            :src="require(`@/assets/img/home/twitch-movie.mp4`)"
+            src="https://www.youtube.com/embed/64T6s0waJn0"
             style="border-radius: 8px; width: 500px; margin-left: 40px"
             uk-video="autoplay: inview"
             loop
             muted
-            playsinline
-          ></video>
-          <div v-else uk-spinner></div> -->
+          ></video> -->
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube-nocookie.com/embed/X1CrmTX6nmo?controls=0&amp;start=360;playsinline=1"
+            frameborder="0"
+            style="border-radius: px"
+            uk-video="automute: true"
+          ></iframe>
         </div>
         <div>
           <div

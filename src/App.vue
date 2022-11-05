@@ -7,7 +7,7 @@
     }"
   >
     <nav
-      class="uk-navbar-container"
+      class="navbar uk-navbar-sticky"
       v-bind:class="{ 'uk-light': darkMode }"
       style="background-color: black"
       v-bind:style="{ backgroundColor: darkMode ? '#121212' : '#ececec' }"
@@ -15,130 +15,60 @@
     >
       <div class="nav-overlay uk-navbar-left">
         <ul class="uk-navbar-nav">
-          <router-link to="/" class="logo" style="display: flex">
-            <img
-              :src="require(`@/assets/img/logo/logo.png`)"
-              style="
-                border-radius: 30px;
-                width: 50px;
-                height: 50px;
-                margin-left: 40px;
-                margin-top: 13px;
-                background-color: #121212;
-              "
-            />
-            <a
-              class="uk-navbar-item uk-logo"
-              href="#"
-              style="margin-right: 40px; padding-left: 10px"
-              v-bind:style="{ color: darkMode ? '#2ed451' : '#287f28' }"
-              >Mokoko Family</a
-            ></router-link
+          <router-link
+            to="/"
+            class="uk-navbar-item uk-logo"
+            style="margin-left: 30px"
           >
-          <li>
-            <router-link to="/activities">Activités</router-link>
+            <img
+              :src="require(`@/assets/img/logo/LOGO_NOIR-BLANC.png`)"
+              style="width: 40px; height: 40px"
+            />
+          </router-link>
+          <li class="guides-button" style="margin-left: 30px">
+            <router-link to="/guides"
+              ><span class="navbar-text guides-text">Guides</span
+              ><span class="navbar-text-jap">ガイド</span></router-link
+            >
           </li>
-          <ul class="uk-navbar-nav">
-            <li>
-              <a href="#">Exploration</a>
-              <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
-                <div
-                  class="uk-navbar-dropdown-grid uk-child-width-1-2"
-                  style="padding-left: 0"
-                  uk-grid
-                >
-                  <div>
-                    <ul class="uk-nav uk-navbar-dropdown-nav">
-                      <li class="uk-nav-header">Exploration</li>
-
-                      <li>
-                        <router-link to="/islands">Âmes insulaires</router-link>
-                      </li>
-                      <li>
-                        <router-link to="/giants-hearts"
-                          >Coeurs de géants</router-link
-                        >
-                      </li>
-                      <li>
-                        <router-link to="/omnium-stars"
-                          >Étoiles d'Omnium</router-link
-                        >
-                      </li>
-                      <li>
-                        <router-link to="/master-pieces"
-                          >Oeuvres d'art</router-link
-                        >
-                      </li>
-                      <li>
-                        <router-link to="/mokoko-seeds"
-                          >Graines de Mokoko</router-link
-                        >
-                      </li>
-                      <li>
-                        <router-link to="/igneas">Igneas</router-link>
-                      </li>
-                      <li>
-                        <router-link to="/world-tree-leaves"
-                          >Feuilles de l'Arbre-Monde</router-link
-                        >
-                      </li>
-                      <li>
-                        <router-link to="/treasure-maps"
-                          >Trésors des mers</router-link
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
+          <li class="stream-button">
+            <a href="https://www.twitch.tv/senseilekam" target="blank"
+              ><span class="navbar-text stream-text">Stream</span
+              ><span class="navbar-text-jap">ストリーム</span></a
+            >
+          </li>
+          <li class="lfg-button">
+            <router-link to="/activities"
+              ><span class="navbar-text lfg-text">LFG</span
+              ><span class="navbar-text-jap">グループ</span></router-link
+            >
+          </li>
           <ul class="uk-navbar-nav" style="margin-right: 20px">
-            <li>
-              <a href="#">Collections</a>
-              <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
-                <div
-                  class="uk-navbar-dropdown-grid uk-child-width-1-2"
-                  style="padding-left: 0"
-                  uk-grid
-                >
-                  <div>
-                    <ul class="uk-nav uk-navbar-dropdown-nav">
-                      <li class="uk-nav-header">Collections</li>
-
-                      <li><router-link to="/skins">Skins</router-link></li>
-                      <li>
-                        <router-link to="/pets">Familiers</router-link>
-                      </li>
-                      <li>
-                        <router-link to="/mounts">Montures</router-link>
-                      </li>
-                      <li class="uk-nav-header">Marchands itinérants</li>
-                      <li>
-                        <router-link to="/wandering-merchant"
-                          ><span>Les objets en ventes</span></router-link
-                        >
-                      </li>
-                      <li>
-                        <router-link to="/timeline"
-                          ><span>Timeline</span></router-link
-                        >
-                      </li>
-                      <li class="uk-nav-header">Affinités</li>
-                      <li>
-                        <router-link to="/affinities">Affinités</router-link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+            <li class="shop-button">
+              <router-link to="/shop"
+                ><span class="navbar-text shop-text">Boutique</span
+                ><span class="navbar-text-jap">お店</span></router-link
+              >
             </li>
+            <li class="playlist-button">
+              <router-link to="/playlist"
+                ><span class="navbar-text playlist-text">Playlist</span
+                ><span class="navbar-text-jap">プレイリスト</span></router-link
+              >
+            </li>
+            <li style="margin-left: 20px; width: 250px" class="commu-button">
+              <router-link to="/community"
+                ><span class="navbar-text commu-text"
+                  >La commu' qu'on merrite</span
+                ><span class="navbar-text-jap">コミュニティ</span></router-link
+              >
+            </li>
+            <!-- <li class="contact-button">
+              <router-link to="/contact"
+                ><span class="contact-text">Contact</span></router-link
+              >
+            </li> -->
           </ul>
-          <hr class="uk-divider-vertical" />
-
-          <li style="margin-left: 20px">
-            <router-link to="/community">La communauté</router-link>
-          </li>
         </ul>
       </div>
 
@@ -166,15 +96,7 @@
               <div class="uk-navbar-dropdown">
                 <ul class="uk-nav uk-dropdown-nav">
                   <li class="uk-nav-header">Parametres</li>
-                  <!-- <li>
-                    <a style="color: grey"
-                      ><font-awesome-icon
-                        icon="fa-solid fa-circle-half-stroke"
-                        style="margin-right: 3px"
-                      />{{ darkMode ? "Désactiver" : "Activer" }}
-                      <span> dark mode</span>
-                    </a>
-                  </li> -->
+
                   <li>
                     <router-link to="/profile"
                       ><span> <span>Mon profil</span></span></router-link
@@ -240,10 +162,15 @@ export default {
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Gill Sans", sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  cursor: url(https://cdn.shopify.com/s/files/1/0611/6334/0032/files/cursor-default-gold.svg?v=1640289644),
+    auto;
+  a {
+    cursor: url(https://cdn.shopify.com/s/files/1/0611/6334/0032/files/cursor-pointer-blue.svg?v=1640291704),
+      auto;
+  }
 }
 #nav {
   padding: 30px;
@@ -323,5 +250,90 @@ a.logo {
 }
 .uk-divider-vertical {
   height: 40px;
+}
+.navbar {
+  font-weight: bold;
+
+  .uk-navbar-nav > li > a {
+    text-transform: none;
+  }
+  .uk-navbar-nav > li:not(.commu-button) {
+    width: 130px;
+  }
+
+  .navbar-text-jap {
+    font-size: 15px;
+    display: none;
+  }
+  .shop-button:hover {
+    background-image: url("https://media.giphy.com/media/vvz78PeN31QgBK22lM/giphy.gif");
+    background-size: cover;
+    .navbar-text {
+      display: none;
+    }
+    .navbar-text-jap {
+      display: block;
+    }
+  }
+  .lfg-button:hover {
+    background-image: url("https://media.giphy.com/media/vvz78PeN31QgBK22lM/giphy.gif");
+    background-size: cover;
+    .navbar-text {
+      display: none;
+    }
+    .navbar-text-jap {
+      display: block;
+    }
+  }
+  .stream-button:hover {
+    background-image: url("https://media.giphy.com/media/vvz78PeN31QgBK22lM/giphy.gif");
+    background-size: cover;
+    .navbar-text {
+      display: none;
+    }
+    .navbar-text-jap {
+      display: block;
+    }
+  }
+  .guides-button:hover {
+    background-image: url("https://media.giphy.com/media/vvz78PeN31QgBK22lM/giphy.gif");
+    background-size: cover;
+    .navbar-text {
+      display: none;
+    }
+    .navbar-text-jap {
+      display: block;
+    }
+  }
+  .contact-button:hover {
+    background-image: url("https://media.giphy.com/media/vvz78PeN31QgBK22lM/giphy.gif");
+    background-size: cover;
+    .navbar-text {
+      display: none;
+    }
+    .navbar-text-jap {
+      display: block;
+    }
+  }
+  .playlist-button:hover {
+    background-image: url("https://media.giphy.com/media/vvz78PeN31QgBK22lM/giphy.gif");
+    background-size: cover;
+    .navbar-text {
+      display: none;
+    }
+    .navbar-text-jap {
+      display: block;
+    }
+  }
+  .commu-button:hover {
+    background-image: url("https://media.giphy.com/media/vvz78PeN31QgBK22lM/giphy.gif");
+    background-size: cover;
+    .navbar-text {
+      display: none;
+    }
+    .navbar-text-jap {
+      display: block;
+    }
+  }
 }
 </style>

@@ -5,23 +5,21 @@
       style="width: 400px; border-radius: 6px"
     >
       <div class="uk-flex uk-flex-center">
-        <div style="margin-top: -70px">
+        <div style="margin-top: -60px">
           <div style="display: flex; justify-content: center">
             <img
-              :src="require(`@/assets/img/logo/logo-grey.png`)"
+              :src="require(`@/assets/img/logo/LOGO_NOIR-BLANC.png`)"
               style="
-                border-radius: 50px;
                 width: 80px;
                 height: 80px;
                 margin-bottom: 10px;
-                border: 2px grey solid;
                 background-color: #222;
               "
             />
           </div>
 
           <div style="display: flex; justify-content: center">
-            <span style="font-size: 25px"> Mokoko Family </span>
+            <span style="font-size: 25px">Sensei le kam</span>
           </div>
           <div style="display: flex; justify-content: center">
             <span style="font-size: 13px"

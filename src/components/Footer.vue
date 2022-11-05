@@ -9,23 +9,8 @@
       <!-- socials -->
       <li>
         <a href="https://discord.com/invite/cE9aZh4bPn" target="_blank"
-          ><span uk-icon="icon: discord"></span
-        ></a>
-      </li>
-      <li>
-        <a href="https://www.twitch.tv/mokokofamily" target="_blank"
-          ><span uk-icon="icon: twitch"></span
-        ></a>
-      </li>
-      <li>
-        <a href="https://www.instagram.com/mokoko.family" target="_blank"
-          ><span uk-icon="icon: instagram"></span
-        ></a>
-      </li>
-      <li>
-        <a href="https://twitter.com/MokokoFamily" target="_blank"
-          ><span uk-icon="icon: twitter"></span
-        ></a>
+          ><span>about me</span></a
+        >
       </li>
     </ul>
   </div>
