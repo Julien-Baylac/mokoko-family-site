@@ -165,12 +165,12 @@ export default {
   font-family: "Gill Sans", sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: url(https://cdn.shopify.com/s/files/1/0611/6334/0032/files/cursor-default-gold.svg?v=1640289644),
-    auto;
-  a {
-    cursor: url(https://cdn.shopify.com/s/files/1/0611/6334/0032/files/cursor-pointer-blue.svg?v=1640291704),
-      auto;
-  }
+  // cursor: url(https://cdn.shopify.com/s/files/1/0611/6334/0032/files/cursor-default-gold.svg?v=1640289644),
+  //   auto;
+  // a {
+  //   cursor: url(https://cdn.shopify.com/s/files/1/0611/6334/0032/files/cursor-pointer-blue.svg?v=1640291704),
+  //     auto;
+  // }
 }
 #nav {
   padding: 30px;

@@ -1,6 +1,6 @@
 <template>
   <div class="activities">
-    <div class="uk-child-width-1-5" uk-grid>
+    <div class="uk-child-width-1-6" uk-grid>
       <!-- left part -->
       <div class="sidebar">
         <ul class="uk-tab-left tabs" style="margin-left: 50px" uk-tab>
@@ -11,7 +11,10 @@
                   <a>Item 1</a>
                 </li>
               </ul>
-              Donjons</a
+              Argos
+              <span style="font-weight: lighter; font-size: 13px"
+                >- 1370</span
+              ></a
             >
           </li>
 
@@ -22,7 +25,8 @@
                   <a>Item 1</a>
                 </li>
               </ul>
-              Gardiens
+              Valtan
+              <span style="font-weight: lighter; font-size: 13px">- 1420</span>
             </a>
           </li>
           <li @click="changeActivity('raids')">
@@ -32,7 +36,23 @@
                   <a>Item 1</a>
                 </li>
               </ul>
-              Raids</a
+              Vykas
+              <span style="font-weight: lighter; font-size: 13px"
+                >- 1445</span
+              ></a
+            >
+          </li>
+          <li @click="changeActivity('raids')">
+            <a
+              ><ul class="uk-dotnav">
+                <li class="">
+                  <a>Item 1</a>
+                </li>
+              </ul>
+              Karul
+              <span style="font-weight: lighter; font-size: 13px"
+                >- 1470</span
+              ></a
             >
           </li>
         </ul>
@@ -40,27 +60,18 @@
 
       <!-- right part -->
       <div class="uk-width-expand right-part">
-        <Dungeons v-if="activity === 'dungeons'" />
-        <Raids v-if="activity === 'raids'" />
-        <Guardians v-if="activity === 'guardians'" />
-        <Events v-if="activity === 'events'" />
+        <DungeonsCard />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Dungeons from "./activities/Dungeons.vue";
-import Raids from "./activities/Raids.vue";
-import Guardians from "./activities/Guardians.vue";
-import Events from "./activities/Events.vue";
+import DungeonsCard from "./activities/Dungeons.vue";
 
 export default {
   components: {
-    Dungeons,
-    Raids,
-    Guardians,
-    Events,
+    DungeonsCard,
   },
   data() {
     return {

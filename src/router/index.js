@@ -22,9 +22,12 @@ import Affinities from "../views/exploration/Affinities.vue";
 import Community from "../views/Community.vue";
 import Profile from "../views/Profile.vue";
 import Shop from "../views/Shop.vue";
-import Guides from "../views/Guides.vue";
 import Playlist from "../views/Playlist.vue";
 import Contact from "../views/Contact.vue";
+
+// guides
+import Guides from "../views/Guides.vue";
+import Argos from "../views/guides/Argos.vue";
 
 Vue.use(VueRouter);
 
@@ -162,6 +165,12 @@ const routes = [
     path: "/contact",
     name: "Contact",
     component: Contact,
+  },
+  //Guides
+  {
+    path: "/argos",
+    name: "Argos",
+    component: Argos,
   },
 ];
 

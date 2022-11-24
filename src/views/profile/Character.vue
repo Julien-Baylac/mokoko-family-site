@@ -1,6 +1,6 @@
 <template>
   <div class="character">
-    <!-- <div
+    <div
       class="uk-flex uk-flex-between uk-background-cover uk-light"
       :data-src="require(`@/assets/img/profile/selfi.jpg`)"
       style="border-radius: 10px; height: 550px"
@@ -171,7 +171,7 @@
           </li>
         </ul>
       </div>
-    </div> -->
+    </div>
     <div class="first-form">
       <h2 style="margin-top: 50px">Informations générales</h2>
       <div style="display: flex; justify-content: space-between">

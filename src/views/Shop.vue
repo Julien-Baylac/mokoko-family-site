@@ -84,7 +84,7 @@ export default {
         this.mouseInside = true;
         this.interval = setInterval(() => {
           if (width >= 100) {
-            clearInterval(this.interval);
+            elem.style.width = "0%";
             this.imageCounter = 0;
           } else {
             this.imageCounter = Math.floor(width / (100 / this.imgList.length));
