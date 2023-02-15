@@ -13,7 +13,7 @@
       </div>
       <div style="display: flex; align-items: center">
         <div class="uk-text-left">
-          <h3>Trouvez vos partenaires de jeu</h3>
+          <h3>Valider chacun de vos succés</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim

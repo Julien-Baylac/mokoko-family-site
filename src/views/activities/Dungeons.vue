@@ -7,7 +7,9 @@
       description="T1"
     ></Header>
     <div class="dungeon-container" style="margin-bottom: 100px">
-      <span style="margin-left: 40px">Liste des groupes</span>
+      <span style="margin-left: 40px"
+        >Liste des groupes - 3 groupes ouverts</span
+      >
       <div class="group-list" style="margin-top: 15px">
         <div
           v-for="k in 3"
@@ -39,12 +41,15 @@
                     width: 100px;
                     margin: 5px;
                     border-radius: 7px;
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
                   "
                 >
                   <span
                     uk-icon="plus"
                     style="
-                      padding: 10px;
+                      padding: 5px;
                       background-color: #121212;
                       border-radius: 30px;
                     "

@@ -1,10 +1,8 @@
 <template>
   <div class="character">
     <div
-      class="uk-flex uk-flex-between uk-background-cover uk-light"
-      :data-src="require(`@/assets/img/profile/selfi.jpg`)"
+      class="uk-flex uk-flex-between"
       style="border-radius: 10px; height: 550px"
-      uk-img
     >
       <div class="left-part" style="margin-top: 3.5%">
         <ul
@@ -198,9 +196,11 @@
             >Choix de la guilde</label
           >
           <div class="uk-form-controls">
-            <select class="uk-select" id="form-horizontal-select">
-              <option>Mokoko Family</option>
-            </select>
+            <input
+              class="uk-input"
+              type="text"
+              placeholder="Nom du personnage"
+            />
           </div>
         </div>
       </div>

@@ -1,27 +1,15 @@
 <template>
   <div class="create-account">
     <div
-      class="uk-position-center uk-overlay uk-overlay-default uk-background-secondary"
-      style="width: 400px; border-radius: 6px"
+      class="uk-position-center uk-overlay uk-overlay-default"
+      style="width: 400px; border-radius: 6px; background-color: #121212"
     >
       <div class="uk-flex uk-flex-center">
-        <div style="margin-top: -70px">
+        <div>
           <div style="display: flex; justify-content: center">
-            <img
-              :src="require(`@/assets/img/logo/logo-grey.png`)"
-              style="
-                border-radius: 50px;
-                width: 80px;
-                height: 80px;
-                margin-bottom: 10px;
-                border: 2px grey solid;
-                background-color: #222;
-              "
-            />
-          </div>
-
-          <div style="display: flex; justify-content: center">
-            <span style="font-size: 25px"> Mokoko Family </span>
+            <span style="font-size: 25px; font-weight: bold"
+              >SENSEI LE KAM</span
+            >
           </div>
           <div style="display: flex; justify-content: center">
             <span style="font-size: 13px"

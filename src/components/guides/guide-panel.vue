@@ -18,7 +18,7 @@
         :style="{
           'background-image':
             targetPanel === index
-              ? 'url(https://la-static.prod-my.games/images/assassin-hover.jpg?612069f65980a10951866387de17ba91)'
+              ? 'url(https://la-static.prod-my.games/images/detail-bg.jpg?9676f5635798a17a8ca5acee2f3167b7)'
               : 'url(https://la-static.prod-my.games/images/detail-bg.jpg?9676f5635798a17a8ca5acee2f3167b7)',
         }"
       >

@@ -20,10 +20,7 @@
             class="uk-navbar-item uk-logo"
             style="margin-left: 30px"
           >
-            <img
-              :src="require(`@/assets/img/logo/LOGO_NOIR-BLANC.png`)"
-              style="width: 40px; height: 40px"
-            />
+            SENSEI LE KAM
           </router-link>
           <li class="guides-button" style="margin-left: 30px">
             <router-link to="/guides"
@@ -31,16 +28,16 @@
               ><span class="navbar-text-jap">ガイド</span></router-link
             >
           </li>
-          <li class="stream-button">
-            <a href="https://www.twitch.tv/senseilekam" target="blank"
-              ><span class="navbar-text stream-text">Stream</span
-              ><span class="navbar-text-jap">ストリーム</span></a
-            >
-          </li>
           <li class="lfg-button">
             <router-link to="/activities"
               ><span class="navbar-text lfg-text">LFG</span
               ><span class="navbar-text-jap">グループ</span></router-link
+            >
+          </li>
+          <li class="playlist-button">
+            <router-link to="/playlist"
+              ><span class="navbar-text playlist-text">Playlist</span
+              ><span class="navbar-text-jap">プレイリスト</span></router-link
             >
           </li>
           <ul class="uk-navbar-nav" style="margin-right: 20px">
@@ -50,10 +47,15 @@
                 ><span class="navbar-text-jap">お店</span></router-link
               >
             </li>
-            <li class="playlist-button">
-              <router-link to="/playlist"
-                ><span class="navbar-text playlist-text">Playlist</span
-                ><span class="navbar-text-jap">プレイリスト</span></router-link
+            <li class="stream-button">
+              <a href="https://www.twitch.tv/senseilekam" target="blank"
+                ><span class="navbar-text stream-text"
+                  ><span
+                    uk-icon="twitch"
+                    style="margin-right: 10px; color: #64ff64"
+                  ></span
+                  >Direct</span
+                ><span class="navbar-text-jap">ストリーム</span></a
               >
             </li>
             <li style="margin-left: 20px; width: 250px" class="commu-button">
@@ -79,7 +81,7 @@
         <span class="">
           <ul class="uk-navbar-nav">
             <li>
-              <router-link to="/login">se connecter</router-link>
+              <router-link to="/login">Se connecter</router-link>
             </li>
             <li>
               <a
@@ -110,7 +112,9 @@
                       <font-awesome-icon
                         icon="fa-solid fa-arrow-right-from-bracket"
                       />
-                      <span style="margin-left: 7px">Déconnexion</span>
+                      <span style="margin-left: 7px; font-weight: lighter"
+                        >Déconnexion</span
+                      >
                     </button>
                   </li>
                 </ul>

@@ -23,10 +23,11 @@
                 style="font-size: 50px"
               ></span>
             </div>
-            Retrouver nous sur Twitch, les matins pour suivre le développement
-            des outils avec <span style="font-weight: bold">Oow</span>, et en
-            soirée pour du gameplay frénétique avec
-            <span style="font-weight: bold">AimzLoaded</span>.
+            Retrouvez moi sur Twitch pour des sessions de
+            <span style="font-weight: bold">Lost Ark</span>, et quelques autres
+            jeux comme
+            <span style="font-weight: bold">Final Fantasy XIV</span> ou
+            <span style="font-weight: bold">World of warcraft</span>.
             <div
               class="uk-grid-small uk-child-width-auto"
               style="margin-top: 20px; display: flex; justify-content: center"
@@ -38,7 +39,7 @@
                   style="margin-right: 20px"
                   href="https://www.twitch.tv/mokokofamily"
                   target="_blank"
-                  >Nous rejoindre sur twitch</a
+                  >Me rejoindre sur twitch</a
                 >
               </div>
             </div>

@@ -1,5 +1,14 @@
 <template>
   <div class="home">
+    <video
+      src="https://yootheme.com/site/images/media/yootheme-pro.mp4"
+      height="1200"
+      loop
+      muted
+      playsinline
+      uk-video="autoplay: inview"
+    ></video>
+
     <activitiesPresentation></activitiesPresentation>
     <explorationsPresentation class="uk-container"></explorationsPresentation>
     <collectionPresentation></collectionPresentation>

@@ -4,21 +4,7 @@
       <!-- left part -->
       <div class="sidebar">
         <ul class="uk-tab-left tabs" style="margin-left: 50px" uk-tab>
-          <li class="first-tab" @click="changeActivity('dungeons')">
-            <a
-              ><ul class="uk-dotnav">
-                <li class="">
-                  <a>Item 1</a>
-                </li>
-              </ul>
-              Argos
-              <span style="font-weight: lighter; font-size: 13px"
-                >- 1370</span
-              ></a
-            >
-          </li>
-
-          <li @click="changeActivity('guardians')">
+          <li v-for="i in 8" :key="i" @click="changeActivity('guardians')">
             <a
               ><ul class="uk-dotnav">
                 <li class="">
@@ -28,32 +14,6 @@
               Valtan
               <span style="font-weight: lighter; font-size: 13px">- 1420</span>
             </a>
-          </li>
-          <li @click="changeActivity('raids')">
-            <a
-              ><ul class="uk-dotnav">
-                <li class="">
-                  <a>Item 1</a>
-                </li>
-              </ul>
-              Vykas
-              <span style="font-weight: lighter; font-size: 13px"
-                >- 1445</span
-              ></a
-            >
-          </li>
-          <li @click="changeActivity('raids')">
-            <a
-              ><ul class="uk-dotnav">
-                <li class="">
-                  <a>Item 1</a>
-                </li>
-              </ul>
-              Karul
-              <span style="font-weight: lighter; font-size: 13px"
-                >- 1470</span
-              ></a
-            >
           </li>
         </ul>
       </div>

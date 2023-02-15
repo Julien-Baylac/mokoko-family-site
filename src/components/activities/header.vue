@@ -16,9 +16,7 @@
           margin-left: 70px;
           z-index: 2;
         "
-      >
-        e
-      </div>
+      ></div>
       <video
         :src="require(`@/assets/videos/kakul.mp4`)"
         loop
